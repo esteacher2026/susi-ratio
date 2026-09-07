@@ -380,7 +380,7 @@ def main():
         unis = [u for u in unis if args.vendor in ((u.get("ratio") or {}).get(str(args.final or args.year)) or "")]
 
     year = args.final or args.year
-    started = dt.datetime.now()
+    started = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))   # 한국 시간(러너는 UTC)
     print("[%s] %d개교 %d학년도 수집 시작" % (started.strftime("%H:%M:%S"), len(unis), year))
     with ThreadPoolExecutor(max_workers=args.workers) as ex:
         recs = list(ex.map(lambda u: collect_one(u, year), unis))

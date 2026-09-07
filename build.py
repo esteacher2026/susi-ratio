@@ -176,6 +176,7 @@ def main():
             "ok": bool(rec.get("ok")), "error": rec.get("error"),
             "asOf": rec.get("asOf"), "prevAsOf": rec.get("prevAsOf"),
             "stale": bool(rec.get("stale")), "staleError": rec.get("staleError"), "staleSince": rec.get("staleSince"),
+            "source": rec.get("source"),
             "total": rec.get("total"), "types": rec.get("types", []), "units": rec.get("units", []),
             "history": [{"t": h["t"], "app": h["app"], "ratio": h["ratio"]} for h in hist.get(u["id"], [])],
         }
@@ -200,7 +201,7 @@ def main():
     regions = [r for r in REGION_ORDER if any(u["region"] == r for u in out_unis)]
     regions += sorted({u["region"] for u in out_unis} - set(regions))
     payload = {
-        "builtAt": dt.datetime.now().strftime("%Y-%m-%dT%H:%M"),
+        "builtAt": dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).strftime("%Y-%m-%dT%H:%M"),
         "collectedAt": latest.get("collectedAt"),
         "year": latest.get("year", 2027),
         "regions": regions,
