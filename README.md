@@ -56,6 +56,20 @@ python build.py --embed            # docs/ + 오프라인 단일 HTML
 - 모집단위 표의 전형 제목과 전형별 표의 이름이 다른 대학은 build.py의 다단계 정규화(norm/norm2)로 연결한다.
 - 대학 자체 페이지 형식은 미지원(수집 현황 탭에 "불가"로 표시).
 
+## 시간대별 자료 보관과 내보내기
+
+- PC 예약 실행(`feed.cmd`)이 매 회차 **전체 대학**을 수집해 `data/snapshots/2027_YYYYMMDD_HHMM.json`으로 남긴다(모집단위 단위 원본). GitHub 러너도 회차마다 `data/latest.json`을 아티팩트(90일)로 남겨 PC가 꺼져 있던 시간대를 보완한다.
+- 접수가 끝난 뒤:
+
+```bash
+python export_excel.py                     # export/경쟁률_시간대별.xlsx + .csv (전체)
+python export_excel.py --hourly            # 열을 1시간 간격으로 솎음
+python export_excel.py --region 충남 대전 세종 --out export/충청권
+```
+
+- 엑셀 시트: 지원인원 / 경쟁률(행=대학·전형·모집단위, 열=수집시각), 전형별, 대학별. CSV는 분석용 긴 형식(대학,전형,모집단위,시각,모집,지원,경쟁률).
+- GitHub 아티팩트를 합치려면 `gh run download`로 받은 폴더를 `--extra 폴더` 로 넘긴다.
+
 ## 2027 링크 발굴 방법 (링크가 없는 대학이 생기면)
 
 - **유웨이**: URL 끝의 base64를 풀면 연도 토큰만 다르다. 2026 링크의 디코드 문자열 끝 `J-fTf`를 `J7fTf`로 바꿔 다시 인코딩하면 2027 링크가 된다(2028은 다음 문자로 추정, 검증 필요).
