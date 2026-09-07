@@ -2,7 +2,7 @@ name: collect-and-deploy
 
 on:
   schedule:
-    - cron: "*/30 * * * *"      # 30분마다 (UTC 기준, KST와 무관하게 하루 종일)
+    - cron: "5,35 * * * *"       # 매시 5분·35분 (대학들이 정각·30분에 갱신한 뒤 수집)
   workflow_dispatch:            # 수동 실행
 
 permissions:
