@@ -42,10 +42,11 @@
   "admissionUrl": "https://www.gjue.ac.kr/html/ipsi/index.html",
   "deadline": "2026-09-11T16:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KYDY6L3JXYTlKZiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5KYDY6L3JXYTlKZiUmOiZKLWZUZg",
    "2025": "https://ratio.uwayapply.com/Sl5KYDY6L3JXYTlKZiUmOiZKI2ZUZg=="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u004",
@@ -218,10 +219,11 @@
   "admissionUrl": "https://www.u1.ac.kr/ipsi/main.do",
   "deadline": "2026-09-11T22:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11120571.html",
    "2026": "https://ipsi.u1.ac.kr/ipsi/competition/type01-ratio.do",
    "2025": null
-  }
+  },
+  "note27": "입학처 홈페이지에서 링크 탐색·2027 수시 페이지 확인됨"
  },
  {
   "id": "u015",
@@ -346,11 +348,12 @@
   "admissionUrl": "https://www.hanbat.ac.kr/admission/",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30040971.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30040731.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30040541.html"
   },
-  "note": "원자료의 2027 경쟁률 링크가 국립한국해양대학교 페이지였음 → 링크 미확보로 처리"
+  "note": "원자료의 2027 경쟁률 링크가 국립한국해양대학교 페이지였음 → 링크 미확보로 처리",
+  "note27": "입학처 홈페이지에서 링크 탐색·2027 수시 페이지 확인됨"
  },
  {
   "id": "u023",
@@ -443,10 +446,11 @@
   "admissionUrl": "https://admission.eulji.ac.kr/",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11190711.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11190571.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11190431.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u029",
@@ -475,10 +479,11 @@
   "admissionUrl": "https://admission.kaist.ac.kr/undergraduate",
   "deadline": "2026-09-09T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KMCYlODlKXiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5KMCYlODlKXiUmOiZKLWZUZg==",
    "2025": "https://ratio.uwayapply.com/Sl5KMCYlODlKXiUmOiZKI2ZUZg=="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u031",
@@ -702,7 +707,8 @@
    "2027": null,
    "2026": null,
    "2025": null
-  }
+  },
+  "note27": "아산 캠퍼스와 통합 공개(유원대학교(아산) 항목에서 수집)"
  },
  {
   "id": "u045",
@@ -715,10 +721,11 @@
   "admissionUrl": "http://ipsi.jwu.ac.kr/site/siteView.jwu",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11920301.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11920221.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11920141.html"
-  }
+  },
+  "note27": "입학처 홈페이지에서 링크 탐색·2027 수시 페이지 확인됨"
  },
  {
   "id": "u046",
@@ -779,10 +786,11 @@
   "admissionUrl": "https://www.knue.ac.kr/ipsi_intro/index.jsp",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11480401.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11480351.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11480301.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u050",
@@ -843,10 +851,11 @@
   "admissionUrl": "https://enter.konkuk.ac.kr/main.do",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10080381.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10080311.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10080231.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u054",
@@ -907,10 +916,11 @@
   "admissionUrl": "https://iphak.kw.ac.kr/intro.php",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KTjlKZiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5KTjlKZiUmOiZKLWZUZg==",
    "2025": "https://ratio.uwayapply.com/Sl5KTjlKZiUmOiZKI2ZUZg=="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u058",
@@ -939,10 +949,11 @@
   "admissionUrl": "https://enter.duksung.ac.kr/main.php",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10530631.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10530541.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10530451.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u060",
@@ -1035,10 +1046,11 @@
   "admissionUrl": "https://admission.sogang.ac.kr/enter/html/main/index.asp#firstPage",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio12050481.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio12050421.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio12050351.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u066",
@@ -1083,10 +1095,11 @@
   "admissionUrl": "https://admission.snue.ac.kr/admission/main.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KYDpXJkpmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KYDpXJkpmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KYDpXJkpmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u069",
@@ -1195,10 +1208,11 @@
   "admissionUrl": "https://admission.skku.edu/admission/html/main/main.html",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920591.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920451.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u076",
@@ -1228,10 +1242,11 @@
   "admissionUrl": "https://ipsi.sejong.ac.kr/",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10950711.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10950621.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10950551.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u078",
@@ -1244,10 +1259,11 @@
   "admissionUrl": "https://admission.sookmyung.ac.kr/admission/html/main/main.asp",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10981491.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10981151.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10980861.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u079",
@@ -1260,10 +1276,11 @@
   "admissionUrl": "https://iphak.ssu.ac.kr/",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11010851.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11010661.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11010501.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u080",
@@ -1276,10 +1293,11 @@
   "admissionUrl": "https://admission.yonsei.ac.kr/seoul/admission/html/main/main.asp",
   "deadline": "2026-09-09T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11080811.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11080671.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11080571.html"
-  }
+  },
+  "note27": "입학처 홈페이지에서 링크 탐색·2027 수시 페이지 확인됨"
  },
  {
   "id": "u081",
@@ -1324,10 +1342,11 @@
   "admissionUrl": "https://www.puts.ac.kr/ipsi/db/db_admission_v1/",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KJjBMaUpmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KJjBMaUpmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KJjBMaUpmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u084",
@@ -1340,10 +1359,11 @@
   "admissionUrl": "https://admission.cau.ac.kr/main.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOjhMSmYlJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5KOjhMSmYlJjomSi1mVGY",
    "2025": "https://ratio.uwayapply.com/Sl5KOjhMSmYlJjomSiNmVGY="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u085",
@@ -1436,10 +1456,11 @@
   "admissionUrl": "https://adms.hufs.ac.kr/index.do",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KJmg6fEpmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KJmg6fEpmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KJmg6fEpmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u091",
@@ -1484,10 +1505,11 @@
   "admissionUrl": "https://go.hanyang.ac.kr/gate.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11640591.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11640461.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11640371.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u094",
@@ -1676,10 +1698,11 @@
   "admissionUrl": "https://ipsi.shinhan.ac.kr/",
   "deadline": "2026-09-11T23:59",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11870871.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11870641.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11870451.html"
-  }
+  },
+  "note27": "입학처 홈페이지에서 링크 탐색·2027 수시 페이지 확인됨"
  },
  {
   "id": "u106",
@@ -1708,10 +1731,11 @@
   "admissionUrl": "https://www.iajou.ac.kr/main/",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11040711.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11040601.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11040491.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u108",
@@ -1724,10 +1748,11 @@
   "admissionUrl": "https://enter.anyang.ac.kr/main",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5Kclc4Ylc4SmYlJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5Kclc4Ylc4SmYlJjomSi1mVGY=",
    "2025": "https://ratio.uwayapply.com/Sl5Kclc4Ylc4SmYlJjomSiNmVGY="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u109",
@@ -1756,10 +1781,11 @@
   "admissionUrl": "https://ipsi.yongin.ac.kr/index.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KVyVyV2FiSmYlJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5KVyVyV2FiSmYlJjomSi1mVGY=",
    "2025": "https://ratio.uwayapply.com/Sl5KVyVyV2FiSmYlJjomSiNmVGY="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u111",
@@ -1916,10 +1942,11 @@
   "admissionUrl": "http://goerica.hanyang.ac.kr/enter/html/main/main.asp",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11650731.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11650631.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11650561.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u121",
@@ -1996,10 +2023,11 @@
   "admissionUrl": "https://admission.inu.ac.kr/main.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11230791.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11230591.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11230401.html"
-  }
+  },
+  "note27": "입학처 홈페이지에서 링크 탐색·2027 수시 페이지 확인됨"
  },
  {
   "id": "u126",
@@ -2012,10 +2040,11 @@
   "admissionUrl": "https://admission.inha.ac.kr/index.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOHxXJUpmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KOHxXJUpmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KOHxXJUpmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u127",
@@ -2076,10 +2105,11 @@
   "admissionUrl": "https://admission.yonsei.ac.kr/mirae/admission/html/main/main.asp",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KZiVgJldhYkpmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KZiVgJldhYkpmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KZiVgJldhYkpmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u131",
@@ -2396,10 +2426,11 @@
   "admissionUrl": "https://enter.yu.ac.kr/page/main/index.php",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOmJKZiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5KOmJKZiUmOiZKLWZUZg==",
    "2025": "https://ratio.uwayapply.com/Sl5KOmJKZiUmOiZKI2ZUZg"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u151",
@@ -2652,10 +2683,11 @@
   "admissionUrl": "https://ipsi.silla.ac.kr/ipsi/?pCode=main",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11020621.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11020541.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11020451.html"
-  }
+  },
+  "note27": "입학처 홈페이지에서 링크 탐색·2027 수시 페이지 확인됨"
  },
  {
   "id": "u167",
@@ -2668,10 +2700,11 @@
   "admissionUrl": "https://ipsi.ysu.ac.kr/ipsi/Main.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30100311.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30100251.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30100181.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u168",
@@ -2700,10 +2733,11 @@
   "admissionUrl": "https://www.ulsan.ac.kr/iphak/Main.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KVzgmQzpKZiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5KVzgmQzpKZiUmOiZKLWZUZg==",
    "2025": "https://ratio.uwayapply.com/Sl5KVyY4QzpKZiUmOiZKI2ZUZg"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u170",
@@ -2796,10 +2830,11 @@
   "admissionUrl": "https://iphak.inje.ac.kr/",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KYC9XJUpmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KYC9XJUpmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KYC9XJUpmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u176",
@@ -2860,10 +2895,11 @@
   "admissionUrl": "https://www.gist.ac.kr/uadm/main.html",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KbzBlbyZlbyVlb3JlSl4lJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5KbzBlbyZlbyVlb3JlSl4lJjomSi1mVGY=",
    "2025": "https://ratio.uwayapply.com/Sl5KbzBlbyZlbyVlb3JlSl4lJjomSiNmVGY="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u180",
@@ -2956,10 +2992,11 @@
   "admissionUrl": "https://admission.jnu.ac.kr/indexMain.aspx",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOlcvSmYlJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5KOlcvSmYlJjomSi1mVGY=",
    "2025": "https://ratio.uwayapply.com/Sl5KOlcvSmYlJjomSiNmVGY="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u186",
@@ -2972,10 +3009,11 @@
   "admissionUrl": "https://i.chosun.ac.kr/main",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300581.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300471.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html"
-  }
+  },
+  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
  },
  {
   "id": "u187",
@@ -3148,10 +3186,11 @@
   "admissionUrl": "https://admission.kentech.ac.kr/ipsi",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KfExgMFdgOUpeJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KfExgMFdgOUpeJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KfExgMFdgOUpeJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u198",
@@ -3180,10 +3219,11 @@
   "admissionUrl": "https://www.jesus.ac.kr/enter/index.php",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOmlNSmYlJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5KOmlNSmYlJjomSi1mVGY=",
    "2025": "https://ratio.uwayapply.com/Sl5KOmlNSmYlJjomSiNmVGY="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u200",
@@ -3196,10 +3236,11 @@
   "admissionUrl": "https://ipsi.wku.ac.kr/main.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5Kclc4TjlXYU5KZiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5Kclc4TjlXYU5KZiUmOiZKLWZUZg==",
    "2025": "https://ratio.uwayapply.com/Sl5Kclc4TjlXYU5KZiUmOiZKI2ZUZg=="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u201",
@@ -3212,10 +3253,11 @@
   "admissionUrl": "https://enter.jbnu.ac.kr/main.do",
   "deadline": "2026-09-11T19:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOldCL0pmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KOldCL0pmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KOldCL0pmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u202",
@@ -3228,10 +3270,11 @@
   "admissionUrl": "https://www.jnue.kr/portal/enter/main/main.do",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KYDpXL0pmJSY6Jko3ZlRm",
    "2026": "https://ratio.uwayapply.com/Sl5KYDpXL0pmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KYDpXL0pmJSY6JkojZlRm"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u203",
@@ -3244,10 +3287,11 @@
   "admissionUrl": "https://iphak.jj.ac.kr/iphak/index.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOi9XYWAvSmYlJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5KOi9XYWAvSmYlJjomSi1mVGY",
    "2025": "https://ratio.uwayapply.com/Sl5KOi9XYWAvSmYlJjomSiNmVGY"
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  },
  {
   "id": "u204",
@@ -3308,9 +3352,10 @@
   "admissionUrl": "https://ibsi.jejunu.ac.kr/?m1=home%25",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOlc6L2AvSmYlJjomSjdmVGY",
    "2026": "https://ratio.uwayapply.com/Sl5KOlc6L2AvSmYlJjomSi1mVGY=",
    "2025": "https://ratio.uwayapply.com/Sl5KOlc6L2AvSmYlJjomSiNmVGY="
-  }
+  },
+  "note27": "2026 유웨이 링크에서 규칙으로 유도(연도 토큰 치환)·페이지 확인됨"
  }
 ]

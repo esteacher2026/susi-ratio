@@ -42,16 +42,22 @@ HEADERS = {
 
 
 def fetch(url, retries=2, timeout=40):
+    import ssl
     last = None
+    ctx = None
     for attempt in range(retries + 1):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
+            with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
                 raw = resp.read()
                 ctype = resp.headers.get("Content-Type", "")
             return decode(raw, ctype)
         except (urllib.error.URLError, TimeoutError, OSError) as e:
             last = e
+            # 일부 대학 서버가 중간 인증서를 보내지 않아 검증 실패 → 공개 페이지 읽기 전용이므로 비검증으로 1회 재시도
+            if ctx is None and "CERTIFICATE_VERIFY_FAILED" in str(e):
+                ctx = ssl._create_unverified_context()
+                continue
             time.sleep(1.5 * (attempt + 1))
     raise RuntimeError("fetch failed: %s (%s)" % (url, last))
 
@@ -202,8 +208,8 @@ def header_map(hdr):
     def idx_all(pred):
         return [i for i, h in enumerate(hdr) if pred(h)]
     m = {}
-    q = idx_all(lambda h: "모집인원" in h and "최대" not in h)
-    a = idx_all(lambda h: "지원인원" in h or h in ("지원자", "지원자수"))
+    q = idx_all(lambda h: ("모집인원" in h and "최대" not in h) or h in ("모집", "모집정원", "정원"))
+    a = idx_all(lambda h: "지원인원" in h or h in ("지원", "지원자", "지원자수", "지원현황"))
     r = idx_all(lambda h: "경쟁률" in h)
     u = idx_all(lambda h: "모집단위" in h or (("학과" in h or "전공" in h)
                                             and not any(k in h for k in ("홈페이지", "소개", "진로"))))
@@ -460,9 +466,7 @@ def collect_one(u, year):
     if not url:
         rec["error"] = "경쟁률 페이지 링크 없음"
         return rec
-    if not any(h in url for h in SUPPORTED_HOSTS):
-        rec["error"] = "지원하지 않는 페이지 형식(대학 자체 페이지)"
-        return rec
+    rec["vendor"] = "jinhak" if "jinhakapply" in url else ("uway" if "uwayapply" in url else "own")
     try:
         doc = fetch(url)
         parsed = parse_page(doc)
