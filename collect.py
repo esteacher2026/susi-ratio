@@ -551,6 +551,8 @@ def main():
             f = fu.get(r["id"])
             if not (f and f.get("ok")):
                 continue
+            if f.get("name") != r["name"]:   # 대학 목록 번호가 바뀐 옛 피드 → 무시
+                continue
             newer = (not r["ok"]) or ((f.get("asOf") or "") > (r.get("asOf") or "")) or (f.get("asOf") == r.get("asOf") and not r["ok"])
             if newer:
                 f = dict(f)
