@@ -495,6 +495,8 @@ def main():
     ap.add_argument("--vendor", help="경쟁률 페이지 호스트 필터 (예: jinhakapply)")
     ap.add_argument("--out", help="결과를 이 파일에만 저장(피드용). latest/history 는 건드리지 않음")
     ap.add_argument("--feed", help="다른 곳(내 PC 등)에서 수집한 피드 JSON 경로 또는 URL. 더 새로운 기록으로 병합")
+    ap.add_argument("--feed-out", help="전체 수집 후 일부(--feed-vendor)만 추려 이 파일에도 저장(피드 업로드용)")
+    ap.add_argument("--feed-vendor", default="jinhakapply", help="--feed-out 에 담을 페이지 호스트 (기본 jinhakapply)")
     ap.add_argument("--workers", type=int, default=6)
     args = ap.parse_args()
 
@@ -620,6 +622,12 @@ def main():
     snap = os.path.join(SNAP, "%d_%s.json" % (year, started.strftime("%Y%m%d_%H%M")))
     save_json(snap, payload, compact=True)
     print("저장: data/latest.json, data/history.json, %s" % os.path.relpath(snap, ROOT))
+
+    if args.feed_out:
+        # 전체 수집분 중 지정 호스트(진학어플라이 등)만 추려 피드 파일로 저장
+        sub = {k: v for k, v in payload["universities"].items() if v.get("url") and args.feed_vendor in v["url"] and not v.get("stale")}
+        save_json(args.feed_out, {"collectedAt": now_iso, "year": year, "uver": uver, "universities": sub}, compact=True)
+        print("저장: %s (피드, %d개교)" % (args.feed_out, sum(1 for v in sub.values() if v.get("ok"))))
 
 
 if __name__ == "__main__":

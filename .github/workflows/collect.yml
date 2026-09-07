@@ -46,6 +46,15 @@ jobs:
       - name: Build site
         run: python build.py
 
+      # 회차별 결과를 아티팩트로 90일 보관 (PC가 꺼져 있던 시간대의 유웨이 수집분 보존용)
+      - name: Archive this run's snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshot-${{ github.run_id }}
+          path: data/latest.json
+          retention-days: 90
+          compression-level: 9
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
