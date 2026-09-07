@@ -38,6 +38,7 @@ schtasks /Create /F /SC MINUTE /MO 30 /TN "susi-ratio-feed" /TR "cmd /c D:\claud
 | `template.html` | 화면 원본(직접 편집 대상). `docs/`와 `2027susi-ratio.html`은 직접 편집 금지 |
 | `feed.cmd` | 국내 PC 피드 전송기 (ASCII만 사용, cmd 인코딩 문제 방지) |
 | `data/final2026.json` | 2026학년도 최종 경쟁률(커밋됨, 비교 기준) |
+| `data/prior_timeline.json` | 2026·2025 접수 기간 시점별(D-3·D-2·D-1·D-day 오전/오후·최종) 경쟁률 + 3개년 최종. 원본: 카카오톡 수신 엑셀 「2027 대입을 위한 실시간 경쟁률.xlsx」(163개교 12,309행). build.py가 대학명 별칭·전형·모집단위 정규화로 실시간 모집단위에 결합(`tl`), 미결합 행은 `ref`로 화면에 "작년 자료만" 표시 |
 
 ## 로컬 사용
 
