@@ -117,6 +117,8 @@ tr.sub td{background:#fbfcfe;font-size:13px}
 tr.ref td{color:#8a8f99;background:#fbfbfc}
 tr.ref td b{color:#6b7280}
 tr.drow{cursor:pointer}
+tr.grow td{background:#f7f9fd}
+tr.grow:hover td{background:#eef2fa}
 tr.drow:hover td{background:#f9fafc}
 .tlwrap{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;padding:6px 4px}
 .tlwrap svg{background:#fff;border:1px solid var(--line);border-radius:8px}
@@ -194,7 +196,7 @@ let REGIONS = [];
 const REGION_GROUPS = {'충청권':['충남','대전','세종','충북'], '수도권':['서울','경기','인천'], '영남권':['부산','대구','울산','경북','경남'], '호남권':['광주','전남','전북'], '강원·제주':['강원','제주']};
 const CATS = ['학생부교과','학생부종합','논술','실기·특기','기타'];
 const S = {tab:'univ', q:'', region:'', founder:'', sort:'name', expanded:new Set(), openType:{},
-           u:{maxRatio:'', cat:'', group:'', uni:'', sortKey:'uni', sortDir:1, limit:300, onlyFinal:false, preset:null, showRef:true, onlyTl:false, open:{}}};
+           u:{maxRatio:'', cat:'', group:'', uni:'', sortKey:'uni', sortDir:1, limit:300, onlyFinal:false, preset:null, showRef:true, onlyTl:false, open:{}, view:'rows', gopen:{}, gsort:'nu', gdir:-1, glimit:150}};
 const $ = s => document.querySelector(s);
 const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const fmt = n => (n==null||isNaN(n)) ? '-' : Number(n).toLocaleString('ko-KR');
@@ -421,22 +423,49 @@ function deptRows(){
   });
 }
 function rowKey(x){ return x.uni+'|'+x.type+'|'+x.unit; }
-function renderUnits(){
-  const f=S.u;
-  let rows=deptRows();
-  const k=f.sortKey, dir=f.sortDir;
+function deptKey(name){ // 학과 묶음 키: 태그·괄호 설명·공백 제거, 학부/학과/전공 표기 통일
+  let k=String(name||'').replace(/^.*>/,'').replace(/\[[^\]]*\]|【[^】]*】/g,'').replace(/\((?:교직|주간|야간|계약학과|정원외|정원내|신설|[^)]*캠퍼스)\)/g,'');
+  k=k.replace(/\s|·|ㆍ|-|_/g,'').replace(/\*|※/g,'');
+  k=k.replace(/(학부|학과|전공|과)$/,'');
+  return k.toLowerCase();
+}
+function median(arr){ const a=arr.filter(v=>v!=null&&!isNaN(v)).sort((x,y)=>x-y); if(!a.length) return null; const m=Math.floor(a.length/2); return a.length%2?a[m]:(a[m-1]+a[m])/2; }
+function deptRowHtml(x, f){
+  const dd=(x.prevApp!=null&&x.app!=null)?x.app-x.prevApp:null; const key=rowKey(x); const open=!!f.open[key];
+  const fin3=x.tl?x.tl.fin.map(v=>v==null?'-':v.toFixed(1)).join(' / '):'';
+  let html='<tr class="drow'+(x.live?'':' ref')+'" data-rk="'+esc(key)+'"><td><b>'+esc(x.uni)+'</b>'+(x.live?'':'<div class="mini">작년 자료만</div>')+'</td><td class="mini">'+(x.group==='정원외'?'<span class="tag out">정원외</span>':'')+esc(x.type)+'</td>'+
+    '<td>'+(x.college?'<span class="mini">'+esc(x.college)+' › </span>':'')+esc(x.unit)+(x.quotaShared?' <span class="mini">※</span>':'')+(x.tl?' <span class="mini" title="작년 시점별 자료 있음 (클릭)">📈</span>':'')+'</td>'+
+    '<td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+'</td><td class="num">'+(x.live?rt(x.ratio):'<span class="mini">-</span>')+'</td>'+
+    '<td class="num">'+(x.same!=null?'<span class="same">'+x.same.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td>'+
+    '<td class="num">'+(x.finRatio!=null?rt(x.finRatio):'<span class="mini">-</span>')+'</td>'+
+    '<td class="num">'+(x.jump!=null?'<span class="jump'+(x.jump<1?' low':'')+'">+'+x.jump.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td>'+
+    '<td class="num fin3">'+esc(fin3)+'</td><td class="num">'+(dd!=null?'<span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'<span class="mini">-</span>')+'</td></tr>';
+  if(open) html+='<tr class="sub"><td colspan="11"><div class="tlwrap">'+tlChart(x)+'<div class="tlnote"><b>'+esc(x.uni)+' · '+esc(x.unit)+'</b> ('+esc(x.type)+')<br>'+
+    '2026 실선: '+(x.tl?x.tl.t26.map((v,i)=>TL_LABELS[i].replace('D-day ','D')+' '+(v==null?'-':v.toFixed(2))).join(' → '):'-')+'<br>'+
+    '2025 점선: '+(x.tl&&x.tl.t25?x.tl.t25.map((v,i)=>TL_LABELS[i].replace('D-day ','D')+' '+(v==null?'-':v.toFixed(2))).join(' → '):'-')+'<br>'+
+    '최종 3개년(26/25/24): '+esc(fin3)+(x.jump!=null?' · 작년 마감 직전 상승 <b>+'+x.jump.toFixed(2)+'</b>':'')+(x.ratio!=null?' · 지금('+esc(TL_LABELS[x.ti]||'')+') <b>'+x.ratio.toFixed(2)+'</b>'+(x.same!=null?' vs 작년 같은 시점 <b>'+x.same.toFixed(2)+'</b>':''):'')+'</div></div></td></tr>';
+  return html;
+}
+const DEPT_HEAD=(th,k,dir)=>'<tr>'+th('uni','대학')+th('type','전형')+th('unit','모집단위')+th('quota','모집',1)+th('app','지원',1)+th('ratio','현재',1)+
+  th('same','작년 같은 시점',1,'작년(2026) 접수 중 같은 시점(D-3·D-2·D-1·D-day 오전/오후)의 경쟁률')+th('finRatio','작년 최종',1)+th('jump','막판↑',1,'작년 최종 − D-day 오후 (마감 직전 상승폭)')+'<th class="num">3년 최종</th><th class="num">직전 대비</th></tr>';
+function sortRows(rows,k,dir){
   rows.sort((a,b)=>{ let va=a[k], vb=b[k];
     if(k==='uni'){ if(a.live!==b.live) return a.live?-1:1; const c=String(va).localeCompare(String(vb),'ko'); return c!==0?c*dir:String(a.unit).localeCompare(String(b.unit),'ko'); }
     if(typeof va==='string'||typeof vb==='string') return String(va||'').localeCompare(String(vb||''),'ko')*dir;
     va=(va==null)?(dir>0?1e12:-1e12):va; vb=(vb==null)?(dir>0?1e12:-1e12):vb; return (va-vb)*dir; });
+  return rows;
+}
+function renderUnits(){
+  const f=S.u;
+  let rows=deptRows();
+  const k=f.sortKey, dir=f.sortDir;
   const unis=DATA.universities.filter(u=>u.ok);
   const th=(key,label,num,tip)=>'<th class="sortable'+(num?' num':'')+'" data-sort="'+key+'"'+(tip?' title="'+esc(tip)+'"':'')+'>'+label+(k===key?(dir>0?' ▲':' ▼'):'')+'</th>';
-  const shown=rows.slice(0,f.limit);
   const liveN=rows.filter(x=>x.live).length;
   const anyTi=rows.find(x=>x.ti!=null); const nowLabel=anyTi?TL_LABELS[anyTi.ti]:'-';
-  $('#view').innerHTML='<div class="section"><h2>학과별 비교 <span class="mini">'+fmt(rows.length)+'건 (실시간 '+fmt(liveN)+' · 작년 자료만 '+fmt(rows.length-liveN)+')</span></h2>'+
-    '<div class="presets">'+DEPT_PRESETS.map((p,i)=>'<button class="chip'+(f.preset===i?' on':'')+'" data-preset="'+i+'">'+p[0]+'</button>').join('')+(f.preset!=null?'<button class="chip" data-preset="-1">✕ 계열 해제</button>':'')+'</div>'+
+  const controls='<div class="presets">'+DEPT_PRESETS.map((p,i)=>'<button class="chip'+(f.preset===i?' on':'')+'" data-preset="'+i+'">'+p[0]+'</button>').join('')+(f.preset!=null?'<button class="chip" data-preset="-1">✕ 계열 해제</button>':'')+'</div>'+
     '<div class="filters">'+
+      '<span class="chips"><button class="chip'+(f.view!=='groups'?' on':'')+'" data-view="rows">행 보기</button><button class="chip'+(f.view==='groups'?' on':'')+'" data-view="groups">학과 묶음 보기</button></span>'+
       '<label>현재 경쟁률 <input type="number" id="uMax" step="0.1" min="0" value="'+esc(f.maxRatio)+'" placeholder="전체"> : 1 이하</label>'+
       '<label>전형 유형 <select id="uCat"><option value="">전체</option>'+CATS.map(c=>'<option'+(f.cat===c?' selected':'')+'>'+c+'</option>').join('')+'</select></label>'+
       '<label>정원 <select id="uGroup"><option value="">전체</option><option'+(f.group==='정원내'?' selected':'')+'>정원내</option><option'+(f.group==='정원외'?' selected':'')+'>정원외</option></select></label>'+
@@ -444,27 +473,51 @@ function renderUnits(){
       '<label><input type="checkbox" id="uRef"'+(f.showRef?' checked':'')+'> 실시간 미수집 대학의 작년 자료도 표시</label>'+
       '<label><input type="checkbox" id="uTl"'+(f.onlyTl?' checked':'')+'> 작년 시점자료 있는 행만</label>'+
       '<button class="btn" id="uCsv">CSV 복사</button>'+
-    '</div>'+
-    '<div class="tbl-wrap"><table><thead><tr>'+th('uni','대학')+th('type','전형')+th('unit','모집단위')+th('quota','모집',1)+th('app','지원',1)+th('ratio','현재',1)+
-      th('same','작년 같은 시점',1,'작년(2026) 접수 중 같은 시점(D-3·D-2·D-1·D-day 오전/오후)의 경쟁률')+th('finRatio','작년 최종',1)+th('jump','막판↑',1,'작년 최종 − D-day 오후 (마감 직전 상승폭)')+'<th class="num">3년 최종</th><th class="num">직전 대비</th></tr></thead><tbody>'+
-    (shown.length?shown.map(x=>{ const dd=(x.prevApp!=null&&x.app!=null)?x.app-x.prevApp:null; const key=rowKey(x); const open=!!f.open[key];
-      const fin3=x.tl?x.tl.fin.map(v=>v==null?'-':v.toFixed(1)).join(' / '):'';
-      let html='<tr class="drow'+(x.live?'':' ref')+'" data-rk="'+esc(key)+'"><td><b>'+esc(x.uni)+'</b>'+(x.live?'':'<div class="mini">작년 자료만</div>')+'</td><td class="mini">'+(x.group==='정원외'?'<span class="tag out">정원외</span>':'')+esc(x.type)+'</td>'+
-        '<td>'+(x.college?'<span class="mini">'+esc(x.college)+' › </span>':'')+esc(x.unit)+(x.quotaShared?' <span class="mini">※</span>':'')+(x.tl?' <span class="mini" title="작년 시점별 자료 있음 (클릭)">📈</span>':'')+'</td>'+
-        '<td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+'</td><td class="num">'+(x.live?rt(x.ratio):'<span class="mini">-</span>')+'</td>'+
-        '<td class="num">'+(x.same!=null?'<span class="same">'+x.same.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td>'+
-        '<td class="num">'+(x.finRatio!=null?rt(x.finRatio):'<span class="mini">-</span>')+'</td>'+
-        '<td class="num">'+(x.jump!=null?'<span class="jump'+(x.jump<1?' low':'')+'">+'+x.jump.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td>'+
-        '<td class="num fin3">'+esc(fin3)+'</td><td class="num">'+(dd!=null?'<span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'<span class="mini">-</span>')+'</td></tr>';
-      if(open) html+='<tr class="sub"><td colspan="11"><div class="tlwrap">'+tlChart(x)+'<div class="tlnote"><b>'+esc(x.uni)+' · '+esc(x.unit)+'</b> ('+esc(x.type)+')<br>'+
-        '2026 실선: '+(x.tl?x.tl.t26.map((v,i)=>TL_LABELS[i].replace('D-day ','D')+' '+(v==null?'-':v.toFixed(2))).join(' → '):'-')+'<br>'+
-        '2025 점선: '+(x.tl&&x.tl.t25?x.tl.t25.map((v,i)=>TL_LABELS[i].replace('D-day ','D')+' '+(v==null?'-':v.toFixed(2))).join(' → '):'-')+'<br>'+
-        '최종 3개년(26/25/24): '+esc(fin3)+(x.jump!=null?' · 작년 마감 직전 상승 <b>+'+x.jump.toFixed(2)+'</b>':'')+(x.ratio!=null?' · 지금('+esc(TL_LABELS[x.ti]||'')+') <b>'+x.ratio.toFixed(2)+'</b>'+(x.same!=null?' vs 작년 같은 시점 <b>'+x.same.toFixed(2)+'</b>':''):'')+'</div></div></td></tr>';
-      return html; }).join('')
-     :'<tr><td colspan="11" class="empty">조건에 맞는 모집단위가 없습니다.</td></tr>')+
+    '</div>';
+  const foot='<p class="note" style="margin-top:8px">현재 시점: <b>'+esc(nowLabel)+'</b> 기준으로 작년 같은 시점 값을 보여줍니다. 행을 클릭하면 작년 D-3→최종 추이 그래프가 열립니다. "막판↑"은 작년 최종에서 D-day 오후 값을 뺀 것으로, 마감 직전 몰림이 큰 학과일수록 지금 수치가 낮아도 안심할 수 없습니다. ※는 모집인원이 전형 총원 등으로 공유 표기된 경우, 회색 행은 아직 실시간 수집이 안 되는 대학의 작년 자료입니다.</p>';
+
+  if(f.view==='groups'){
+    // ---- 학과 묶음 보기: 같은 학과명을 전국 대학 간 한 묶음으로
+    const gm={};
+    rows.forEach(x=>{ const key=deptKey(x.unit); if(!key) return; const g=gm[key]||(gm[key]={key,names:{},rows:[],unis:new Set()}); g.rows.push(x); g.unis.add(x.uni); g.names[x.unit]=(g.names[x.unit]||0)+1; });
+    let groups=Object.values(gm).map(g=>{
+      const live=g.rows.filter(x=>x.live&&x.ratio!=null);
+      const qs=live.filter(x=>x.quota&&!x.quotaShared);
+      const q=qs.reduce((s,x)=>s+x.quota,0), a=qs.reduce((s,x)=>s+(x.app||0),0);
+      g.name=Object.keys(g.names).sort((p,r)=>g.names[r]-g.names[p])[0];
+      g.n=g.rows.length; g.nu=g.unis.size; g.nl=live.length; g.quota=q; g.app=a; g.ratio=q?a/q:null;
+      g.same=median(g.rows.map(x=>x.same)); g.fin=median(g.rows.map(x=>x.finRatio)); g.jump=median(g.rows.map(x=>x.jump));
+      g.minRatio=live.length?Math.min(...live.map(x=>x.ratio)):null; g.maxRatio=live.length?Math.max(...live.map(x=>x.ratio)):null;
+      return g; });
+    const gk=f.gsort||'nu', gd=f.gdir||-1;
+    groups.sort((a,b)=>{ let va=a[gk], vb=b[gk]; if(gk==='name') return String(va).localeCompare(String(vb),'ko')*gd; va=(va==null)?(gd>0?1e12:-1e12):va; vb=(vb==null)?(gd>0?1e12:-1e12):vb; return (va-vb)*gd; });
+    const gth=(key,label,num,tip)=>'<th class="sortable'+(num?' num':'')+'" data-gsort="'+key+'"'+(tip?' title="'+esc(tip)+'"':'')+'>'+label+(gk===key?(gd>0?' ▲':' ▼'):'')+'</th>';
+    const shownG=groups.slice(0,f.glimit||150);
+    $('#view').innerHTML='<div class="section"><h2>학과 묶음 보기 <span class="mini">'+fmt(groups.length)+'개 학과 · '+fmt(rows.length)+'행 (실시간 '+fmt(liveN)+')</span></h2>'+controls+
+      (groups.length>400&&f.preset==null&&!S.q?'<p class="note" style="margin-bottom:8px">학과가 많습니다. 위의 계열 칩이나 검색어로 좁히면 보기 쉽습니다.</p>':'')+
+      '<div class="tbl-wrap"><table><thead><tr>'+gth('name','학과(묶음)')+gth('nu','대학 수',1)+gth('n','행',1,'대학×전형 행 수')+gth('quota','모집 합계',1,'실시간 행의 모집인원 합(※ 공유표기 제외)')+gth('app','지원 합계',1)+gth('ratio','합산 경쟁률',1,'지원 합계 ÷ 모집 합계')+
+        '<th class="num" title="실시간 행의 현재 경쟁률 범위">현재 범위</th>'+gth('same','작년 같은 시점(중앙값)',1)+gth('fin','작년 최종(중앙값)',1)+gth('jump','막판↑(중앙값)',1)+'</tr></thead><tbody>'+
+      (shownG.length?shownG.map(g=>{ const open=!!f.gopen[g.key];
+        let html='<tr class="grow" data-gk="'+esc(g.key)+'"><td><b>'+(open?'▾ ':'▸ ')+esc(g.name)+'</b>'+(Object.keys(g.names).length>1?'<div class="mini">'+esc(Object.keys(g.names).filter(n=>n!==g.name).slice(0,3).join(', '))+(Object.keys(g.names).length>4?' 외':'')+'</div>':'')+'</td>'+
+          '<td class="num">'+g.nu+'</td><td class="num">'+g.n+'</td><td class="num">'+fmt(g.quota)+'</td><td class="num">'+fmt(g.app)+'</td><td class="num">'+(g.ratio!=null?rt(g.ratio):'<span class="mini">-</span>')+'</td>'+
+          '<td class="num mini">'+(g.minRatio!=null?g.minRatio.toFixed(2)+' ~ '+g.maxRatio.toFixed(2):'-')+'</td>'+
+          '<td class="num">'+(g.same!=null?'<span class="same">'+g.same.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td><td class="num">'+(g.fin!=null?rt(g.fin):'<span class="mini">-</span>')+'</td><td class="num">'+(g.jump!=null?'<span class="jump'+(g.jump<1?' low':'')+'">+'+g.jump.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td></tr>';
+        if(open){ const inner=sortRows(g.rows.slice(),k,dir);
+          html+='<tr class="sub"><td colspan="10"><div class="tbl-wrap"><table><thead>'+DEPT_HEAD(th,k,dir)+'</thead><tbody>'+inner.map(x=>deptRowHtml(x,f)).join('')+'</tbody></table></div></td></tr>'; }
+        return html; }).join(''):'<tr><td colspan="10" class="empty">조건에 맞는 학과가 없습니다.</td></tr>')+
+      '</tbody></table></div>'+(groups.length>shownG.length?'<button class="btn more" id="gMore">더 보기 ('+fmt(groups.length-shownG.length)+'개 학과 남음)</button>':'')+
+      '<p class="note" style="margin-top:8px">학과명에서 [태그]·(교직)·공백과 "학과/학부/전공" 접미를 지워 같은 이름끼리 묶었습니다. 묶음 행을 클릭하면 대학별 순위표(현재 경쟁률 등 정렬 가능)가 열립니다. 중앙값은 묶음 안 행들의 가운데 값입니다.</p>'+foot+'</div>';
+    S._csvRows=rows;
+    return;
+  }
+
+  sortRows(rows,k,dir);
+  const shown=rows.slice(0,f.limit);
+  $('#view').innerHTML='<div class="section"><h2>학과별 비교 <span class="mini">'+fmt(rows.length)+'건 (실시간 '+fmt(liveN)+' · 작년 자료만 '+fmt(rows.length-liveN)+')</span></h2>'+controls+
+    '<div class="tbl-wrap"><table><thead>'+DEPT_HEAD(th,k,dir)+'</thead><tbody>'+
+    (shown.length?shown.map(x=>deptRowHtml(x,f)).join(''):'<tr><td colspan="11" class="empty">조건에 맞는 모집단위가 없습니다.</td></tr>')+
     '</tbody></table></div>'+
-    (rows.length>shown.length?'<button class="btn more" id="uMore">더 보기 ('+fmt(rows.length-shown.length)+'건 남음)</button>':'')+
-    '<p class="note" style="margin-top:8px">현재 시점: <b>'+esc(nowLabel)+'</b> 기준으로 작년 같은 시점 값을 보여줍니다. 행을 클릭하면 작년 D-3→최종 추이 그래프가 열립니다. "막판↑"은 작년 최종에서 D-day 오후 값을 뺀 것으로, 마감 직전 몰림이 큰 학과일수록 지금 수치가 낮아도 안심할 수 없습니다. ※는 모집인원이 전형 총원 등으로 공유 표기된 경우, 회색 행은 아직 실시간 수집이 안 되는 대학의 작년 자료입니다.</p></div>';
+    (rows.length>shown.length?'<button class="btn more" id="uMore">더 보기 ('+fmt(rows.length-shown.length)+'건 남음)</button>':'')+foot+'</div>';
   S._csvRows=rows;
 }
 
@@ -536,6 +589,13 @@ $('#view').addEventListener('click',e=>{
   if(tg){ const id=tg.dataset.toggle; if(S.expanded.has(id)) S.expanded.delete(id); else S.expanded.add(id); render(); const c=document.getElementById('c-'+id); if(c) c.scrollIntoView({block:'nearest'}); return; }
   const tr=e.target.closest('tr.trow');
   if(tr){ const k=tr.dataset.tkey; S.openType[k]=!S.openType[k]; render(); return; }
+  const vw=e.target.closest('[data-view]');
+  if(vw){ S.u.view=vw.dataset.view; render(); return; }
+  const gr=e.target.closest('tr.grow');
+  if(gr){ const g=gr.dataset.gk; S.u.gopen[g]=!S.u.gopen[g]; render(); return; }
+  const gth=e.target.closest('th[data-gsort]');
+  if(gth){ const g=gth.dataset.gsort; if(S.u.gsort===g) S.u.gdir=-(S.u.gdir||-1); else {S.u.gsort=g; S.u.gdir=g==='name'?1:-1;} render(); return; }
+  if(e.target.id==='gMore'){ S.u.glimit=(S.u.glimit||150)+300; render(); return; }
   const pr=e.target.closest('[data-preset]');
   if(pr){ const i=Number(pr.dataset.preset); S.u.preset=(i<0||S.u.preset===i)?null:i; S.u.limit=300; render(); return; }
   const dr=e.target.closest('tr.drow');

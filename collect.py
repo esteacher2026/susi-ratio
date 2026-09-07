@@ -74,7 +74,7 @@ def decode(raw, ctype=""):
 
 # ---------------------------------------------------------------- HTML 유틸
 
-TAG = re.compile(r"<[^>]+>")
+TAG = re.compile(r"""<(?:"[^"]*"|'[^']*'|[^>"'])*>""")
 WS = re.compile(r"\s+")
 
 
@@ -114,7 +114,7 @@ def table_grid(table_html):
     grid = []
     pending = {}  # col -> [text, remaining]
     for r in rows:
-        cells = re.findall(r"<t([hd])\b([^>]*)>(.*?)</t[hd]>", r, re.S | re.I)
+        cells = re.findall(r"""<t([hd])\b((?:"[^"]*"|'[^']*'|[^>"'])*)>(.*?)</t[hd]>""", r, re.S | re.I)
         if not cells:
             continue
         out = []
