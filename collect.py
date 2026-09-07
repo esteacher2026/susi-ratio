@@ -84,6 +84,26 @@ def text_of(fragment):
     return WS.sub(" ", s).strip()
 
 
+BLOCK = re.compile(r"<br\s*/?>|</(?:p|div|li|tr|h[1-6])\s*>", re.I)
+
+
+def cell_text(fragment):
+    """표 셀 텍스트: <br>·블록 끝을 줄바꿈으로 남긴다(모집단위명 뒤에 붙은 설명 분리용)"""
+    s = BLOCK.sub("\n", fragment)
+    s = TAG.sub(" ", s)
+    s = html.unescape(s).replace("\xa0", " ")
+    lines = [WS.sub(" ", ln).strip() for ln in s.split("\n")]
+    return "\n".join(ln for ln in lines if ln)
+
+
+def first_line(s):
+    return (s or "").split("\n")[0].strip()
+
+
+def flat(s):
+    return (s or "").replace("\n", " ").strip()
+
+
 def strip_noise(doc):
     return re.sub(r"<(script|style)\b.*?</\1>", "", doc, flags=re.S | re.I)
 
@@ -120,7 +140,7 @@ def table_grid(table_html):
             cs = re.search(r"colspan\s*=\s*[\"']?\s*(\d+)", attrs, re.I)
             rs = int(rs.group(1)) if rs else 1
             cs = int(cs.group(1)) if cs else 1
-            txt = text_of(inner)
+            txt = cell_text(inner)
             for _ in range(max(cs, 1)):
                 out.append(txt)
                 if rs > 1:
@@ -177,7 +197,7 @@ SUBTOTAL = {"소계", "합계", "총계", "계", "총합계", "합 계", "총 �
 
 
 def header_map(hdr):
-    hdr = [h.replace(" ", "") for h in hdr]
+    hdr = [h.replace(" ", "").replace("\n", "") for h in hdr]
 
     def idx_all(pred):
         return [i for i, h in enumerate(hdr) if pred(h)]
@@ -198,6 +218,8 @@ def header_map(hdr):
     m["units"] = u
     m["college"] = c[0] if c else None
     m["type"] = t[-1] if t else (g[-1] if g else None)
+    m["typeStrict"] = t[-1] if t else None      # '전형명' 류 명시 열만 (모집단위 표의 '구분' 열은 정원/단과대 구분)
+    m["gubun"] = g[-1] if g else None
     m["maxsel"] = idx_all(lambda h: "최대선발" in h)
     return m
 
@@ -205,7 +227,7 @@ def header_map(hdr):
 def clean_heading(h):
     h = h.strip()
     group = ""
-    m = re.match(r"\[?\s*(정원내|정원외)\s*\]?\s+", h)
+    m = re.match(r"\[\s*(정원내|정원외)\s*\]\s*", h) or re.match(r"(정원내|정원외)\s+", h)
     if m:
         group = m.group(1)
         h = h[m.end():]
@@ -213,21 +235,79 @@ def clean_heading(h):
     return h, group
 
 
+def simplify(s):
+    """제목↔전형명 대조용 단순화"""
+    s = str(s or "")
+    s = re.sub(r"\s*경쟁률\s*현황\s*", "", s)
+    s = re.sub(r"\[[^\]]*\]", "", s)
+    s = re.sub(r"\([^()]*(?:%|점|단계|없음|반영)[^()]*\)", "", s)
+    s = re.sub(r"[\s\-–·ㆍ_/,.*※:()\[\]]", "", s)
+    s = s.replace("전형", "")
+    return s.lower()
+
+
+GROUP_RE = re.compile(r"\[?\s*정원\s*\(?\s*(내|외)\s*\)?\s*\]?")
+
+
+def heading_kind(text):
+    """제목 텍스트 분류: ('group','정원내') / ('type', text) / None"""
+    t = re.sub(r"\s*경쟁률\s*현황\s*$", "", text).strip()
+    if not t:
+        return None
+    g = GROUP_RE.fullmatch(t)
+    if g:
+        return ("group", "정원" + g.group(1))
+    return ("type", text)
+
+
+def pick_type_heading(stack, known_types):
+    """제목 스택(오래된→최근)에서 전형 제목과 그 아래 소제목(단과대학 등)을 고른다"""
+    cands = [(i, lv, tx) for i, (lv, tx) in enumerate(stack) if heading_kind(tx) and heading_kind(tx)[0] == "type"]
+    if not cands:
+        return "", ""
+    if known_types:
+        ks = [(simplify(k), k) for k in known_types]
+        for i, lv, tx in reversed(cands):
+            h = simplify(clean_heading(tx)[0])
+            if len(h) < 2:
+                continue
+            for sk, k in ks:
+                if sk and (h == sk or (len(sk) >= 2 and sk in h) or (len(h) >= 2 and h in sk)):
+                    below = [t for j, l, t in cands if j > i]
+                    return tx, (below[-1] if below else "")
+    return cands[-1][2], ""
+
+
 def parse_page(doc):
     doc = strip_noise(doc)
     plain = text_of(doc)
     result = {"asOf": find_asof(plain), "total": None, "types": [], "units": [], "warnings": []}
 
-    # 문서 순서대로 제목/표 추출
-    seq = re.finditer(r"(<h[1-6]\b[^>]*>(.*?)</h[1-6]>|<caption\b[^>]*>(.*?)</caption>|<table\b[^>]*>.*?</table>)",
-                      doc, re.S | re.I)
-    last_heading = ""
+    seq = re.finditer(
+        r"(<(h[1-6])\b[^>]*>(.*?)</h[1-6]>|<(caption)\b[^>]*>(.*?)</caption>|<(strong|b)\b[^>]*>(.*?)</(?:strong|b)>"
+        r"|<table\b[^>]*>.*?</table>)", doc, re.S | re.I)
+    stack = []          # [(level, text)] 오래된→최근
+
+    def push(level, text):
+        text = text.strip()
+        if not text or len(text) > 120:
+            return
+        while stack and stack[-1][0] >= level:
+            stack.pop()
+        stack.append((level, text))
+
     for m in seq:
         tok = m.group(0)
-        if tok.lower().startswith("<h") or tok.lower().startswith("<caption"):
-            t = text_of(m.group(2) or m.group(3) or "")
-            if t:
-                last_heading = t
+        low = tok[:8].lower()
+        if not low.startswith("<table"):
+            if m.group(2):
+                push(int(m.group(2)[1]), text_of(m.group(3)))
+            elif m.group(4):
+                push(7, text_of(m.group(5)))
+            else:
+                t = text_of(m.group(7))
+                if 2 <= len(t) <= 60:
+                    push(6, t)
             continue
         grid = table_grid(tok)
         if not grid:
@@ -237,55 +317,89 @@ def parse_page(doc):
         body = [(g[1], g[2]) for g in grid if not g[0]]
         hm = header_map(hdr)
         if hm["quota"] is None or hm["app"] is None:
+            # 제목 역할만 하는 표(예: '학생부교과(일반전형) 경쟁률 현황' 한 칸짜리)
+            cells = [flat(c) for r in grid for c in r[1] if flat(c)]
+            if 1 <= len(grid) <= 2 and cells and len(cells[0]) <= 80 and ("경쟁률" in cells[0] or "전형" in cells[0] or GROUP_RE.fullmatch(cells[0])):
+                push(6, cells[0])
             continue
         max_sel = hm["maxsel"]
 
         if hm["units"]:
-            tname, group = clean_heading(last_heading)
+            known = [t["name"] for t in result["types"]]
+            type_h, sub_h = pick_type_heading(stack, known)
+            tname, group = clean_heading(type_h)
+            # 정원 구분 소제목: 전형 제목보다 최근에 나온 것
+            for lv, tx in reversed(stack):
+                hk = heading_kind(tx)
+                if hk and hk[0] == "group":
+                    if not group:
+                        group = hk[1]
+                    break
+                if tx == type_h:
+                    break
+            sub_college = ""
+            if sub_h:
+                hk = heading_kind(sub_h)
+                if hk and hk[0] == "type":
+                    sub_college = clean_heading(sub_h)[0]
+            unit_cols = [i for i in hm["units"] if "모집단위" in hdr[i].replace(" ", "")] or hm["units"]
             for row, spanned in body:
                 if len(row) <= max(hm["quota"], hm["app"]):
                     continue
                 unit_parts = []
-                for i in hm["units"]:
-                    if i < len(row) and row[i] and row[i] not in unit_parts:
-                        unit_parts.append(row[i])
+                for i in unit_cols:
+                    if i < len(row):
+                        v = first_line(row[i])
+                        if v and v not in unit_parts:
+                            unit_parts.append(v)
                 unit = " ".join(unit_parts).strip()
                 if not unit or unit in SUBTOTAL:
                     continue
-                quota = to_int(row[hm["quota"]])
-                app = to_int(row[hm["app"]])
+                quota = to_int(flat(row[hm["quota"]]))
+                app = to_int(flat(row[hm["app"]]))
                 if quota is None and app is None:
                     continue
-                ratio = to_ratio(row[hm["ratio"]]) if hm["ratio"] is not None and hm["ratio"] < len(row) else None
+                ratio = to_ratio(flat(row[hm["ratio"]])) if hm["ratio"] is not None and hm["ratio"] < len(row) else None
                 if ratio is None and quota and app is not None:
                     ratio = round(app / quota, 2)
-                college = row[hm["college"]] if hm["college"] is not None and hm["college"] < len(row) else ""
+                college = first_line(row[hm["college"]]) if hm["college"] is not None and hm["college"] < len(row) else ""
                 if college == unit:
                     college = ""
-                # 모집단위 표 안에 '전형' 열이 따로 있는 경우(예: 의학과 표 안에 전형별 행) 그 값을 전형명으로
+                if not college and sub_college:
+                    college = sub_college
                 row_type = tname
-                if hm["type"] is not None and hm["type"] not in hm["units"] and hm["type"] < len(row) and row[hm["type"]].strip():
-                    row_type = row[hm["type"]].strip()
+                row_group = group
+                if hm["typeStrict"] is not None and hm["typeStrict"] not in hm["units"] and hm["typeStrict"] < len(row) and flat(row[hm["typeStrict"]]):
+                    row_type = flat(row[hm["typeStrict"]])
                     if not college:
                         college = tname
+                if hm["gubun"] is not None and hm["gubun"] not in hm["units"] and hm["gubun"] < len(row):
+                    gv = flat(row[hm["gubun"]])
+                    gm = GROUP_RE.fullmatch(gv) if gv else None
+                    if gm:
+                        row_group = "정원" + gm.group(1)
+                    elif gv and not college and gv != unit:
+                        college = gv
                 rec = {
-                    "type": row_type, "group": group, "college": college, "unit": unit,
+                    "type": row_type, "group": row_group, "college": college, "unit": unit,
                     "quota": quota, "app": app, "ratio": ratio,
                 }
-                # 모집인원이 여러 모집단위에 걸쳐 공유 표기된 경우(전형 총원 반복·rowspan) 표시
+                desc = row[unit_cols[0]] if unit_cols and unit_cols[0] < len(row) else ""
+                if "\n" in desc:
+                    rec["unitNote"] = flat(desc.split("\n", 1)[1])[:120]
                 if max_sel or hm["quota"] in spanned:
                     rec["quotaShared"] = True
-                    if max_sel and max_sel[0] < len(row) and row[max_sel[0]]:
-                        rec["maxSel"] = row[max_sel[0]]
+                    if max_sel and max_sel[0] < len(row) and flat(row[max_sel[0]]):
+                        rec["maxSel"] = flat(row[max_sel[0]])
                 result["units"].append(rec)
         elif hm["type"] is not None:
             for row, _spanned in body:
                 if len(row) <= max(hm["quota"], hm["app"], hm["type"]):
                     continue
-                tname = row[hm["type"]].strip()
-                quota = to_int(row[hm["quota"]])
-                app = to_int(row[hm["app"]])
-                ratio = to_ratio(row[hm["ratio"]]) if hm["ratio"] is not None and hm["ratio"] < len(row) else None
+                tname = flat(row[hm["type"]])
+                quota = to_int(flat(row[hm["quota"]]))
+                app = to_int(flat(row[hm["app"]]))
+                ratio = to_ratio(flat(row[hm["ratio"]])) if hm["ratio"] is not None and hm["ratio"] < len(row) else None
                 if ratio is None and quota and app is not None:
                     ratio = round(app / quota, 2)
                 if not tname:
@@ -295,10 +409,9 @@ def parse_page(doc):
                         result["total"] = {"quota": quota, "app": app, "ratio": ratio}
                     continue
                 group = ""
-                first = row[0].strip()
+                first = flat(row[0])
                 if first in ("정원내", "정원외") and hm["type"] != 0:
                     group = first
-                # 유웨이 전형별 표 안의 '정원내 소계' 류 제거
                 if re.fullmatch(r"(정원내|정원외)\s*(소계|합계|계)?", tname):
                     continue
                 result["types"].append({"name": tname, "group": group, "quota": quota, "app": app, "ratio": ratio})
@@ -332,7 +445,8 @@ def load_json(path, default):
 
 
 def save_json(path, obj, compact=False):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+    if os.path.dirname(path):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         if compact:
             json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
@@ -356,6 +470,14 @@ def collect_one(u, year):
         rec["ok"] = bool(parsed["types"] or parsed["units"])
         if not rec["ok"]:
             rec["error"] = "; ".join(parsed["warnings"]) or "파싱 결과 없음"
+        # 페이지 제목에 대학명이 없으면 링크 오류 가능성 → 경고 표시(수집은 유지)
+        tm = re.search(r"<title[^>]*>(.*?)</title>", doc, re.S | re.I)
+        title = text_of(tm.group(1)) if tm else ""
+        rec["pageTitle"] = title[:60]
+        stem = re.sub(r"\(.*?\)|대학교|학교|국립|\s", "", u["name"])[:3]
+        if stem and title and stem not in title.replace(" ", ""):
+            rec["nameWarning"] = "페이지 제목 '%s' 에 대학명이 없음(링크 확인 필요)" % title[:30]
+            rec.setdefault("warnings", []).append(rec["nameWarning"])
     except Exception as e:  # noqa
         rec["error"] = str(e)
     return rec
@@ -397,7 +519,10 @@ def main():
     print("성공 %d / %d" % (len(ok), len(recs)))
 
     now_iso = started.strftime("%Y-%m-%dT%H:%M")
-    payload = {"collectedAt": now_iso, "year": year, "universities": {r["id"]: r for r in recs}}
+    # 대학 목록(id↔이름) 버전: 목록이 바뀌면 이전 상태(latest/history)를 이어 쓰지 않는다
+    import hashlib
+    uver = hashlib.sha1("|".join(u["id"] + ":" + u["name"] for u in load_json(os.path.join(ROOT, "universities.json"), [])).encode("utf-8")).hexdigest()[:10]
+    payload = {"collectedAt": now_iso, "year": year, "uver": uver, "universities": {r["id"]: r for r in recs}}
 
     if args.final:
         save_json(os.path.join(DATA, "final%d.json" % year), payload)
@@ -439,6 +564,9 @@ def main():
 
     # 직전 수집분과 비교해 모집단위별 이전 지원인원(prevApp) 기록
     prev = load_json(os.path.join(DATA, "latest.json"), {})
+    if prev and prev.get("uver") != uver:
+        print("이전 latest.json 의 대학 목록 버전이 달라 무시합니다 (%s → %s)" % (prev.get("uver"), uver))
+        prev = {}
     prev_unis = prev.get("universities", {})
     # 이번에 실패(차단·일시 오류)한 대학은 직전 성공분을 유지하고 stale 표시
     for i, r in enumerate(recs):
@@ -468,6 +596,10 @@ def main():
 
     # 추이 기록(대학별 총계, asOf 기준 중복 제거)
     hist = load_json(os.path.join(DATA, "history.json"), {})
+    if hist and hist.get("_uver") != uver:
+        print("이전 history.json 의 대학 목록 버전이 달라 새로 시작합니다")
+        hist = {}
+    hist["_uver"] = uver
     for r in ok:
         t = r["total"] or {}
         stamp = r.get("asOf") or now_iso

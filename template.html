@@ -112,6 +112,20 @@ tr.sub td{background:#fbfcfe;font-size:13px}
 .note{font-size:12.5px;color:var(--muted);line-height:1.6}
 .note li{margin-left:18px}
 .heat td.h{text-align:center;font-weight:700;white-space:nowrap}
+.presets{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.presets .chip{font-size:12.5px;padding:5px 10px}
+tr.ref td{color:#8a8f99;background:#fbfbfc}
+tr.ref td b{color:#6b7280}
+tr.drow{cursor:pointer}
+tr.drow:hover td{background:#f9fafc}
+.tlwrap{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;padding:6px 4px}
+.tlwrap svg{background:#fff;border:1px solid var(--line);border-radius:8px}
+.tlnote{font-size:12.5px;color:#445;line-height:1.7}
+.tlnote b{color:var(--navy)}
+.fin3{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.jump{font-weight:700;color:var(--r3)}
+.jump.low{color:var(--muted);font-weight:500}
+.same{font-weight:700;color:var(--blue)}
 .empty{padding:30px;text-align:center;color:var(--muted)}
 .more{display:block;margin:10px auto;padding:8px 18px}
 footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.7}
@@ -159,7 +173,7 @@ footer b{color:#444}
 
   <nav class="tabs" id="tabs">
     <button class="tab on" data-tab="univ">대학별 현황</button>
-    <button class="tab" data-tab="units">모집단위 탐색</button>
+    <button class="tab" data-tab="units">학과별 비교</button>
     <button class="tab" data-tab="types">전형 유형별 비교</button>
     <button class="tab" data-tab="status">수집 현황 · 안내</button>
   </nav>
@@ -180,7 +194,7 @@ let REGIONS = [];
 const REGION_GROUPS = {'충청권':['충남','대전','세종','충북'], '수도권':['서울','경기','인천'], '영남권':['부산','대구','울산','경북','경남'], '호남권':['광주','전남','전북'], '강원·제주':['강원','제주']};
 const CATS = ['학생부교과','학생부종합','논술','실기·특기','기타'];
 const S = {tab:'univ', q:'', region:'', founder:'', sort:'name', expanded:new Set(), openType:{},
-           u:{maxRatio:'', cat:'', group:'', uni:'', sortKey:'ratio', sortDir:1, limit:300, onlyFinal:false}};
+           u:{maxRatio:'', cat:'', group:'', uni:'', sortKey:'uni', sortDir:1, limit:300, onlyFinal:false, preset:null, showRef:true, onlyTl:false, open:{}}};
 const $ = s => document.querySelector(s);
 const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const fmt = n => (n==null||isNaN(n)) ? '-' : Number(n).toLocaleString('ko-KR');
@@ -204,6 +218,53 @@ function deadline(u){
 }
 function progress(u){ const a=u.total&&u.total.app, f=u.finTotal&&u.finTotal.app; return (a!=null&&f)? a/f : null; }
 function regionMatch(u){ if(!S.region) return true; const g=REGION_GROUPS[S.region]; return g ? g.includes(u.region) : u.region===S.region; }
+function regionMatchName(r){ if(!S.region) return true; const g=REGION_GROUPS[S.region]; return g ? g.includes(r) : r===S.region; }
+
+/* ---------- 작년 시점별 경쟁률(엑셀) ---------- */
+const TL_LABELS=['D-3','D-2','D-1','D-day 오전','D-day 오후','최종'];
+function tlIndex(u){
+  if(!u||!u.deadline) return {i:null,label:'-'};
+  const d=new Date(u.deadline), now=new Date();
+  if(now>d) return {i:5,label:'최종'};
+  const d0=new Date(d.getFullYear(),d.getMonth(),d.getDate()), n0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const diff=Math.round((d0-n0)/864e5);
+  if(diff>=3) return {i:0,label:diff>3?'D-'+diff+'(작년 D-3 값)':'D-3'};
+  if(diff===2) return {i:1,label:'D-2'};
+  if(diff===1) return {i:2,label:'D-1'};
+  return now.getHours()<12?{i:3,label:'D-day 오전'}:{i:4,label:'D-day 오후'};
+}
+function tlAt(tl,key,i){ const a=tl&&tl[key]; return (a&&i!=null&&a[i]!=null)?a[i]:null; }
+function sameEstimate(u){ // 결합된 모집단위의 작년 같은 시점 경쟁률을 모집인원 가중 평균
+  const ti=tlIndex(u).i; if(ti==null) return null; let sq=0,sw=0,n=0;
+  unitsOf(u).forEach(x=>{ const v=tlAt(x.tl,'t26',ti); const q=x.quota||x.tl&&x.tl.q27; if(v!=null&&q&&!x.quotaShared){ sq+=v*q; sw+=q; n++; } });
+  return sw?{v:sq/sw,n}:null;
+}
+const DEPT_PRESETS=[
+  ['의·치·한·약·수의',/의예|의학과|치의예|치의학|한의예|한의학|약학|수의예|수의학/],
+  ['간호',/간호/],
+  ['보건·의료',/물리치료|작업치료|임상병리|방사선|치위생|응급구조|보건|의료|재활|안경광학|치기공|언어치료|간호/],
+  ['사범·교육',/교육과|교육학|사범|유아교육|초등교육|특수교육|교육$/],
+  ['컴퓨터·SW·AI',/컴퓨터|소프트웨어|SW|AI|인공지능|데이터|정보보호|사이버|게임|정보통신/],
+  ['공학',/공학|공과|전자|전기|기계|화공|토목|건축|신소재|반도체|에너지|자동차|항공|조선|스마트/],
+  ['자연과학',/수학|물리|화학|생명|생물|지구|천문|통계|환경|식품영양|바이오/],
+  ['경영·경제',/경영|경제|회계|무역|금융|세무|유통|물류|마케팅|관광|호텔|글로벌비즈/],
+  ['인문·어문',/국어국문|국문|영어영문|영문|영어|중어|중국|일어|일본|독어|불어|노어|사학|철학|문헌|언어|문예|인문|한국어/],
+  ['사회·법·행정',/행정|법학|법률|정치|외교|사회학|사회복지|심리|경찰|소방|언론|미디어|광고|아동|청소년|부동산/],
+  ['예체능',/음악|미술|디자인|체육|스포츠|무용|연기|연극|영화|공연|실용음악|조형|패션|뷰티|만화|애니/],
+  ['자유전공',/자유전공|자율전공|무전공|광역|자유학부|열린/],
+];
+function tlChart(row){ // 작년(2026 실선·2025 점선) D-3→최종 추이 + 현재 위치
+  const tl=row.tl; if(!tl) return '';
+  const W=340,H=110,L=36,R=12,T=12,B=26, iw=W-L-R, ih=H-T-B;
+  const vals=[...(tl.t26||[]),...(tl.t25||[]),row.ratio].filter(v=>v!=null);
+  const max=Math.max(1,...vals)*1.1;
+  const x=i=>L+iw*i/5, y=v=>T+ih-(v/max)*ih;
+  const line=(arr,cls)=>{ const pts=(arr||[]).map((v,i)=>v==null?null:x(i).toFixed(1)+','+y(v).toFixed(1)).filter(Boolean); return pts.length>1?'<polyline fill="none" '+cls+' points="'+pts.join(' ')+'"/>':''; };
+  const ticks=[0,0.5,1].map(f=>{ const v=max*f; return '<text x="'+(L-4)+'" y="'+(y(v)+4).toFixed(1)+'" font-size="9" text-anchor="end" fill="#888">'+v.toFixed(1)+'</text><line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v).toFixed(1)+'" y2="'+y(v).toFixed(1)+'" stroke="#eee"/>'; }).join('');
+  const labels=TL_LABELS.map((l,i)=>'<text x="'+x(i).toFixed(1)+'" y="'+(H-8)+'" font-size="9" text-anchor="middle" fill="#666">'+l.replace('D-day ','D')+'</text>').join('');
+  const cur=(row.ratio!=null&&row.ti!=null)?'<circle cx="'+x(row.ti).toFixed(1)+'" cy="'+y(row.ratio).toFixed(1)+'" r="4.5" fill="#c8a232" stroke="#fff" stroke-width="1.5"/><text x="'+x(row.ti).toFixed(1)+'" y="'+(y(row.ratio)-8).toFixed(1)+'" font-size="10" font-weight="700" text-anchor="middle" fill="#7a5c00">지금 '+row.ratio.toFixed(2)+'</text>':'';
+  return '<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="작년 시점별 경쟁률 추이">'+ticks+line(tl.t26,'stroke="#1b3a6b" stroke-width="2"')+line(tl.t25,'stroke="#90a4c8" stroke-width="1.5" stroke-dasharray="4 3"')+labels+cur+'</svg>';
+}
 function unitsOf(u){ return u.units||[]; }
 
 /* ---------- 필터 ---------- */
@@ -288,7 +349,8 @@ function cardHtml(u){
   }
   const t=u.total||{}, p=progress(u);
   const fin=u.finTotal;
-  const cmp='<div class="cmp"><span>2026 최종 <b>'+(fin?rtxt(fin.ratio):'-')+'</b>'+(fin?' · 지원 '+fmt(fin.app)+'명':'')+'</span>'+
+  const se=sameEstimate(u), tli=tlIndex(u);
+  const cmp='<div class="cmp"><span>2026 최종 <b>'+(fin?rtxt(fin.ratio):'-')+'</b>'+(fin?' · 지원 '+fmt(fin.app)+'명':'')+(se?'<br>작년 같은 시점('+esc(tli.label)+') 약 <b class="same">'+se.v.toFixed(2)+' : 1</b> <span class="mini">('+se.n+'개 단위 가중)</span>':'')+'</span>'+
     (p!=null?'<span class="prog" title="작년 최종 지원인원 대비"><i style="width:'+Math.min(100,p*100).toFixed(1)+'%"></i></span><b>'+(p*100).toFixed(1)+'%</b>':'')+spark(u.history)+'</div>';
   const isOpen=S.expanded.has(u.id);
   const upd=(u.asOf?'대학 공개 '+fmtTime(u.asOf):'')+(t.derived?' · 총계는 전형 합산':'')+(u.stale?' · ⚠ 이번 수집 실패, '+(u.staleSince?fmtTime(u.staleSince)+' 이후 ':'')+'직전 자료 유지':'');
@@ -312,11 +374,14 @@ function typesTable(u){
       '<td class="num">'+fmt(t.quota)+'</td><td class="num">'+fmt(t.app)+(d!=null?' <span class="delta'+(d>0?' up':'')+'">'+(d>0?'+':'')+d+'</span>':'')+'</td><td class="num">'+rt(t.ratio)+'</td><td class="num">'+(t.fin?rt(t.fin.ratio):'<span class="mini">-</span>')+'</td>'+
       '<td class="num">'+(t.fin&&t.fin.app&&t.app!=null?(t.app/t.fin.app*100).toFixed(0)+'%':'-')+'</td></tr>';
     if(open&&units.length){
-      html+='<tr class="sub"><td colspan="6"><div class="tbl-wrap"><table><thead><tr><th>대학(계열)</th><th>모집단위</th><th class="num">모집</th><th class="num">지원</th><th class="num">경쟁률</th><th class="num">26 최종</th></tr></thead><tbody>'+
+      const ti=tlIndex(u).i;
+      html+='<tr class="sub"><td colspan="6"><div class="tbl-wrap"><table><thead><tr><th>대학(계열)</th><th>모집단위</th><th class="num">모집</th><th class="num">지원</th><th class="num">경쟁률</th><th class="num" title="작년 접수 중 같은 시점의 경쟁률">작년 같은 시점</th><th class="num">26 최종</th><th class="num" title="작년 최종 − D-day 오후">막판↑</th></tr></thead><tbody>'+
         units.map(x=>{
           const hit=q&&(norm(x.unit).includes(q)||norm(x.college).includes(q));
           const dd=(x.prevApp!=null&&x.app!=null)?x.app-x.prevApp:null;
-          return '<tr'+(hit?' style="background:#fffbe6"':'')+'><td class="mini">'+esc(x.college)+'</td><td>'+esc(x.unit)+(x.quotaShared?' <span class="mini" title="모집인원이 전형 총원 등으로 공유 표기됨">※</span>':'')+'</td><td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+(dd?' <span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'')+'</td><td class="num">'+rt(x.ratio)+'</td><td class="num">'+(x.finRatio!=null?rt(x.finRatio):'<span class="mini">-</span>')+'</td></tr>';
+          const same=tlAt(x.tl,'t26',ti), jump=x.tl?x.tl.j26:null, fin=x.finRatio!=null?x.finRatio:(x.tl?x.tl.fin[0]:null);
+          return '<tr'+(hit?' style="background:#fffbe6"':'')+'><td class="mini">'+esc(x.college)+'</td><td>'+esc(x.unit)+(x.quotaShared?' <span class="mini" title="모집인원이 전형 총원 등으로 공유 표기됨">※</span>':'')+'</td><td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+(dd?' <span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'')+'</td><td class="num">'+rt(x.ratio)+'</td>'+
+            '<td class="num">'+(same!=null?'<span class="same">'+same.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td><td class="num">'+(fin!=null?rt(fin):'<span class="mini">-</span>')+'</td><td class="num">'+(jump!=null?'<span class="jump'+(jump<1?' low':'')+'">+'+jump.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td></tr>';
         }).join('')+'</tbody></table></div></td></tr>';
     }
     return html;
@@ -330,47 +395,76 @@ function renderUniv(){
   $('#view').innerHTML='<div class="grid">'+list.map(cardHtml).join('')+'</div>';
 }
 
-/* ---------- 탭2: 모집단위 탐색 ---------- */
-function allUnits(){
-  const out=[];
+/* ---------- 탭2: 학과별 비교 ---------- */
+function deptRows(){
+  const q=norm(S.q), f=S.u, pre=f.preset!=null?DEPT_PRESETS[f.preset][1]:null;
+  const rows=[]; const byId={}; DATA.universities.forEach(u=>byId[u.id]=u);
   DATA.universities.forEach(u=>{ if(!u.ok) return; if(!regionMatch(u)) return; if(S.founder&&u.founder!==S.founder) return;
-    unitsOf(u).forEach(x=>out.push(Object.assign({uni:u.name,uid:u.id,region:u.region,dl:u.deadline},x))); });
-  return out;
-}
-function renderUnits(){
-  const f=S.u, q=norm(S.q);
-  let rows=allUnits().filter(x=>{
+    const ti=tlIndex(u).i;
+    unitsOf(u).forEach(x=>rows.push({uni:u.name,uid:u.id,region:u.region,dl:u.deadline,live:true,type:x.type,group:x.group||'정원내',cat:x.cat,college:x.college,unit:x.unit,
+      quota:x.quota,maxSel:x.maxSel,quotaShared:x.quotaShared,app:x.app,ratio:x.ratio,prevApp:x.prevApp,finRatio:x.finRatio!=null?x.finRatio:(x.tl?x.tl.fin[0]:null),tl:x.tl,
+      same:tlAt(x.tl,'t26',ti),same25:tlAt(x.tl,'t25',ti),jump:x.tl?x.tl.j26:null,ti})); });
+  if(f.showRef){ (DATA.ref||[]).forEach(r=>{ const u=r.uid?byId[r.uid]:null; if(u&&u.ok) return; // 실시간 수집 중인 대학의 미결합 행은 제외
+      if(u?!regionMatch(u):!regionMatchName(r.r)) return; if(S.founder&&u&&u.founder!==S.founder) return;
+      const ti=u?tlIndex(u).i:null;
+      rows.push({uni:r.u,uid:r.uid,region:r.r,dl:u&&u.deadline,live:false,type:r.t,group:'정원내',cat:r.c==='교과'?'학생부교과':r.c==='종합'?'학생부종합':r.c==='논술'?'논술':'기타',college:'',unit:r.n,
+        quota:r.tl.q27,app:null,ratio:null,finRatio:r.tl.fin[0],tl:r.tl,same:tlAt(r.tl,'t26',ti),same25:tlAt(r.tl,'t25',ti),jump:r.tl.j26,ti}); }); }
+  return rows.filter(x=>{
+    if(pre&&!pre.test(x.unit)) return false;
     if(f.cat&&x.cat!==f.cat) return false;
-    if(f.group&&(x.group||'정원내')!==f.group) return false;
+    if(f.group&&x.group!==f.group) return false;
     if(f.uni&&x.uid!==f.uni) return false;
     if(f.maxRatio!==''&&!(x.ratio!=null&&x.ratio<=Number(f.maxRatio))) return false;
-    if(f.onlyFinal&&x.finRatio==null) return false;
+    if(f.onlyTl&&!x.tl) return false;
     if(q&&!(norm(x.unit).includes(q)||norm(x.college).includes(q)||norm(x.type).includes(q)||norm(x.uni).includes(q))) return false;
     return true;
   });
+}
+function rowKey(x){ return x.uni+'|'+x.type+'|'+x.unit; }
+function renderUnits(){
+  const f=S.u;
+  let rows=deptRows();
   const k=f.sortKey, dir=f.sortDir;
-  rows.sort((a,b)=>{ let va=a[k], vb=b[k]; if(typeof va==='string'||typeof vb==='string') return String(va||'').localeCompare(String(vb||''),'ko')*dir;
+  rows.sort((a,b)=>{ let va=a[k], vb=b[k];
+    if(k==='uni'){ if(a.live!==b.live) return a.live?-1:1; const c=String(va).localeCompare(String(vb),'ko'); return c!==0?c*dir:String(a.unit).localeCompare(String(b.unit),'ko'); }
+    if(typeof va==='string'||typeof vb==='string') return String(va||'').localeCompare(String(vb||''),'ko')*dir;
     va=(va==null)?(dir>0?1e12:-1e12):va; vb=(vb==null)?(dir>0?1e12:-1e12):vb; return (va-vb)*dir; });
   const unis=DATA.universities.filter(u=>u.ok);
-  const th=(key,label,num)=>'<th class="sortable'+(num?' num':'')+'" data-sort="'+key+'">'+label+(k===key?(dir>0?' ▲':' ▼'):'')+'</th>';
+  const th=(key,label,num,tip)=>'<th class="sortable'+(num?' num':'')+'" data-sort="'+key+'"'+(tip?' title="'+esc(tip)+'"':'')+'>'+label+(k===key?(dir>0?' ▲':' ▼'):'')+'</th>';
   const shown=rows.slice(0,f.limit);
-  $('#view').innerHTML='<div class="section"><h2>모집단위 탐색 <span class="mini">'+fmt(rows.length)+'건</span></h2>'+
+  const liveN=rows.filter(x=>x.live).length;
+  const anyTi=rows.find(x=>x.ti!=null); const nowLabel=anyTi?TL_LABELS[anyTi.ti]:'-';
+  $('#view').innerHTML='<div class="section"><h2>학과별 비교 <span class="mini">'+fmt(rows.length)+'건 (실시간 '+fmt(liveN)+' · 작년 자료만 '+fmt(rows.length-liveN)+')</span></h2>'+
+    '<div class="presets">'+DEPT_PRESETS.map((p,i)=>'<button class="chip'+(f.preset===i?' on':'')+'" data-preset="'+i+'">'+p[0]+'</button>').join('')+(f.preset!=null?'<button class="chip" data-preset="-1">✕ 계열 해제</button>':'')+'</div>'+
     '<div class="filters">'+
-      '<label>경쟁률 <input type="number" id="uMax" step="0.1" min="0" value="'+esc(f.maxRatio)+'" placeholder="전체"> : 1 이하</label>'+
+      '<label>현재 경쟁률 <input type="number" id="uMax" step="0.1" min="0" value="'+esc(f.maxRatio)+'" placeholder="전체"> : 1 이하</label>'+
       '<label>전형 유형 <select id="uCat"><option value="">전체</option>'+CATS.map(c=>'<option'+(f.cat===c?' selected':'')+'>'+c+'</option>').join('')+'</select></label>'+
       '<label>정원 <select id="uGroup"><option value="">전체</option><option'+(f.group==='정원내'?' selected':'')+'>정원내</option><option'+(f.group==='정원외'?' selected':'')+'>정원외</option></select></label>'+
       '<label>대학 <select id="uUni"><option value="">전체</option>'+unis.map(u=>'<option value="'+u.id+'"'+(f.uni===u.id?' selected':'')+'>'+esc(u.name)+'</option>').join('')+'</select></label>'+
-      '<label><input type="checkbox" id="uFin"'+(f.onlyFinal?' checked':'')+'> 작년 최종치 있는 단위만</label>'+
+      '<label><input type="checkbox" id="uRef"'+(f.showRef?' checked':'')+'> 실시간 미수집 대학의 작년 자료도 표시</label>'+
+      '<label><input type="checkbox" id="uTl"'+(f.onlyTl?' checked':'')+'> 작년 시점자료 있는 행만</label>'+
       '<button class="btn" id="uCsv">CSV 복사</button>'+
     '</div>'+
-    '<div class="tbl-wrap"><table><thead><tr>'+th('uni','대학')+th('type','전형')+th('unit','모집단위')+th('quota','모집',1)+th('app','지원',1)+th('ratio','경쟁률',1)+th('finRatio','26 최종',1)+'<th class="num">직전 대비</th></tr></thead><tbody>'+
-    (shown.length?shown.map(x=>{ const dd=(x.prevApp!=null&&x.app!=null)?x.app-x.prevApp:null;
-      return '<tr><td><b>'+esc(x.uni)+'</b></td><td class="mini">'+(x.group?'<span class="tag'+(x.group==='정원외'?' out':'')+'">'+esc(x.group)+'</span>':'')+esc(x.type)+'</td><td>'+(x.college?'<span class="mini">'+esc(x.college)+' › </span>':'')+esc(x.unit)+(x.quotaShared?' <span class="mini">※</span>':'')+'</td>'+
-        '<td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+'</td><td class="num">'+rt(x.ratio)+'</td><td class="num">'+(x.finRatio!=null?rt(x.finRatio):'<span class="mini">-</span>')+'</td><td class="num">'+(dd!=null?'<span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'<span class="mini">-</span>')+'</td></tr>'; }).join('')
-     :'<tr><td colspan="8" class="empty">조건에 맞는 모집단위가 없습니다.</td></tr>')+
+    '<div class="tbl-wrap"><table><thead><tr>'+th('uni','대학')+th('type','전형')+th('unit','모집단위')+th('quota','모집',1)+th('app','지원',1)+th('ratio','현재',1)+
+      th('same','작년 같은 시점',1,'작년(2026) 접수 중 같은 시점(D-3·D-2·D-1·D-day 오전/오후)의 경쟁률')+th('finRatio','작년 최종',1)+th('jump','막판↑',1,'작년 최종 − D-day 오후 (마감 직전 상승폭)')+'<th class="num">3년 최종</th><th class="num">직전 대비</th></tr></thead><tbody>'+
+    (shown.length?shown.map(x=>{ const dd=(x.prevApp!=null&&x.app!=null)?x.app-x.prevApp:null; const key=rowKey(x); const open=!!f.open[key];
+      const fin3=x.tl?x.tl.fin.map(v=>v==null?'-':v.toFixed(1)).join(' / '):'';
+      let html='<tr class="drow'+(x.live?'':' ref')+'" data-rk="'+esc(key)+'"><td><b>'+esc(x.uni)+'</b>'+(x.live?'':'<div class="mini">작년 자료만</div>')+'</td><td class="mini">'+(x.group==='정원외'?'<span class="tag out">정원외</span>':'')+esc(x.type)+'</td>'+
+        '<td>'+(x.college?'<span class="mini">'+esc(x.college)+' › </span>':'')+esc(x.unit)+(x.quotaShared?' <span class="mini">※</span>':'')+(x.tl?' <span class="mini" title="작년 시점별 자료 있음 (클릭)">📈</span>':'')+'</td>'+
+        '<td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+'</td><td class="num">'+(x.live?rt(x.ratio):'<span class="mini">-</span>')+'</td>'+
+        '<td class="num">'+(x.same!=null?'<span class="same">'+x.same.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td>'+
+        '<td class="num">'+(x.finRatio!=null?rt(x.finRatio):'<span class="mini">-</span>')+'</td>'+
+        '<td class="num">'+(x.jump!=null?'<span class="jump'+(x.jump<1?' low':'')+'">+'+x.jump.toFixed(2)+'</span>':'<span class="mini">-</span>')+'</td>'+
+        '<td class="num fin3">'+esc(fin3)+'</td><td class="num">'+(dd!=null?'<span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'<span class="mini">-</span>')+'</td></tr>';
+      if(open) html+='<tr class="sub"><td colspan="11"><div class="tlwrap">'+tlChart(x)+'<div class="tlnote"><b>'+esc(x.uni)+' · '+esc(x.unit)+'</b> ('+esc(x.type)+')<br>'+
+        '2026 실선: '+(x.tl?x.tl.t26.map((v,i)=>TL_LABELS[i].replace('D-day ','D')+' '+(v==null?'-':v.toFixed(2))).join(' → '):'-')+'<br>'+
+        '2025 점선: '+(x.tl&&x.tl.t25?x.tl.t25.map((v,i)=>TL_LABELS[i].replace('D-day ','D')+' '+(v==null?'-':v.toFixed(2))).join(' → '):'-')+'<br>'+
+        '최종 3개년(26/25/24): '+esc(fin3)+(x.jump!=null?' · 작년 마감 직전 상승 <b>+'+x.jump.toFixed(2)+'</b>':'')+(x.ratio!=null?' · 지금('+esc(TL_LABELS[x.ti]||'')+') <b>'+x.ratio.toFixed(2)+'</b>'+(x.same!=null?' vs 작년 같은 시점 <b>'+x.same.toFixed(2)+'</b>':''):'')+'</div></div></td></tr>';
+      return html; }).join('')
+     :'<tr><td colspan="11" class="empty">조건에 맞는 모집단위가 없습니다.</td></tr>')+
     '</tbody></table></div>'+
     (rows.length>shown.length?'<button class="btn more" id="uMore">더 보기 ('+fmt(rows.length-shown.length)+'건 남음)</button>':'')+
-    '<p class="note" style="margin-top:8px">※ 표시는 모집인원이 전형 총원 등으로 여러 모집단위에 공유 표기된 경우(정원외 전형 등)로, 단위별 경쟁률은 대학 공개값을 그대로 옮긴 것입니다. 26 최종은 전형·모집단위명이 일치할 때만 연결됩니다.</p></div>';
+    '<p class="note" style="margin-top:8px">현재 시점: <b>'+esc(nowLabel)+'</b> 기준으로 작년 같은 시점 값을 보여줍니다. 행을 클릭하면 작년 D-3→최종 추이 그래프가 열립니다. "막판↑"은 작년 최종에서 D-day 오후 값을 뺀 것으로, 마감 직전 몰림이 큰 학과일수록 지금 수치가 낮아도 안심할 수 없습니다. ※는 모집인원이 전형 총원 등으로 공유 표기된 경우, 회색 행은 아직 실시간 수집이 안 되는 대학의 작년 자료입니다.</p></div>';
   S._csvRows=rows;
 }
 
@@ -395,6 +489,7 @@ function renderStatus(){
   '<li><b>자동 갱신</b>: GitHub Actions가 30분마다 수집 → 빌드 → 배포를 실행합니다. 상단의 "수집" 시각이 마지막 갱신 시각입니다. 대학이 경쟁률을 갱신하는 주기(보통 1시간 단위)에 따라 "대학 공개 기준" 시각은 더 이전일 수 있습니다.</li>'+
   '<li><b>수집</b>: <code>collect.py</code> — 대학별 경쟁률 공개 페이지(진학어플라이·유웨이어플라이 게시)를 받아 전형별·모집단위별 표를 파싱하고, 대학별 총계를 누적해 추이 그래프와 직전 대비 증감을 만듭니다.</li>'+
   '<li><b>작년 최종</b>: <code>collect.py --final 2026</code> — 2026학년도 최종 경쟁률을 1회 수집해 전형·모집단위명이 일치하는 항목에 연결합니다.</li>'+
+  (DATA.tlStats&&DATA.tlStats.rows?'<li><b>작년 시점별 자료</b>: 2026·2025학년도 접수 기간 중 시점별(D-3→최종) 경쟁률 정리표 '+fmt(DATA.tlStats.rows)+'행 중 '+fmt(DATA.tlStats.attached)+'행을 실시간 모집단위에 결합했고, 나머지 '+fmt((DATA.ref||[]).length)+'행은 학과별 비교 탭에 작년 자료로만 표시합니다(전형·학과명이 달라 자동 연결되지 않은 행 포함).</li>':'')+
   '<li><b>대학 추가</b>: <code>universities.json</code>에 대학명·지역·마감·경쟁률 페이지 URL을 한 줄 추가하면 다음 수집부터 반영됩니다.</li>'+
   '<li><b>한계</b>: 두 업체 형식이 아닌 대학 자체 페이지와 2027 경쟁률 링크가 아직 확보되지 않은 대학(위 표에서 "불가")은 수집하지 못합니다. 여러 캠퍼스를 한 페이지에 공개하는 대학은 캠퍼스를 묶어 표시합니다.</li>'+
   '<li><b>주의</b>: 경쟁률 수치는 대학이 공개한 시점 기준이며 마감 직전 급증하는 것이 일반적입니다. 지원 결정의 근거는 반드시 입학처 공식 수치로 확인하세요.</li>'+
@@ -419,9 +514,9 @@ function readHash(){
   $('#q').value=S.q; $('#sort').value=S.sort; $('#qx').style.display=S.q?'block':'none';
 }
 function copyCsv(){
-  const rows=S._csvRows||[]; const head=['대학','지역','정원','전형','계열','모집단위','모집인원','지원인원','경쟁률','2026최종경쟁률','접수마감'];
+  const rows=S._csvRows||[]; const head=['대학','지역','정원','전형','계열','모집단위','모집인원','지원인원','현재경쟁률','작년같은시점','2026최종','막판상승','2025최종','2024최종','접수마감'];
   const esc2=v=>{v=String(v==null?'':v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
-  const txt=[head].concat(rows.map(x=>[x.uni,x.region,x.group||'정원내',x.type,x.college,x.unit,x.maxSel||x.quota,x.app,x.ratio,x.finRatio,fmtTime(x.dl)])).map(r=>r.map(esc2).join(',')).join('\n');
+  const txt=[head].concat(rows.map(x=>[x.uni,x.region,x.group||'정원내',x.type,x.college,x.unit,x.maxSel||x.quota,x.app,x.ratio,x.same,x.finRatio,x.jump,x.tl?x.tl.fin[1]:null,x.tl?x.tl.fin[2]:null,fmtTime(x.dl)])).map(r=>r.map(esc2).join(',')).join('\n');
   const done=()=>{const b=$('#uCsv'); if(b){b.textContent='복사됨 ('+rows.length+'행)'; setTimeout(()=>b.textContent='CSV 복사',1500);}};
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done,()=>fallback(txt,done)); else fallback(txt,done);
   function fallback(t,cb){const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); cb();}
@@ -441,6 +536,10 @@ $('#view').addEventListener('click',e=>{
   if(tg){ const id=tg.dataset.toggle; if(S.expanded.has(id)) S.expanded.delete(id); else S.expanded.add(id); render(); const c=document.getElementById('c-'+id); if(c) c.scrollIntoView({block:'nearest'}); return; }
   const tr=e.target.closest('tr.trow');
   if(tr){ const k=tr.dataset.tkey; S.openType[k]=!S.openType[k]; render(); return; }
+  const pr=e.target.closest('[data-preset]');
+  if(pr){ const i=Number(pr.dataset.preset); S.u.preset=(i<0||S.u.preset===i)?null:i; S.u.limit=300; render(); return; }
+  const dr=e.target.closest('tr.drow');
+  if(dr&&!e.target.closest('a')){ const k=dr.dataset.rk; S.u.open[k]=!S.u.open[k]; render(); return; }
   const th=e.target.closest('th.sortable');
   if(th){ const k=th.dataset.sort; if(S.u.sortKey===k) S.u.sortDir*=-1; else {S.u.sortKey=k; S.u.sortDir=1;} render(); return; }
   if(e.target.id==='uMore'){ S.u.limit+=500; render(); return; }
@@ -453,6 +552,8 @@ $('#view').addEventListener('change',e=>{
   else if(id==='uGroup'){ S.u.group=e.target.value; render(); }
   else if(id==='uUni'){ S.u.uni=e.target.value; render(); }
   else if(id==='uFin'){ S.u.onlyFinal=e.target.checked; render(); }
+  else if(id==='uRef'){ S.u.showRef=e.target.checked; render(); }
+  else if(id==='uTl'){ S.u.onlyTl=e.target.checked; render(); }
 });
 window.addEventListener('scroll',()=>{ $('#toTop').classList.toggle('show',window.scrollY>400); },{passive:true});
 $('#toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));

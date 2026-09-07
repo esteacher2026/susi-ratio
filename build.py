@@ -32,6 +32,7 @@ def norm(s):
     s = re.sub(r"\[[^\]]*(?:%|점|단계|없음|반영)[^\]]*\]", "", s)   # [학생부(교과) 70% + 면접 30%] 류 설명 제거
     s = s.replace("[", "(").replace("]", ")").replace("【", "(").replace("】", ")")
     s = re.sub(r"\([^()]*(?:%|점|단계|없음|반영)[^()]*\)", "", s)   # (교과 100%) 류 설명 제거
+    s = re.sub(r"\s+[-–:]\s+.*(?:%|단계).*$", "", s)                  # ' - 교과70% + 면접30%' 류 꼬리 제거
     s = re.sub(r"\s+", "", s)
     s = re.sub(r"[·ㆍ\-–_/,.*※:]", "", s)
     s = s.replace("(정원내)", "").replace("(정원외)", "")
@@ -39,14 +40,11 @@ def norm(s):
     return s.lower()
 
 
-PREFIXES = ("학생부교과면접", "학생부교과", "학생부종합", "실기실적", "실기위주", "실기", "논술", "예체능계열", "학생부", "정원내", "정원외", "모집")
+PREFIXES = ("학생부교과면접", "학생부교과", "학생부종합", "실기실적위주", "실기실적", "실기위주", "실기", "논술위주", "논술",
+            "예체능계열", "학생부", "정원내", "정원외", "모집", "일괄합산", "단계별")
 
 
-def norm2(s):
-    """2차 정규화: 유형 접두어·모든 괄호 내용·수능최저 문구 제거(느슨한 매칭용)"""
-    k = norm(s)
-    k = re.sub(r"\([^()]*\)", "", k)
-    k = k.replace("수능최저없음", "").replace("면접없음", "").replace("경쟁률현황", "")
+def strip_prefixes(k):
     changed = True
     while changed:
         changed = False
@@ -54,6 +52,21 @@ def norm2(s):
             if k.startswith(p) and len(k) > len(p):
                 k = k[len(p):]
                 changed = True
+    return k
+
+
+def norm2(s):
+    """2차 정규화: 유형 접두어·괄호·수능최저 문구 제거(느슨한 매칭용).
+    '학생부교과(지역균형)' 처럼 유형(이름) 꼴이면 괄호 안 이름을 취한다."""
+    k = norm(s)
+    k = k.replace("수능최저없음", "").replace("면접없음", "").replace("경쟁률현황", "")
+    k = strip_prefixes(k)
+    m = re.fullmatch(r"\(([^()]+)\)(.*)", k)
+    if m:                                   # 유형(이름)꼬리 → 이름+꼬리
+        k = m.group(1) + m.group(2)
+    else:
+        k = re.sub(r"\([^()]*\)", "", k)
+    k = strip_prefixes(k)
     return k
 
 
@@ -157,6 +170,93 @@ def attach_final(cur, fin):
         cur["finTotal"] = {"quota": ft.get("quota"), "app": ft.get("app"), "ratio": ft.get("ratio")}
 
 
+# ---------------------------------------------------------------- 엑셀(과거 시점별 경쟁률) 결합
+
+def ubase(name):
+    """대학명 → (기본키, 캠퍼스토큰)  예: '고려대학교(세종)' → ('고려대','세종'), '서울과기대' → ('서울과기대','')"""
+    name = str(name or "").strip()
+    m = re.search(r"\((.*?)\)", name)
+    campus = m.group(1) if m else ""
+    base = re.sub(r"\(.*?\)", "", name)
+    for a, b in (("대학교", "대"), ("학교", ""), ("여자대", "여대"), ("과학기술대", "과기대"), ("외국어대", "외대"),
+                 ("기술교육대", "기술교대"), ("교육대", "교대"), ("국립", ""), (" ", "")):
+        base = base.replace(a, b)
+    return base, campus.replace(" ", "")
+
+
+CAMPUS_ALIAS = {"국제": "용인", "글로벌": "용인", "메디컬": "인천", "다빈치": "안성", "죽전": "죽전", "강릉원주": "강릉원주"}
+
+
+def build_univ_alias(unis, excel_names):
+    """엑셀 대학명 → 우리 대학 id"""
+    by_base = {}
+    for u in unis:
+        b, c = ubase(u["name"])
+        by_base.setdefault(b, []).append((u, c))
+    out = {}
+    for name in excel_names:
+        b, c = ubase(name)
+        cands = by_base.get(b) or []
+        if not cands:
+            continue
+        pick = None
+        if len(cands) == 1:
+            pick = cands[0][0]
+        elif c:
+            tok = CAMPUS_ALIAS.get(c, c)
+            for u, uc in cands:
+                if tok in uc or c in uc:
+                    pick = u
+                    break
+        if pick is None:
+            for u, uc in cands:
+                if not uc or "서울" in uc:
+                    pick = u
+                    break
+        out[name] = (pick or cands[0][0])["id"]
+    return out
+
+
+def attach_timeline(out_unis, excel_rows):
+    """엑셀 시점별 경쟁률(2026·2025 D-3~최종, 3개년 최종)을 모집단위에 붙이고, 못 붙인 행은 참고용 목록으로 반환"""
+    alias = build_univ_alias(out_unis, {r["univ"] for r in excel_rows})
+    by_id = {u["id"]: u for u in out_unis}
+    ref = []
+    stats = {"rows": len(excel_rows), "univ_mapped": 0, "attached": 0}
+    grouped = {}
+    for r in excel_rows:
+        grouped.setdefault(r["univ"], []).append(r)
+    for exname, rows in grouped.items():
+        uid = alias.get(exname)
+        u = by_id.get(uid) if uid else None
+        if u:
+            stats["univ_mapped"] += len(rows)
+        live = bool(u and u.get("ok") and u.get("units"))
+        idx = make_index([t["name"] for t in u["types"]]) if live else None
+        exact, by_unit = {}, {}
+        if live:
+            for x in u["units"]:
+                exact.setdefault((x["type"], norm(x["unit"])), x)
+                by_unit.setdefault(norm(x["unit"]), []).append(x)
+        for r in rows:
+            tl = {"t26": r["t26"], "t25": r["t25"], "j26": r["jump26"], "j25": r["jump25"], "fin": r["fin"], "q27": r["quota27"]}
+            target = None
+            if live:
+                t = match_name(r["type"], idx)
+                if t:
+                    target = exact.get((t, norm(r["unit"])))
+                if target is None:
+                    cands = [x for x in by_unit.get(norm(r["unit"]), []) if x.get("cat", "").startswith(r["cat"][:2]) and (x.get("group") or "정원내") == "정원내"]
+                    if len(cands) == 1:
+                        target = cands[0]
+            if target is not None and "tl" not in target:
+                target["tl"] = tl
+                stats["attached"] += 1
+            else:
+                ref.append({"u": u["name"] if u else exname, "uid": uid, "r": r["region"], "c": r["cat"], "t": r["type"], "n": r["unit"], "tl": tl})
+    return ref, stats
+
+
 def main():
     unis = load(os.path.join(ROOT, "universities.json"), [])
     latest = load(os.path.join(DATA, "latest.json"), {})
@@ -198,6 +298,13 @@ def main():
             item["finTotal"] = f26["total"]
         out_unis.append(item)
 
+    # 엑셀(과거 시점별 경쟁률) 결합
+    excel_rows = load(os.path.join(DATA, "prior_timeline.json"), [])
+    ref, tl_stats = attach_timeline(out_unis, excel_rows) if excel_rows else ([], {})
+    if excel_rows:
+        print("시점별 과거자료: %d행 중 대학 매칭 %d, 모집단위 결합 %d, 참고용 %d" % (
+            tl_stats["rows"], tl_stats["univ_mapped"], tl_stats["attached"], len(ref)))
+
     regions = [r for r in REGION_ORDER if any(u["region"] == r for u in out_unis)]
     regions += sorted({u["region"] for u in out_unis} - set(regions))
     payload = {
@@ -206,6 +313,8 @@ def main():
         "year": latest.get("year", 2027),
         "regions": regions,
         "universities": out_unis,
+        "ref": ref,
+        "tlStats": tl_stats,
     }
     js = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
 
