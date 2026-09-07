@@ -1,0 +1,3282 @@
+[
+ {
+  "id": "u001",
+  "name": "건양대학교(대전·논산)",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 건양대학교(대전), 건양대학교(논산)",
+  "uniUrl": "https://www.konyang.ac.kr",
+  "admissionUrl": "https://ipsi.konyang.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10100811.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10100701.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10100581.html"
+  }
+ },
+ {
+  "id": "u002",
+  "name": "경찰대학",
+  "region": "충남",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.police.ac.kr/police/index.do",
+  "admissionUrl": "https://www.police.ac.kr/police/police/master/55/boardList.do?mdex=police60",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u003",
+  "name": "공주교육대학교",
+  "region": "충남",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.gjue.ac.kr",
+  "admissionUrl": "https://www.gjue.ac.kr/html/ipsi/index.html",
+  "deadline": "2026-09-11T16:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KYDY6L3JXYTlKZiUmOiZKLWZUZg",
+   "2025": "https://ratio.uwayapply.com/Sl5KYDY6L3JXYTlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u004",
+  "name": "국립공주대학교",
+  "region": "충남",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kongju.ac.kr",
+  "admissionUrl": "https://ipsi.kongju.ac.kr/kor",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10281081.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10280871.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10280671.html"
+  }
+ },
+ {
+  "id": "u005",
+  "name": "금강대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ggu.ac.kr",
+  "admissionUrl": "https://www.ggu.ac.kr/matriculation",
+  "deadline": "2026-09-11T20:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOnJySmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOnJySmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOnJySmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u006",
+  "name": "나사렛대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kornu.ac.kr",
+  "admissionUrl": "https://cms.kornu.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOld9YTlKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KOld9YTlKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KOld9YTlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u007",
+  "name": "남서울대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.nsu.ac.kr/",
+  "admissionUrl": "https://www.namseoul.net/main.do?fileUrl=%2Ffile%2FimageSrc.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KQzphYCZNOFdKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KQzphYCZNOFdKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KQzphYCZNOFdKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u008",
+  "name": "단국대학교(죽전·천안)",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 단국대학교(죽전), 단국대학교(천안)",
+  "uniUrl": "https://www.dankook.ac.kr",
+  "admissionUrl": "https://ipsi.dankook.ac.kr/jukjeon/main.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420391.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html"
+  }
+ },
+ {
+  "id": "u009",
+  "name": "백석대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.bu.ac.kr",
+  "admissionUrl": "https://ipsi.bu.ac.kr/main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOkJKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KOkJKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KOkJKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u010",
+  "name": "상명대학교(천안)",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "이원화캠퍼스",
+  "uniUrl": "https://www.smuc.ac.kr",
+  "admissionUrl": "https://admission.smu.ac.kr/iphak_home.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KZjpNJkpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KZjpNJkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KZjpNJkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u011",
+  "name": "선문대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sunmoon.ac.kr",
+  "admissionUrl": "https://ilove.sunmoon.ac.kr/main.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KV2FhTVc6JkpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KV2FhTVc6JkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KV2FhTVc6JkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u012",
+  "name": "세한대학교(당진·영암)",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 세한대학교(당진), 세한대학교(영암)",
+  "uniUrl": "https://www.sehan.ac.kr",
+  "admissionUrl": "https://apply.sehan.ac.kr/apply/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://apply.sehan.ac.kr/apply/resource/jsp/ssoindex.jsp?gnb=9&pgId=SADASEAM11",
+   "2025": "https://apply.sehan.ac.kr/apply/resource/jsp/ssoindex.jsp?gnb=9&pgId=SADASEAM11"
+  }
+ },
+ {
+  "id": "u013",
+  "name": "순천향대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sch.ac.kr/",
+  "admissionUrl": "https://ipsi.sch.ac.kr/main.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KfEwmSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KfEwmSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KfEwmSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u014",
+  "name": "유원대학교(아산)",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "이원화캠퍼스",
+  "uniUrl": "https://www.u1.ac.kr/u1/index.do",
+  "admissionUrl": "https://www.u1.ac.kr/ipsi/main.do",
+  "deadline": "2026-09-11T22:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ipsi.u1.ac.kr/ipsi/competition/type01-ratio.do",
+   "2025": null
+  }
+ },
+ {
+  "id": "u015",
+  "name": "중부대학교(고양·금산)",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 중부대학교(고양), 중부대학교(금산)",
+  "uniUrl": "https://www.joongbu.ac.kr",
+  "admissionUrl": "https://www.joongbu.ac.kr/index.es?sid=a6",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11311031.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11310831.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11310691.html"
+  }
+ },
+ {
+  "id": "u016",
+  "name": "청운대학교(인천·홍성)",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "개방대학",
+  "campus": "통합 공개: 청운대학교(인천), 청운대학교(홍성)",
+  "uniUrl": "https://www.chungwoon.ac.kr",
+  "admissionUrl": "https://enter.chungwoon.ac.kr/enter/index.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KV2FhTnJXOnxMSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KV2FhTnJXOnxMSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KV2FhTnJXOnxMSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u017",
+  "name": "한국기술교육대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.koreatech.ac.kr",
+  "admissionUrl": "https://ipsi.koreatech.ac.kr/main.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KfExgMDhgfWE5SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KfExgMDhgfWE5SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KfExgMDhgfWE5SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u018",
+  "name": "한국전통문화대학교",
+  "region": "충남",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.knuh.ac.kr/main.do",
+  "admissionUrl": "www.knuh.ac.kr/admission/main.do",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": "https://www.knuh.ac.kr/weblink/download/viewer/1779236056440/index.html",
+   "2025": "https://www.knuh.ac.kr/admission/brd/list.do?mnuBaseId=MNU0000190&topBaseId=MNU0000188&tplSer=16"
+  }
+ },
+ {
+  "id": "u019",
+  "name": "한서대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hanseo.ac.kr",
+  "admissionUrl": "https://helper.hanseo.ac.kr/html/kr/index.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11600881.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11600791.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11600691.html"
+  }
+ },
+ {
+  "id": "u020",
+  "name": "호서대학교",
+  "region": "충남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hoseo.ac.kr",
+  "admissionUrl": "https://ipsi.hoseo.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KYWAmYXxKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KYWAmYXxKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KYWAmYXxKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u021",
+  "name": "국군간호사관학교",
+  "region": "대전",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.kafna.ac.kr/user/indexMain.action?siteId=afna",
+  "admissionUrl": "https://tapply.tonc.net/kafna/",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u022",
+  "name": "국립한밭대학교",
+  "region": "대전",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 국립한밭대학교, 국립한국해양대학교",
+  "uniUrl": "https://www.hanbat.ac.kr",
+  "admissionUrl": "https://www.hanbat.ac.kr/admission/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOmFNOUpmJSY6Jko3ZlRm",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30040731.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30040541.html"
+  }
+ },
+ {
+  "id": "u023",
+  "name": "대전대학교",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dju.ac.kr",
+  "admissionUrl": "https://ipsi.dju.ac.kr/enter/html/main/main.asp",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10501131.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10500891.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10500681.html"
+  }
+ },
+ {
+  "id": "u024",
+  "name": "대진대학교",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 대진대학교, 대전신학대학교",
+  "uniUrl": "https://www.daejin.ac.kr",
+  "admissionUrl": "https://admission.daejin.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KVyUvYDhWSmYlJjomSjdmVGY=",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10500891.html",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyUvYDhWSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u025",
+  "name": "목원대학교",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.mokwon.ac.kr",
+  "admissionUrl": "https://enter.mokwon.ac.kr/enter/",
+  "deadline": "2026-09-11T21:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10670761.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10670681.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10670611.html"
+  }
+ },
+ {
+  "id": "u026",
+  "name": "배재대학교",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.pcu.ac.kr",
+  "admissionUrl": "https://enter.pcu.ac.kr/enter",
+  "deadline": "2026-09-11T21:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOkxpSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOkxpSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOkxpSmYlJjomSiNmVGY"
+  }
+ },
+ {
+  "id": "u027",
+  "name": "우송대학교",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.wsu.ac.kr",
+  "admissionUrl": "https://ent.wsu.ac.kr/main/index.jsp",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KcldhJmFhTkpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KcldhJmFhTkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KcldhJmFhTkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u028",
+  "name": "을지대학교(성남의정부·대전)",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 을지대학교(성남의정부), 을지대학교(대전)",
+  "uniUrl": "https://www.eulji.ac.kr",
+  "admissionUrl": "https://admission.eulji.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11190571.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11190431.html"
+  }
+ },
+ {
+  "id": "u029",
+  "name": "충남대학교",
+  "region": "대전",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cnu.ac.kr",
+  "admissionUrl": "https://ipsi.cnu.ac.kr/intro.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11400471.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11400411.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11400361.html"
+  }
+ },
+ {
+  "id": "u030",
+  "name": "한국과학기술원",
+  "region": "대전",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.kaist.ac.kr",
+  "admissionUrl": "https://admission.kaist.ac.kr/undergraduate",
+  "deadline": "2026-09-09T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KMCYlODlKXiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KMCYlODlKXiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u031",
+  "name": "한국침례신학대학교",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kbtus.ac.kr",
+  "admissionUrl": "https://ipsi.kbtus.ac.kr/ipsi/Main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KJjowQjlKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KJjowQjlKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KJjowQjlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u032",
+  "name": "한남대학교",
+  "region": "대전",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hannam.ac.kr/kor/main/",
+  "admissionUrl": "https://ibsi.hannam.ac.kr/adms5/main/index.asp",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11560931.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11560771.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11560631.html"
+  }
+ },
+ {
+  "id": "u033",
+  "name": "고려대학교(세종)",
+  "region": "세종",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "분교",
+  "uniUrl": "https://sejong.korea.ac.kr",
+  "admissionUrl": "https://oku.korea.ac.kr/sejong/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KcldhL2AmOzhgfWE5SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KcldhL2AmOzhgfWE5SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KcldhL2AmOzhgfWE5SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u034",
+  "name": "대전가톨릭대학교",
+  "region": "세종",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dcatholic.ac.kr",
+  "admissionUrl": "https://www.dcatholic.ac.kr/univ/s2/college.php",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u035",
+  "name": "홍익대학교(세종)",
+  "region": "세종",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "이원화캠퍼스",
+  "uniUrl": "https://sejong.hongik.ac.kr",
+  "admissionUrl": "https://admission.hongik.ac.kr/main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11720892.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11720712.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11720522.html"
+  }
+ },
+ {
+  "id": "u036",
+  "name": "가톨릭꽃동네대학교",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kkot.ac.kr",
+  "admissionUrl": "https://www.kkot.ac.kr/ipsi/main/view",
+  "deadline": "2026-09-11T21:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KMGE5OUpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KMGE5OUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KMGE5OUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u037",
+  "name": "건국대학교(글로컬)",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kku.ac.kr",
+  "admissionUrl": "https://enter.kku.ac.kr/intro/",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10091341.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10091041.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10090751.html"
+  }
+ },
+ {
+  "id": "u038",
+  "name": "공군사관학교",
+  "region": "충북",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://rokaf.airforce.mil.kr/sites/afa/index.do",
+  "admissionUrl": "https://rokaf.airforce.mil.kr/sites/afaadmission/index.do",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u039",
+  "name": "국립한국교통대학교(의왕·충주증평)",
+  "region": "충북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 국립한국교통대학교(의왕), 국립한국교통대학교(충주증평)",
+  "uniUrl": "https://www.ut.ac.kr",
+  "admissionUrl": "https://www.ut.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30150631.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30150561.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30150501.html"
+  }
+ },
+ {
+  "id": "u040",
+  "name": "극동대학교",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kdu.ac.kr",
+  "admissionUrl": "https://ipsi.kdu.ac.kr/ipsi/main.do",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOlY5SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOlY5SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOlY5SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u041",
+  "name": "서원대학교",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.seowon.ac.kr",
+  "admissionUrl": "https://www.seowon.ac.kr/iphak/index.do",
+  "deadline": "2026-09-11T21:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10880591.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10880521.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10880441.html"
+  }
+ },
+ {
+  "id": "u042",
+  "name": "성신여자대학교",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 성신여자대학교, 세명대학교",
+  "uniUrl": "https://www.sungshin.ac.kr",
+  "admissionUrl": "https://ipsi.sungshin.ac.kr/main.htm",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5Kclc6Yk1gJkpmJSY6Jko3ZlRm",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10930101.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10930021.html"
+  }
+ },
+ {
+  "id": "u043",
+  "name": "우석대학교(진천·삼례)",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 우석대학교(진천), 우석대학교(삼례)",
+  "uniUrl": "https://www.woosuk.ac.kr",
+  "admissionUrl": "https://enter.woosuk.ac.kr/main/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11150621.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11150541.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11150451.html"
+  }
+ },
+ {
+  "id": "u044",
+  "name": "유원대학교(영동)",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.u1.ac.kr/u1/index.do",
+  "admissionUrl": "https://www.u1.ac.kr/ipsi/main.do",
+  "deadline": "2026-09-11T22:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u045",
+  "name": "중원대학교",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.jwu.ac.kr",
+  "admissionUrl": "http://ipsi.jwu.ac.kr/site/siteView.jwu",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11920221.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11920141.html"
+  }
+ },
+ {
+  "id": "u046",
+  "name": "청주교육대학교",
+  "region": "충북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cje.ac.kr",
+  "admissionUrl": "https://www.cje.ac.kr/ipsi/",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20100341.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20100291.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20100231.html"
+  }
+ },
+ {
+  "id": "u047",
+  "name": "청주대학교",
+  "region": "충북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cju.ac.kr",
+  "admissionUrl": "https://www.cju.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T21:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOi9yV2FgfExKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KOi9yV2FgfExKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KOi9yV2FgfExKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u048",
+  "name": "충북대학교",
+  "region": "충북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.chungbuk.ac.kr",
+  "admissionUrl": "https://ipsi.chungbuk.ac.kr/",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11411051.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11410781.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11410521.html"
+  }
+ },
+ {
+  "id": "u049",
+  "name": "한국교원대학교",
+  "region": "충북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.knue.ac.kr",
+  "admissionUrl": "https://www.knue.ac.kr/ipsi_intro/index.jsp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11480351.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11480301.html"
+  }
+ },
+ {
+  "id": "u050",
+  "name": "가톨릭대학교(부천·서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 가톨릭대학교(부천), 가톨릭대학교(서울)",
+  "uniUrl": "https://www.catholic.ac.kr",
+  "admissionUrl": "https://ipsi.catholic.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10030381.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10030311.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10030251.html"
+  }
+ },
+ {
+  "id": "u051",
+  "name": "감리교신학대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.mtu.ac.kr/mtu/main/main.do?mId=1",
+  "admissionUrl": "https://www.mtu.ac.kr/mtu/contents/view.do?mId=175",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KJjBNSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KJjBNSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KJjBNSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u052",
+  "name": "강서대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://gangseo.ac.kr",
+  "admissionUrl": "https://entrance.gangseo.ac.kr/kcui/mainService",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10360791.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10360681.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10360541.html"
+  }
+ },
+ {
+  "id": "u053",
+  "name": "건국대학교(서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.konkuk.ac.kr",
+  "admissionUrl": "https://enter.konkuk.ac.kr/main.do",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10080311.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10080231.html"
+  }
+ },
+ {
+  "id": "u054",
+  "name": "경기대학교(수원·서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 경기대학교(수원), 경기대학교(서울)",
+  "uniUrl": "https://www.kyonggi.ac.kr",
+  "admissionUrl": "https://enter.kyonggi.ac.kr/index.do",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KJXJyV2FiOUpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KJXJyV2FiOUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KJXJyV2FiOUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u055",
+  "name": "경희대학교(용인·서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 경희대학교(용인), 경희대학교(서울)",
+  "uniUrl": "https://www.khu.ac.kr",
+  "admissionUrl": "https://iphak.khu.ac.kr/mainIntro/introhtml.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/SmZKOnw5SmYlJjomSi1mVGY",
+   "2025": "https://ratio.uwayapply.com/Sl5KOnw5SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u056",
+  "name": "고려대학교(서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.korea.ac.kr",
+  "admissionUrl": "https://oku.korea.ac.kr/oku/index.do",
+  "deadline": "2026-09-09T17:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOGB9YTlKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KOGB9YTlKZiUmOiZKLWZUZg",
+   "2025": "https://ratio.uwayapply.com/Sl5KOGB9YTlKZiUmOiZKI2ZUZg"
+  }
+ },
+ {
+  "id": "u057",
+  "name": "광운대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kw.ac.kr",
+  "admissionUrl": "https://iphak.kw.ac.kr/intro.php",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KTjlKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KTjlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u058",
+  "name": "국민대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kookmin.ac.kr",
+  "admissionUrl": "https://admission.kookmin.ac.kr/main.php",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KVyVNOWFhOUpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KVyVNOWFhOUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyVNOWFhOUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u059",
+  "name": "덕성여자대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.duksung.ac.kr",
+  "admissionUrl": "https://enter.duksung.ac.kr/main.php",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10530541.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10530451.html"
+  }
+ },
+ {
+  "id": "u060",
+  "name": "동국대학교(서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dongguk.edu",
+  "admissionUrl": "https://ipsi.dongguk.edu/admission/html/main/main.asp",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10550451.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10550361.html"
+  }
+ },
+ {
+  "id": "u061",
+  "name": "동덕여자대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dongduk.ac.kr",
+  "admissionUrl": "https://ipsi.dongduk.ac.kr/ipsi/main/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOTpWcldhVkpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KOTpWcldhVkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KOTpWcldhVkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u062",
+  "name": "명지대학교(용인·서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 명지대학교(용인), 명지대학교(서울)",
+  "uniUrl": "https://www.mju.ac.kr",
+  "admissionUrl": "https://iphak.mju.ac.kr/main/index.php",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10650761.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10650631.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10650501.html"
+  }
+ },
+ {
+  "id": "u063",
+  "name": "삼육대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.syu.ac.kr",
+  "admissionUrl": "http://ipsi.syu.ac.kr/2016_syu/main/main.asp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10760741.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10760611.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10760471.html"
+  }
+ },
+ {
+  "id": "u064",
+  "name": "상명대학교(서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.smu.ac.kr",
+  "admissionUrl": "https://admission.smu.ac.kr/iphak_home.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOk0mSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOk0mSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOk0mSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u065",
+  "name": "서강대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sogang.ac.kr",
+  "admissionUrl": "https://admission.sogang.ac.kr/enter/html/main/index.asp#firstPage",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio12050421.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio12050351.html"
+  }
+ },
+ {
+  "id": "u066",
+  "name": "서경대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.skuniv.ac.kr",
+  "admissionUrl": "https://go.skuniv.ac.kr/#main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10810661.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10810601.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10810541.html"
+  }
+ },
+ {
+  "id": "u067",
+  "name": "서울과학기술대학교",
+  "region": "서울",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.seoultech.ac.kr",
+  "admissionUrl": "https://admission.seoultech.ac.kr/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KMDpXJkpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KMDpXJkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KMDpXJkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u068",
+  "name": "서울교육대학교",
+  "region": "서울",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.snue.ac.kr",
+  "admissionUrl": "https://admission.snue.ac.kr/admission/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KYDpXJkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KYDpXJkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u069",
+  "name": "서울기독대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://admission.scu.ac.kr/main",
+  "admissionUrl": "https://www.scu.ac.kr/entrance/recruit_2018.php",
+  "deadline": "2026-09-11T23:59",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10520591.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10520511.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10520421.html"
+  }
+ },
+ {
+  "id": "u070",
+  "name": "서울대학교",
+  "region": "서울",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.snu.ac.kr",
+  "admissionUrl": "https://admission.snu.ac.kr/index.html",
+  "deadline": "2026-09-09T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://www.snu.ac.kr/webdata/admission/files/2026S_SNUrate.pdf",
+   "2025": "https://drive.google.com/file/d/12UBu9cEb0XogCBQwIdeIF7Li205w5Iy7/view?usp=drive_link"
+  }
+ },
+ {
+  "id": "u071",
+  "name": "서울시립대학교",
+  "region": "서울",
+  "founder": "공립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.uos.ac.kr",
+  "admissionUrl": "https://admission.uos.ac.kr/admissionNew/main.do",
+  "deadline": "2026-09-10T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KJmE6SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KJmE6SmYlJjomSi1mVGY",
+   "2025": "https://ratio.uwayapply.com/Sl5KJmE6SmYlJjomSiNmVGY"
+  }
+ },
+ {
+  "id": "u072",
+  "name": "서울여자대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.swu.ac.kr",
+  "admissionUrl": "https://admission.swu.ac.kr/main.php",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10860591.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10860361.html"
+  }
+ },
+ {
+  "id": "u073",
+  "name": "서울한영대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://shyu.ac.kr",
+  "admissionUrl": "https://ipsi.shyu.ac.kr/fro_end/html/main/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11660441.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11660391.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11660351.html"
+  }
+ },
+ {
+  "id": "u074",
+  "name": "성공회대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.skhu.ac.kr",
+  "admissionUrl": "https://enter.skhu.ac.kr/enter/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10910511.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10910441.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10910371.html"
+  }
+ },
+ {
+  "id": "u075",
+  "name": "성균관대학교(수원·서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 성균관대학교(수원), 성균관대학교(서울)",
+  "uniUrl": "https://www.skku.edu",
+  "admissionUrl": "https://admission.skku.edu/admission/html/main/main.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920451.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html"
+  }
+ },
+ {
+  "id": "u076",
+  "name": "세종대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sejong.ac.kr",
+  "admissionUrl": "https://ipsi.sejong.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10950621.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10950551.html"
+  }
+ },
+ {
+  "id": "u077",
+  "name": "숙명여자대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sookmyung.ac.kr/",
+  "admissionUrl": "https://admission.sookmyung.ac.kr/admission/html/main/main.asp",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10981151.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10980861.html"
+  }
+ },
+ {
+  "id": "u078",
+  "name": "숭실대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ssu.ac.kr",
+  "admissionUrl": "https://iphak.ssu.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11010661.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11010501.html"
+  }
+ },
+ {
+  "id": "u079",
+  "name": "연세대학교(서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.yonsei.ac.kr",
+  "admissionUrl": "https://admission.yonsei.ac.kr/seoul/admission/html/main/main.asp",
+  "deadline": "2026-09-09T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11080671.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11080571.html"
+  }
+ },
+ {
+  "id": "u080",
+  "name": "육군사관학교",
+  "region": "서울",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://https://www.kma.ac.kr:461/",
+  "admissionUrl": "https://www.kma.ac.kr:461/kma/2100/subview.do",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u081",
+  "name": "이화여자대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ewha.ac.kr",
+  "admissionUrl": "https://admission.ewha.ac.kr/admission/html/main/intro.asp",
+  "deadline": "2026-09-10T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11201541.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11201011.html"
+  }
+ },
+ {
+  "id": "u082",
+  "name": "장로회신학대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.puts.ac.kr",
+  "admissionUrl": "https://www.puts.ac.kr/ipsi/db/db_admission_v1/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KJjBMaUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KJjBMaUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u083",
+  "name": "중앙대학교(안성·서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 중앙대학교(안성), 중앙대학교(서울)",
+  "uniUrl": "https://www.cau.ac.kr",
+  "admissionUrl": "https://admission.cau.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOjhMSmYlJjomSi1mVGY",
+   "2025": "https://ratio.uwayapply.com/Sl5KOjhMSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u084",
+  "name": "총신대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.chongshin.ac.kr",
+  "admissionUrl": "https://admission.csu.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KVyV8JnJXYXxMSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5Kclc4VmF8TEpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyV8JnJXYXxMSmYlJjomSiNmVGY"
+  }
+ },
+ {
+  "id": "u085",
+  "name": "추계예술대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.chugye.ac.kr",
+  "admissionUrl": "https://enter.chugye.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KYGJyOnxMSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KYGJyOnxMSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KYGJyOnxMSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u086",
+  "name": "태재대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "사이버대학",
+  "campus": "본교",
+  "uniUrl": "https://www.taejae.ac.kr/",
+  "admissionUrl": "https://www.taejae.ac.kr/board/admissions_kor",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u087",
+  "name": "한국성서대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.bible.ac.kr",
+  "admissionUrl": "https://ipsi.bible.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ipsi.bible.ac.kr/summary/Summarys.aspx",
+   "2026": "https://ipsi.bible.ac.kr/throughout/extent.aspx#none",
+   "2025": "https://ipsi.bible.ac.kr/throughout/extent.aspx#none"
+  }
+ },
+ {
+  "id": "u088",
+  "name": "한국예술종합학교",
+  "region": "서울",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://Karts.ac.kr/",
+  "admissionUrl": "https://www.karts.ac.kr/main/appl.do",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u089",
+  "name": "한국외국어대학교(용인·서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 한국외국어대학교(용인), 한국외국어대학교(서울)",
+  "uniUrl": "https://www.hufs.ac.kr",
+  "admissionUrl": "https://adms.hufs.ac.kr/index.do",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KJmg6fEpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KJmg6fEpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u090",
+  "name": "한국체육대학교",
+  "region": "서울",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.knsu.ac.kr/",
+  "admissionUrl": "https://ipsi.knsu.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-10T16:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11530371.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11530301.html"
+  }
+ },
+ {
+  "id": "u091",
+  "name": "한성대학교",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hansung.ac.kr",
+  "admissionUrl": "https://enter.hansung.ac.kr/?m1=home",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5Kclc6Jlc4fEpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5Kclc6Jlc4fEpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5Kclc6Jlc4fEpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u092",
+  "name": "한양대학교(서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hanyang.ac.kr",
+  "admissionUrl": "https://go.hanyang.ac.kr/gate.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11640461.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11640371.html"
+  }
+ },
+ {
+  "id": "u093",
+  "name": "홍익대학교(서울)",
+  "region": "서울",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hongik.ac.kr/",
+  "admissionUrl": "https://admission.hongik.ac.kr/main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11720891.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11720711.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11720521.html"
+  }
+ },
+ {
+  "id": "u094",
+  "name": "가천대학교(성남·인천)",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 가천대학교(성남), 가천대학교(인천)",
+  "uniUrl": "https://www.gachon.ac.kr",
+  "admissionUrl": "https://admission.gachon.ac.kr/admission/html/main/main.asp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10190711.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10190551.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10190421.html"
+  }
+ },
+ {
+  "id": "u095",
+  "name": "강남대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kangnam.ac.kr",
+  "admissionUrl": "https://admission.kangnam.ac.kr/main.htm",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KTThXclc4OUpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KTThXclc4OUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KTThXclc4OUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u096",
+  "name": "경동대학교(양주·고성문막)",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 경동대학교(양주), 경동대학교(고성문막)",
+  "uniUrl": "https://www.kduniv.ac.kr",
+  "admissionUrl": "https://www.kduniv.ac.kr/iphak/Main.do",
+  "deadline": "2026-09-11T24:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KRCVXOlY5SmYlJjomSjdmVGY=",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10140361.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10140291.html"
+  }
+ },
+ {
+  "id": "u097",
+  "name": "동양대학교(동두천·영주)",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 동양대학교(동두천), 동양대학교(영주)",
+  "uniUrl": "https://www.dyu.ac.kr",
+  "admissionUrl": "https://ipsi.dyu.ac.kr/",
+  "deadline": "2026-09-11T20:00",
+  "ratio": {
+   "2027": "https://haksa.dyu.ac.kr/manager/m_ibsi/ib_inweon/m_susi_inweon.jsp?nyeondo=2027",
+   "2026": "https://haksa.dyu.ac.kr/manager/m_ibsi/ib_inweon/m_susi_inweon.jsp?nyeondo=2026",
+   "2025": "https://haksa.dyu.ac.kr/manager/m_ibsi/ib_inweon/m_susi_inweon.jsp?nyeondo=2025"
+  }
+ },
+ {
+  "id": "u098",
+  "name": "루터대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "http://ltu.ac.kr/main_pop.php",
+  "admissionUrl": "http://ltu-admission.ac.kr/index_.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOjBDSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOjBDSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOjBDSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u099",
+  "name": "서울신학대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.stu.ac.kr",
+  "admissionUrl": "https://ipsi.stu.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOjAmSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOjAmSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOjAmSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u100",
+  "name": "서울장신대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sjs.ac.kr",
+  "admissionUrl": "https://www.sjs.ac.kr/admission/main/index.php",
+  "deadline": "2026-09-11T23:59",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KVyUmclc4L0M6YWAmSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KVyUmclc4L0M6YWAmSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyUmclc4L0M6YWAmSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u101",
+  "name": "성결대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sungkyul.ac.kr",
+  "admissionUrl": "https://www.sungkyul.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10900771.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10900671.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10900581.html"
+  }
+ },
+ {
+  "id": "u102",
+  "name": "수원가톨릭대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.suwoncatholic.ac.kr",
+  "admissionUrl": "https://www.suwoncatholic.ac.kr/page/05_enter/enter_01.php",
+  "deadline": "2026-09-10T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u103",
+  "name": "수원대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.suwon.ac.kr",
+  "admissionUrl": "https://ipsi.suwon.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10970461.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10970401.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10970331.html"
+  }
+ },
+ {
+  "id": "u104",
+  "name": "신한대학교(의정부/동두천)",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.shinhan.ac.kr/",
+  "admissionUrl": "https://ipsi.shinhan.ac.kr/",
+  "deadline": "2026-09-11T23:59",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11870641.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11870451.html"
+  }
+ },
+ {
+  "id": "u105",
+  "name": "아신대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.acts.ac.kr",
+  "admissionUrl": "https://www.acts.ac.kr/admission/design/index.asp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://www.acts.ac.kr/admission/design/admission08.asp?&left=occa4&cry=2026&crs=susi&mode=view",
+   "2025": "https://www.acts.ac.kr/admission/design/admission08.asp?&left=occa4&cry=2025&crs=susi&mode=view"
+  }
+ },
+ {
+  "id": "u106",
+  "name": "아주대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ajou.ac.kr",
+  "admissionUrl": "https://www.iajou.ac.kr/main/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11040601.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11040491.html"
+  }
+ },
+ {
+  "id": "u107",
+  "name": "안양대학교(안양·강화)",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 안양대학교(안양), 안양대학교(강화)",
+  "uniUrl": "https://www.anyang.ac.kr/main/index.do",
+  "admissionUrl": "https://enter.anyang.ac.kr/main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5Kclc4Ylc4SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5Kclc4Ylc4SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u108",
+  "name": "예원예술대학교(양주·임실)",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 예원예술대학교(양주), 예원예술대학교(임실)",
+  "uniUrl": "https://www.yewon.ac.kr",
+  "admissionUrl": "https://admission.yewon.ac.kr/main/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://admission.yewon.ac.kr/main/?menu=293",
+   "2025": null
+  }
+ },
+ {
+  "id": "u109",
+  "name": "용인대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.yongin.ac.kr",
+  "admissionUrl": "https://ipsi.yongin.ac.kr/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KVyVyV2FiSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyVyV2FiSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u110",
+  "name": "중앙승가대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://admission.sangha.ac.kr",
+  "admissionUrl": "https://admission.sangha.ac.kr/SANGHA/?ACT=ADMISSION_FRESH&FOR",
+  "deadline": "2026-09-11T16:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u111",
+  "name": "차의과학대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 차의과학대학교, 진주교육대학교",
+  "uniUrl": "https://www.cha.ac.kr",
+  "admissionUrl": "https://admission.cha.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOHxMSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOHxMSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOHxMSmYlJjomSiNmVGY"
+  }
+ },
+ {
+  "id": "u112",
+  "name": "칼빈대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "http://www.calvin.ac.kr/main/index.do",
+  "admissionUrl": "http://www.calvin.ac.kr/iphak/index.do?brd_mgrno=0&menu_no=1075",
+  "deadline": "2026-09-11T16:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KVyVEQzhMSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KVyVEQzhMSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyVEQzhMSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u113",
+  "name": "평택대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ptu.ac.kr/www/index.do",
+  "admissionUrl": "https://entrance.ptu.ac.kr/entrance/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOjBpSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOjBpSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOjBpSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u114",
+  "name": "한경국립대학교",
+  "region": "경기",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hknu.ac.kr",
+  "admissionUrl": "https://ipsi.hknu.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30161171.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30160991.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30160801.html"
+  }
+ },
+ {
+  "id": "u115",
+  "name": "한국공학대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.tukorea.ac.kr",
+  "admissionUrl": "https://iphak.tukorea.ac.kr/main.htm",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30170741.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30170591.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30170421.html"
+  }
+ },
+ {
+  "id": "u116",
+  "name": "한국항공대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kau.ac.kr",
+  "admissionUrl": "https://ibhak.kau.ac.kr/admission/html/main/main.asp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11540991.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11540841.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11540691.html"
+  }
+ },
+ {
+  "id": "u117",
+  "name": "한세대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hansei.ac.kr",
+  "admissionUrl": "https://ipsi.hansei.ac.kr/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KJWAmVzh8SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KJWAmVzh8SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KJWAmVzh8SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u118",
+  "name": "한신대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hs.ac.kr",
+  "admissionUrl": "https://ent.hs.ac.kr/ipsi/main/main.asp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11630451.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11630391.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11630331.html"
+  }
+ },
+ {
+  "id": "u119",
+  "name": "한양대학교(ERICA)",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "분교",
+  "uniUrl": "https://www.hanyang.ac.kr",
+  "admissionUrl": "http://goerica.hanyang.ac.kr/enter/html/main/main.asp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11650631.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11650561.html"
+  }
+ },
+ {
+  "id": "u120",
+  "name": "협성대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.uhs.ac.kr",
+  "admissionUrl": "https://iphak.uhs.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5Kclc6Jmk6YnxKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5Kclc6Jmk6YnxKZiUmOiZKLWZUZg=",
+   "2025": "https://ratio.uwayapply.com/Sl5Kclc6Jmk6YnxKZiUmOiZKI2ZUZg"
+  }
+ },
+ {
+  "id": "u121",
+  "name": "화성의과학대학교",
+  "region": "경기",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hsmu.ac.kr/",
+  "admissionUrl": "https://www.hsmu.ac.kr/admission/contents/AMS10100000.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11880441.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11880401.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11880361.html"
+  }
+ },
+ {
+  "id": "u122",
+  "name": "경인교육대학교",
+  "region": "인천",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ginue.ac.kr",
+  "admissionUrl": "https://ipsi.ginue.ac.kr/ipsi/Main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20060251.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20060231.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20060201.html"
+  }
+ },
+ {
+  "id": "u123",
+  "name": "인천가톨릭대학교(인천/강화)",
+  "region": "인천",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.iccu.ac.kr",
+  "admissionUrl": "https://admission.iccu.ac.kr/default.php",
+  "deadline": "2026-09-11T16:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOkxMJUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KOkxMJUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u124",
+  "name": "인천대학교",
+  "region": "인천",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.inu.ac.kr/",
+  "admissionUrl": "https://admission.inu.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11230591.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11230401.html"
+  }
+ },
+ {
+  "id": "u125",
+  "name": "인하대학교",
+  "region": "인천",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.inha.ac.kr",
+  "admissionUrl": "https://admission.inha.ac.kr/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOHxXJUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KOHxXJUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u126",
+  "name": "가톨릭관동대학교",
+  "region": "강원",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cku.ac.kr",
+  "admissionUrl": "https://ipsi.cku.ac.kr/sites/iphak/index.do",
+  "deadline": "2026-09-11T23:30",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOjlMSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOjlMSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KcldhVlc4TjlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u127",
+  "name": "강원대학교(강릉원주·춘천삼척)",
+  "region": "강원",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 강원대학교(강릉원주), 강원대학교(춘천삼척)",
+  "uniUrl": "https://www.kangwon.ac.kr/ko/index.do",
+  "admissionUrl": "https://iphak.kangwon.ac.kr/sites/iphak/index.do",
+  "deadline": "2026-09-11T20:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KV2FOclc4OUpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KOldOckpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KOldOckpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u128",
+  "name": "상지대학교",
+  "region": "강원",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.sangji.ac.kr",
+  "admissionUrl": "https://go.sangji.ac.kr/go/index.do",
+  "deadline": "2026-09-11T22:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KJS9yVzgmSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KJS9yVzgmSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KJS9yVzgmSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u129",
+  "name": "연세대학교(미래)",
+  "region": "강원",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "분교",
+  "uniUrl": "https://mirae.yonsei.ac.kr/wj/index.do",
+  "admissionUrl": "https://admission.yonsei.ac.kr/mirae/admission/html/main/main.asp",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KZiVgJldhYkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KZiVgJldhYkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u130",
+  "name": "춘천교육대학교",
+  "region": "강원",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cnue.ac.kr",
+  "admissionUrl": "https://enter.cnue.ac.kr/enter/index.do",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20110331.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20110281.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20110231.html"
+  }
+ },
+ {
+  "id": "u131",
+  "name": "한라대학교",
+  "region": "강원",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.halla.ac.kr",
+  "admissionUrl": "https://ipsi.halla.ac.kr/main/main.php",
+  "deadline": "2026-09-11T23:59",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOENDOHxKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KOENDOHxKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KOENDOHxKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u132",
+  "name": "한림대학교",
+  "region": "강원",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hallym.ac.kr/hallym/index.do",
+  "admissionUrl": "https://www.hallym.ac.kr/sites/admission/index.do",
+  "deadline": "2026-09-11T20:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KTWJDQzh8SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KTWJDQzh8SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KTWJDQzh8SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u133",
+  "name": "경북대학교(대구·상주)",
+  "region": "대구",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 경북대학교(대구), 경북대학교(상주)",
+  "uniUrl": "https://www.knu.ac.kr",
+  "admissionUrl": "https://ipsi1.knu.ac.kr/main/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOlc5SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOlc5SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOlc5SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u134",
+  "name": "계명대학교",
+  "region": "대구",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kmu.ac.kr",
+  "admissionUrl": "https://www.gokmu.ac.kr/main.htm#none",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOk05SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOk05SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOk05SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u135",
+  "name": "대구경북과학기술원",
+  "region": "대구",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.dgist.ac.kr",
+  "admissionUrl": "https://www.dgist.ac.kr/adm/",
+  "deadline": "2026-09-10T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KMCYlclZKXiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KMCYlODlKXiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u136",
+  "name": "대구교육대학교",
+  "region": "대구",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dnue.ac.kr",
+  "admissionUrl": "https://admission.dnue.ac.kr/ipsi/Main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KYDpXVkpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KYDpXVkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KYDpXVkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u137",
+  "name": "경운대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ikw.ac.kr",
+  "admissionUrl": "https://www.ikw.ac.kr/ipsi/main.tc",
+  "deadline": "2026-09-11T20:00",
+  "ratio": {
+   "2027": "https://www.ikw.ac.kr/ipsi/board/detail.tc?mn=2412&viewType=sub&mngNo=183&pageIndex=1&boardName=EARLYDECISIONSUPPORT&boardNo=333867&boardCategory=&pageSeq=1607&preview=&previewTempl=&searchCondition=1&searchKeyword=&_csrf=",
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u138",
+  "name": "경일대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kiu.ac.kr",
+  "admissionUrl": "https://ibsi.kiu.ac.kr/admission/index.htm",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ibsi.kiu.ac.kr/ipsi_rate/rate_susi_real_new_20260820.htm",
+   "2026": "https://ibsi.kiu.ac.kr/ipsi_rate/rate_susi_real_new_20250808.htm",
+   "2025": "https://ibsi.kiu.ac.kr/ipsi_rate/rate_susi_real_new_20240813.htm"
+  }
+ },
+ {
+  "id": "u139",
+  "name": "국립경국대학교",
+  "region": "경북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.andong.ac.kr/main/index.do",
+  "admissionUrl": "https://ipsi.andong.ac.kr/new/admission/index.htm",
+  "deadline": "2026-09-11T21:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KcldhVlc4SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KcldhVlc4SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KcldhVlc4SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u140",
+  "name": "국립금오공과대학교",
+  "region": "경북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kumoh.ac.kr",
+  "admissionUrl": "https://iphak.kumoh.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KfGFNOjlKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KfGFNOjlKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KfGFNOjlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u141",
+  "name": "김천대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.gimcheon.ac.kr",
+  "admissionUrl": "https://ibhak.gimcheon.ac.kr/",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio40330621.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio40330551.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio40330491.html"
+  }
+ },
+ {
+  "id": "u142",
+  "name": "대구가톨릭대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cu.ac.kr",
+  "admissionUrl": "https://ibsi.cu.ac.kr/kor.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10461101.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10460911.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10460711.html"
+  }
+ },
+ {
+  "id": "u143",
+  "name": "대구대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.daegu.ac.kr",
+  "admissionUrl": "https://ipsi.daegu.ac.kr/kor",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10440821.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10440731.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10440611.html"
+  }
+ },
+ {
+  "id": "u144",
+  "name": "대구예술대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dgau.ac.kr",
+  "admissionUrl": "https://ipsi.dgau.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOjgwSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOjgwSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOjgwSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u145",
+  "name": "대구한의대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dhu.ac.kr",
+  "admissionUrl": "https://www.dhu.ac.kr/admission/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160691.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160641.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html"
+  }
+ },
+ {
+  "id": "u146",
+  "name": "대신대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.daeshin.ac.kr",
+  "admissionUrl": "https://www.daeshin.ac.kr/html/02_admission/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10480261.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10480221.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10480171.html"
+  }
+ },
+ {
+  "id": "u147",
+  "name": "동국대학교(WISE)",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "분교",
+  "uniUrl": "https://wise.dongguk.ac.kr",
+  "admissionUrl": "https://ipsi.dongguk.ac.kr/main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10540761.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10540571.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10540421.html"
+  }
+ },
+ {
+  "id": "u148",
+  "name": "신경주대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://sgu.ac.kr/",
+  "admissionUrl": "https://entrance-sgu.tistory.com/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOi9yV2FgYnJXJSZKZiUmOiZKN2ZUZg==",
+   "2026": null,
+   "2025": "https://ratio.uwayapply.com/Sl5KOi9yV2FgYnJXJSZKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u149",
+  "name": "영남대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.yu.ac.kr",
+  "admissionUrl": "https://enter.yu.ac.kr/page/main/index.php",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOmJKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KOmJKZiUmOiZKI2ZUZg"
+  }
+ },
+ {
+  "id": "u150",
+  "name": "영남신학대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ytus.ac.kr",
+  "admissionUrl": "https://entra.ytus.ac.kr/",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u151",
+  "name": "위덕대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.uu.ac.kr",
+  "admissionUrl": "https://ipsi.uu.ac.kr/",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://portal.uu.ac.kr/ext/competition.jsp",
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u152",
+  "name": "포항공과대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.postech.ac.kr",
+  "admissionUrl": "https://adm-u.postech.ac.kr/",
+  "deadline": "2026-09-09T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KfExgMCZhaUpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KfExgMCZhaUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KfExgMCZhaUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u153",
+  "name": "한동대학교",
+  "region": "경북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.handong.edu",
+  "admissionUrl": "https://admissions.handong.edu/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11570811.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11570661.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11570531.html"
+  }
+ },
+ {
+  "id": "u154",
+  "name": "경성대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://ks.ac.kr",
+  "admissionUrl": "https://kscms.ks.ac.kr/ipsi/intro.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KJjlKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KJjlKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KJjlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u155",
+  "name": "고신대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kosin.ac.kr",
+  "admissionUrl": "https://www.kosin.ac.kr/dream/?ref=1",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KVyUmYTlKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KVyUmYTlKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyUmYTlKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u156",
+  "name": "국립부경대학교",
+  "region": "부산",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.pknu.ac.kr",
+  "admissionUrl": "https://iphak.pknu.ac.kr/pknu/index.htm",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10720401.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10720321.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10720271.html"
+  }
+ },
+ {
+  "id": "u157",
+  "name": "동명대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 동명대학교, 동서대학교",
+  "uniUrl": "https://www.tu.ac.kr",
+  "admissionUrl": "https://www.tu.ac.kr/iphak/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30050681.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30050601.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30050521.html"
+  }
+ },
+ {
+  "id": "u158",
+  "name": "동아대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.donga.ac.kr",
+  "admissionUrl": "https://ent.donga.ac.kr/admission/html/main/intro.asp",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10591481.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10591111.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10590711.html"
+  }
+ },
+ {
+  "id": "u159",
+  "name": "동의대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.deu.ac.kr",
+  "admissionUrl": "https://ipsi.deu.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOmBWSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOmBWSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOmBWSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u160",
+  "name": "부산가톨릭대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cup.ac.kr",
+  "admissionUrl": "https://ipsi.cup.ac.kr/ipsi/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10730551.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10730511.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10730441.html"
+  }
+ },
+ {
+  "id": "u161",
+  "name": "부산교육대학교",
+  "region": "부산",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.bnue.ac.kr",
+  "admissionUrl": "https://enter.bnue.ac.kr/home/main",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20040281.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20040241.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio20040201.html"
+  }
+ },
+ {
+  "id": "u162",
+  "name": "부산대학교(부산·양산밀양)",
+  "region": "부산",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 부산대학교(부산), 부산대학교(양산밀양)",
+  "uniUrl": "https://www.pusan.ac.kr",
+  "admissionUrl": "https://go.pusan.ac.kr/college_2016/main/main.asp",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio12100541.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio12100431.html"
+  }
+ },
+ {
+  "id": "u163",
+  "name": "부산외국어대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.bufs.ac.kr",
+  "admissionUrl": "https://enter.bufs.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10750521.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10750451.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10750391.html"
+  }
+ },
+ {
+  "id": "u164",
+  "name": "신라대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.silla.ac.kr",
+  "admissionUrl": "https://ipsi.silla.ac.kr/ipsi/?pCode=main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11020541.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11020451.html"
+  }
+ },
+ {
+  "id": "u165",
+  "name": "영산대학교",
+  "region": "부산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ysu.ac.kr",
+  "admissionUrl": "https://ipsi.ysu.ac.kr/ipsi/Main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30100251.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio30100181.html"
+  }
+ },
+ {
+  "id": "u166",
+  "name": "울산과학기술원",
+  "region": "울산",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.unist.ac.kr",
+  "admissionUrl": "https://adm-u.unist.ac.kr/",
+  "deadline": "2026-09-10T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KMCYlVzpKXiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KMCYlVzpKXiUmOiZKI2ZUZg"
+  }
+ },
+ {
+  "id": "u167",
+  "name": "울산대학교",
+  "region": "울산",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.ulsan.ac.kr",
+  "admissionUrl": "https://www.ulsan.ac.kr/iphak/Main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KVzgmQzpKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KVyY4QzpKZiUmOiZKI2ZUZg"
+  }
+ },
+ {
+  "id": "u168",
+  "name": "가야대학교",
+  "region": "경남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kaya.ac.kr",
+  "admissionUrl": "https://ipsi.kaya.ac.kr/Home/Main.mbz",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10010711.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10010651.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10010591.html"
+  }
+ },
+ {
+  "id": "u169",
+  "name": "경남대학교",
+  "region": "경남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kyungnam.ac.kr",
+  "admissionUrl": "https://ipsi.kyungnam.ac.kr/sites/ipsi/index.do#close",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10130591.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10130521.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10130451.html"
+  }
+ },
+ {
+  "id": "u170",
+  "name": "경상국립대학교(진주·통영)",
+  "region": "경남",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 경상국립대학교(진주), 경상국립대학교(통영)",
+  "uniUrl": "https://www.gnu.ac.kr",
+  "admissionUrl": "https://www.gnu.ac.kr/new/main.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10171011.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10170831.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10170651.html"
+  }
+ },
+ {
+  "id": "u171",
+  "name": "국립창원대학교",
+  "region": "경남",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.changwon.ac.kr",
+  "admissionUrl": "https://www.changwon.ac.kr/ipsi/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11350621.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11350541.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11350471.html"
+  }
+ },
+ {
+  "id": "u172",
+  "name": "부산장신대학교",
+  "region": "경남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.bpu.ac.kr",
+  "admissionUrl": "https://ipsi.bpu.ac.kr/",
+  "deadline": "2026-09-11T21:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u173",
+  "name": "인제대학교",
+  "region": "경남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.inje.ac.kr",
+  "admissionUrl": "https://iphak.inje.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KYC9XJUpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KYC9XJUpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u174",
+  "name": "창신대학교",
+  "region": "경남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cs.ac.kr/main",
+  "admissionUrl": "https://admission.cs.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ipsi.cs.ac.kr/ratio/2027/1.do",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio41430351.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio41430321.html"
+  }
+ },
+ {
+  "id": "u175",
+  "name": "해군사관학교",
+  "region": "경남",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.navy.ac.kr:4443/sites/navyac/index.do",
+  "admissionUrl": "https://www.navy.ac.kr:10001/iphak/main.jsp",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u176",
+  "name": "광신대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kwangshin.ac.kr",
+  "admissionUrl": "https://www.kwangshin.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u177",
+  "name": "광주과학기술원",
+  "region": "광주",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.gist.ac.kr",
+  "admissionUrl": "https://www.gist.ac.kr/uadm/main.html",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KbzBlbyZlbyVlb3JlSl4lJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KbzBlbyZlbyVlb3JlSl4lJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u178",
+  "name": "광주교육대학교",
+  "region": "광주",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.gnue.ac.kr",
+  "admissionUrl": "https://entrance.gnue.ac.kr/",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KYDY6L3JXOE45SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KYDY6L3JXOE45SmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KYDY6L3JXOE45SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u179",
+  "name": "광주대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.gwangju.ac.kr",
+  "admissionUrl": "https://iphak.gwangju.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOi9yVzhOckpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KOi9yVzhOckpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KOi9yVzhOckpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u180",
+  "name": "광주여자대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kwu.ac.kr",
+  "admissionUrl": "https://ipsi.kwu.ac.kr/index.do",
+  "deadline": "2026-09-11T20:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOk45SmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOk45SmYlJjomSi1mVGY",
+   "2025": "https://ratio.uwayapply.com/Sl5KOk45SmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u181",
+  "name": "남부대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.nambu.ac.kr",
+  "admissionUrl": "https://ipsi.nambu.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOkJNOFdKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KOkJNOFdKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KOkJNOFdKZiUmOiZKI2ZUZg"
+  }
+ },
+ {
+  "id": "u182",
+  "name": "송원대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.songwon.ac.kr",
+  "admissionUrl": "https://iphak.songwon.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KV2FOcldhJkpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5KV2FOcldhJkpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KV2FOcldhJkpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u183",
+  "name": "전남대학교(광주·여수)",
+  "region": "광주",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "통합 공개: 전남대학교(광주), 전남대학교(여수)",
+  "uniUrl": "https://www.jnu.ac.kr/jnumain.aspx",
+  "admissionUrl": "https://admission.jnu.ac.kr/indexMain.aspx",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOlcvSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOlcvSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u184",
+  "name": "조선대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.chosun.ac.kr",
+  "admissionUrl": "https://i.chosun.ac.kr/main",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300471.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html"
+  }
+ },
+ {
+  "id": "u185",
+  "name": "호남대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.honam.ac.kr",
+  "admissionUrl": "https://enter.honam.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11690691.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11690551.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11690451.html"
+  }
+ },
+ {
+  "id": "u186",
+  "name": "호남신학대학교",
+  "region": "광주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.htus.ac.kr/",
+  "admissionUrl": "https://ipsi.htus.ac.kr/",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u187",
+  "name": "광주가톨릭대학교",
+  "region": "전남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.gjc.ac.kr/",
+  "admissionUrl": "https://admission.gjc.ac.kr/",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u188",
+  "name": "국립목포대학교",
+  "region": "전남",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.mokpo.ac.kr",
+  "admissionUrl": "https://ipsi.mokpo.ac.kr/ipsi/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10690271.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10690211.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10690151.html"
+  }
+ },
+ {
+  "id": "u189",
+  "name": "국립목포해양대학교",
+  "region": "전남",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.mmu.ac.kr",
+  "admissionUrl": "https://www.mmu.ac.kr/admission",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10700541.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10700471.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10700401.html"
+  }
+ },
+ {
+  "id": "u190",
+  "name": "국립순천대학교",
+  "region": "전남",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.scnu.ac.kr/SCNU/main.do",
+  "admissionUrl": "https://www.scnu.ac.kr/iphak/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10990491.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10990421.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10990311.html"
+  }
+ },
+ {
+  "id": "u191",
+  "name": "동신대학교",
+  "region": "전남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.dsu.ac.kr/kr/?ref=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8%3D",
+  "admissionUrl": "https://ipsi.dsu.ac.kr/ipsi/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOlclfCZyV2FWSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOlclfCZyV2FWSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOlclfCZyV2FWSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u192",
+  "name": "목포가톨릭대학교",
+  "region": "전남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.mcu.ac.kr",
+  "admissionUrl": "https://www.mcu.ac.kr/ipsi/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KOkxNSmYlJjomSjdmVGY=",
+   "2026": "https://ratio.uwayapply.com/Sl5KOkxNSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOkxNSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u193",
+  "name": "영산선학대학교",
+  "region": "전남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.youngsan.ac.kr",
+  "admissionUrl": "https://youngsan.ac.kr/bbs/board.php?bo_table=2_3",
+  "deadline": null,
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u194",
+  "name": "초당대학교",
+  "region": "전남",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.cdu.ac.kr",
+  "admissionUrl": "https://admission.cdu.ac.kr/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5Kclc4VmF8TEpmJSY6Jko3ZlRm",
+   "2026": "https://ratio.uwayapply.com/Sl5Kclc4VmF8TEpmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5Kclc4VmF8TEpmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u195",
+  "name": "한국에너지공과대학교",
+  "region": "전남",
+  "founder": "국립",
+  "uniType": "특수목적대학교",
+  "campus": "본교",
+  "uniUrl": "https://www.kentech.ac.kr/",
+  "admissionUrl": "https://admission.kentech.ac.kr/ipsi",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KfExgMFdgOUpeJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KfExgMFdgOUpeJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u196",
+  "name": "국립군산대학교",
+  "region": "전북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.kunsan.ac.kr",
+  "admissionUrl": "https://www.kunsan.ac.kr/iphak/index.kunsan",
+  "deadline": "2026-09-11T20:00",
+  "ratio": {
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10350611.html",
+   "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10350541.html",
+   "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10350481.html"
+  }
+ },
+ {
+  "id": "u197",
+  "name": "예수대학교",
+  "region": "전북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.jesus.ac.kr",
+  "admissionUrl": "https://www.jesus.ac.kr/enter/index.php",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOmlNSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOmlNSmYlJjomSiNmVGY="
+  }
+ },
+ {
+  "id": "u198",
+  "name": "원광대학교",
+  "region": "전북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.wonkwang.ac.kr",
+  "admissionUrl": "https://ipsi.wku.ac.kr/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5Kclc4TjlXYU5KZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5Kclc4TjlXYU5KZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u199",
+  "name": "전북대학교",
+  "region": "전북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.jbnu.ac.kr",
+  "admissionUrl": "https://enter.jbnu.ac.kr/main.do",
+  "deadline": "2026-09-11T19:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOldCL0pmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KOldCL0pmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u200",
+  "name": "전주교육대학교",
+  "region": "전북",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.jnue.kr",
+  "admissionUrl": "https://www.jnue.kr/portal/enter/main/main.do",
+  "deadline": "2026-09-11T17:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KYDpXL0pmJSY6JkotZlRm",
+   "2025": "https://ratio.uwayapply.com/Sl5KYDpXL0pmJSY6JkojZlRm"
+  }
+ },
+ {
+  "id": "u201",
+  "name": "전주대학교",
+  "region": "전북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.jj.ac.kr",
+  "admissionUrl": "https://iphak.jj.ac.kr/iphak/index.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOi9XYWAvSmYlJjomSi1mVGY",
+   "2025": "https://ratio.uwayapply.com/Sl5KOi9XYWAvSmYlJjomSiNmVGY"
+  }
+ },
+ {
+  "id": "u202",
+  "name": "한일장신대학교",
+  "region": "전북",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.hanil.ac.kr",
+  "admissionUrl": "https://www.hanil.ac.kr/portal/default/main/main.do",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": "https://ratio.uwayapply.com/Sl5KQyVXOHxKZiUmOiZKN2ZUZg==",
+   "2026": "https://ratio.uwayapply.com/Sl5KQyVXOHxKZiUmOiZKLWZUZg==",
+   "2025": "https://ratio.uwayapply.com/Sl5KQyVXOHxKZiUmOiZKI2ZUZg=="
+  }
+ },
+ {
+  "id": "u203",
+  "name": "호원대학교",
+  "region": "전북",
+  "founder": "사립",
+  "uniType": "개방대학",
+  "campus": "본교",
+  "uniUrl": "https://www.howon.ac.kr",
+  "admissionUrl": "https://www.howon.ac.kr/web/_admission/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://intra.howon.ac.kr/IPSI/WEB_SUSI/_acceptrate/index.html?smenu=rate&v=0fe252b54d0717cb86babdf385127e9aaebb923cc0cbfb73128ef7d3e03b5f51",
+   "2025": null
+  }
+ },
+ {
+  "id": "u204",
+  "name": "제주국제대학교",
+  "region": "제주",
+  "founder": "사립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.jeju.ac.kr",
+  "admissionUrl": "https://apply.jeju.ac.kr/",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": null,
+   "2025": null
+  }
+ },
+ {
+  "id": "u205",
+  "name": "제주대학교",
+  "region": "제주",
+  "founder": "국립",
+  "uniType": "일반대학",
+  "campus": "본교",
+  "uniUrl": "https://www.jejunu.ac.kr",
+  "admissionUrl": "https://ibsi.jejunu.ac.kr/?m1=home%25",
+  "deadline": "2026-09-11T18:00",
+  "ratio": {
+   "2027": null,
+   "2026": "https://ratio.uwayapply.com/Sl5KOlc6L2AvSmYlJjomSi1mVGY=",
+   "2025": "https://ratio.uwayapply.com/Sl5KOlc6L2AvSmYlJjomSiNmVGY="
+  }
+ }
+]

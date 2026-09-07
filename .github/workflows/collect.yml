@@ -1,0 +1,59 @@
+name: collect-and-deploy
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"      # 30분마다 (UTC 기준, KST와 무관하게 하루 종일)
+  workflow_dispatch:            # 수동 실행
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 직전 배포본의 상태(history·latest)를 내려받아 추이·증감을 이어간다 (커밋 없이 상태 유지)
+      - name: Restore previous state from live site
+        env:
+          SITE: ${{ format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+        run: |
+          mkdir -p data
+          for f in latest.json history.json; do
+            code=$(curl -sS -o "data/$f" -w "%{http_code}" "$SITE/state/$f?nocache=$(date +%s)" || true)
+            if [ "$code" != "200" ]; then echo "no previous $f ($code)"; rm -f "data/$f"; fi
+          done
+          ls -la data
+
+      - name: Collect 2027 live ratios
+        run: python collect.py --workers 8
+
+      - name: Build site
+        run: python build.py
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2027 수시모집 경쟁률 상황판</title>
+<meta name="description" content="전국 대학 2027학년도 수시모집 경쟁률을 30분 간격으로 자동 수집해 전형별·모집단위별로 비교하는 상황판">
+<style>
+:root{
+  --navy:#1b3a6b;--navy-d:#12294d;--gold:#c8a232;--bg:#f3f5f9;--card:#fff;--line:#e2e6ee;
+  --text:#1f2937;--muted:#6b7280;--red:#c62828;--green:#2e7d32;--blue:#1565c0;
+  --r0bg:#e8f5e9;--r0:#2e7d32;--r1bg:#e3f2fd;--r1:#1565c0;--r2bg:#fff8e1;--r2:#a35a00;
+  --r3bg:#ffe3d6;--r3:#c43e00;--r4bg:#fde2e2;--r4:#b71c1c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Pretendard","Noto Sans KR","Malgun Gothic","맑은 고딕",-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;word-break:keep-all}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1440px;margin:0 auto;padding:16px 20px 60px}
+
+/* header */
+.top{background:linear-gradient(135deg,var(--navy-d),var(--navy));color:#fff;border-radius:14px;padding:22px 26px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;box-shadow:0 4px 16px rgba(20,40,80,.18)}
+.top h1{font-size:26px;font-weight:800;letter-spacing:-.3px}
+.top h1 small{display:block;font-size:13px;font-weight:500;color:#cfd8e6;margin-top:4px}
+.top .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,.18)}
+.pill.gold{background:var(--gold);color:#1a1a1a;border-color:var(--gold)}
+.pill.red{background:#ff6b6b;color:#fff;border-color:#ff6b6b}
+
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .l{font-size:12px;color:var(--muted);font-weight:600}
+.kpi .v{font-size:26px;font-weight:800;color:var(--navy);margin-top:2px;letter-spacing:-.5px}
+.kpi .s{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* controls */
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:14px;position:sticky;top:8px;z-index:20;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.search{flex:1 1 260px;position:relative}
+.search input{width:100%;padding:10px 36px 10px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;outline:none}
+.search input:focus{border-color:var(--navy)}
+.search .x{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:#eee;border-radius:50%;width:24px;height:24px;line-height:24px;text-align:center;color:#555;display:none}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;color:#444}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+select{padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;background:#fff}
+.tabs{display:flex;gap:4px;border-bottom:2px solid var(--line);margin:6px 0 16px;overflow-x:auto}
+.tab{border:0;background:none;padding:10px 16px;font-size:15px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.tab.on{color:var(--navy);border-bottom-color:var(--gold)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;transition:box-shadow .15s}
+.card:hover{box-shadow:0 6px 18px rgba(20,40,80,.10)}
+.card.fail{background:#fafafa;color:var(--muted)}
+.card.expanded{grid-column:1 / -1}
+.card .hd{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.card .nm{font-size:18px;font-weight:800;color:var(--navy);line-height:1.3}
+.card .nm a{text-decoration:none}
+.card .nm a:hover{text-decoration:underline}
+.badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.bd{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:#eef1f6;color:#3b4b66}
+.bd.reg{background:#e8eef9;color:var(--navy)}
+.bd.nat{background:#e6f4ea;color:#1e6b34}
+.bd.pri{background:#fdf1dc;color:#8a5a00}
+.dl{font-size:12.5px;font-weight:700;text-align:right;white-space:nowrap}
+.dl .dd{display:inline-block;padding:2px 8px;border-radius:6px;background:#eef1f6;margin-bottom:2px}
+.dl.soon .dd{background:#ffe3d6;color:var(--r3)}
+.dl.over .dd{background:#eee;color:#777}
+.dl .when{color:var(--muted);font-weight:500}
+.big{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.big .r{font-size:34px;font-weight:900;letter-spacing:-1px;line-height:1}
+.big .r small{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:2px}
+.big .n{font-size:13px;color:var(--muted)}
+.big .n b{color:var(--text)}
+.cmp{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);background:#f7f8fb;border-radius:10px;padding:8px 10px}
+.cmp b{color:var(--text)}
+.prog{height:6px;background:#e5e9f0;border-radius:3px;overflow:hidden;flex:1 1 60px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--navy),var(--gold))}
+.spark{flex:0 0 auto}
+.btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.btn{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font-size:12.5px;font-weight:700;color:#333;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{border-color:var(--navy);color:var(--navy)}
+.btn.pri{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.dis{opacity:.45;pointer-events:none}
+.rt{font-weight:800;padding:1px 7px;border-radius:6px;white-space:nowrap}
+.r0{background:var(--r0bg);color:var(--r0)} .r1{background:var(--r1bg);color:var(--r1)} .r2{background:var(--r2bg);color:var(--r2)} .r3{background:var(--r3bg);color:var(--r3)} .r4{background:var(--r4bg);color:var(--r4)} .rn{background:#eee;color:#888}
+.delta{font-size:11.5px;color:var(--muted)}
+.delta.up{color:var(--green);font-weight:700}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 10px;border-bottom:1px solid #eef0f4;text-align:left;vertical-align:middle}
+th{background:#f4f6fa;font-weight:700;color:#334;white-space:nowrap;position:sticky;top:0}
+th.sortable{cursor:pointer;user-select:none}
+th.sortable:hover{color:var(--navy)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.trow{cursor:pointer}
+tr.trow:hover td{background:#f9fafc}
+tr.sub td{background:#fbfcfe;font-size:13px}
+.mini{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;background:#eef1f6;color:#456;margin-right:4px}
+.tag.out{background:#fff1e6;color:#a35a00}
+.section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.section h2{font-size:17px;color:var(--navy);margin-bottom:10px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.filters label{font-size:13px;font-weight:700;color:#445;display:flex;align-items:center;gap:6px}
+.filters input[type=number]{width:80px;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;font-size:14px}
+.filters input[type=text]{padding:7px 10px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;min-width:180px}
+.note{font-size:12.5px;color:var(--muted);line-height:1.6}
+.note li{margin-left:18px}
+.heat td.h{text-align:center;font-weight:700;white-space:nowrap}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+.more{display:block;margin:10px auto;padding:8px 18px}
+footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.7}
+footer b{color:#444}
+.toTop{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:0;background:var(--navy);color:#fff;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+.toTop.show{opacity:1;pointer-events:auto}
+@media (max-width:640px){
+  .wrap{padding:10px 10px 50px}
+  .top{padding:16px}
+  .top h1{font-size:20px}
+  .card.expanded{grid-column:auto}
+  .big .r{font-size:28px}
+  .bar{position:static}
+}
+@media print{.bar,.toTop,.btns{display:none}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>2027학년도 수시모집 경쟁률 상황판
+        <small id="subTitle">전국 대학 · 각 대학 공개 경쟁률을 30분 간격 자동 수집</small>
+      </h1>
+    </div>
+    <div class="meta" id="topMeta"></div>
+  </header>
+
+  <section class="kpis" id="kpis"></section>
+
+  <div class="bar">
+    <div class="search"><input id="q" type="text" placeholder="대학명 · 모집단위 · 전형명 검색 (예: 간호, 지역인재, 순천향)" autocomplete="off"><button class="x" id="qx" aria-label="지우기">✕</button></div>
+    <div class="chips" id="regionChips"></div>
+    <select id="regionSel" aria-label="시·도 선택"></select>
+    <div class="chips" id="founderChips"></div>
+    <select id="sort">
+      <option value="name">이름순</option>
+      <option value="ratioDesc">경쟁률 높은순</option>
+      <option value="ratioAsc">경쟁률 낮은순</option>
+      <option value="appDesc">지원인원 많은순</option>
+      <option value="progDesc">작년 대비 진행률 높은순</option>
+      <option value="deadline">마감 임박순</option>
+    </select>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-tab="univ">대학별 현황</button>
+    <button class="tab" data-tab="units">모집단위 탐색</button>
+    <button class="tab" data-tab="types">전형 유형별 비교</button>
+    <button class="tab" data-tab="status">수집 현황 · 안내</button>
+  </nav>
+
+  <main id="view"></main>
+
+  <footer>
+    <b>제작</b> 충청남도교육청진로융합교육원 교육연구사 정재연<br>
+    <b>출처</b> 각 대학 입학처 2027학년도 수시모집 경쟁률 공개 페이지(진학어플라이·유웨이어플라이 게시 자료) 및 2026학년도 최종 경쟁률. 표시된 수치는 수집 시각 기준이며, 공식 수치는 반드시 각 대학 입학처에서 확인하세요.<br>
+    본 자료는 진학 상담 참고용이며 합격 가능성을 판정하지 않습니다.
+  </footer>
+</div>
+<button class="toTop" id="toTop" aria-label="맨 위로">↑</button>
+
+<script>
+let DATA = /*__DATA__*/null;
+let REGIONS = [];
+const REGION_GROUPS = {'충청권':['충남','대전','세종','충북'], '수도권':['서울','경기','인천'], '영남권':['부산','대구','울산','경북','경남'], '호남권':['광주','전남','전북'], '강원·제주':['강원','제주']};
+const CATS = ['학생부교과','학생부종합','논술','실기·특기','기타'];
+const S = {tab:'univ', q:'', region:'', founder:'', sort:'name', expanded:new Set(), openType:{},
+           u:{maxRatio:'', cat:'', group:'', uni:'', sortKey:'ratio', sortDir:1, limit:300, onlyFinal:false}};
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const fmt = n => (n==null||isNaN(n)) ? '-' : Number(n).toLocaleString('ko-KR');
+const rtxt = r => (r==null||isNaN(r)) ? '-' : Number(r).toFixed(2)+' : 1';
+const rcls = r => (r==null||isNaN(r)) ? 'rn' : r<1?'r0':r<3?'r1':r<6?'r2':r<10?'r3':'r4';
+const rt = r => '<span class="rt '+rcls(r)+'">'+rtxt(r)+'</span>';
+const norm = s => String(s||'').replace(/\s+/g,'').toLowerCase();
+const DOW = ['일','월','화','수','목','금','토'];
+
+function fmtTime(iso){ if(!iso) return '-'; const d=new Date(iso); if(isNaN(d)) return iso;
+  return (d.getMonth()+1)+'.'+d.getDate()+'('+DOW[d.getDay()]+') '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+function deadline(u){
+  if(!u.deadline) return {text:'마감일 미확인', cls:'', ms:Infinity};
+  const d=new Date(u.deadline), now=new Date(), ms=d-now;
+  const text=fmtTime(u.deadline);
+  if(ms<=0) return {text, cls:'over', dd:'마감', ms};
+  const h=Math.floor(ms/36e5);
+  if(h<24) return {text, cls:'soon', dd:'D-DAY · '+h+'시간 남음', ms};
+  const days=Math.ceil(ms/864e5);
+  return {text, cls: days<=1?'soon':'', dd:'D-'+days, ms};
+}
+function progress(u){ const a=u.total&&u.total.app, f=u.finTotal&&u.finTotal.app; return (a!=null&&f)? a/f : null; }
+function regionMatch(u){ if(!S.region) return true; const g=REGION_GROUPS[S.region]; return g ? g.includes(u.region) : u.region===S.region; }
+function unitsOf(u){ return u.units||[]; }
+
+/* ---------- 필터 ---------- */
+function matchQ(u){
+  const q=norm(S.q); if(!q) return true;
+  if(norm(u.name).includes(q)) return true;
+  if((u.types||[]).some(t=>norm(t.name).includes(q))) return true;
+  return unitsOf(u).some(x=>norm(x.unit).includes(q)||norm(x.college).includes(q)||norm(x.type).includes(q));
+}
+function visibleUnis(){
+  let list=DATA.universities.filter(u=>regionMatch(u)&&(!S.founder||u.founder===S.founder)&&matchQ(u));
+  const key={
+    name:(a,b)=>a.name.localeCompare(b.name,'ko'),
+    ratioDesc:(a,b)=>(b.total&&b.total.ratio||-1)-(a.total&&a.total.ratio||-1),
+    ratioAsc:(a,b)=>((a.total&&a.total.ratio!=null)?a.total.ratio:1e9)-((b.total&&b.total.ratio!=null)?b.total.ratio:1e9),
+    appDesc:(a,b)=>(b.total&&b.total.app||-1)-(a.total&&a.total.app||-1),
+    progDesc:(a,b)=>(progress(b)||-1)-(progress(a)||-1),
+    deadline:(a,b)=>deadline(a).ms-deadline(b).ms,
+  }[S.sort]||((a,b)=>0);
+  list.sort((a,b)=>{ if(a.ok!==b.ok) return a.ok?-1:1; return key(a,b); });
+  return list;
+}
+
+/* ---------- 상단 ---------- */
+function renderTop(){
+  const unis=DATA.universities, ok=unis.filter(u=>u.ok);
+  const asOfs=ok.map(u=>u.asOf).filter(Boolean).sort();
+  const latestAsOf=asOfs[asOfs.length-1];
+  const soon=unis.filter(u=>{const d=deadline(u); return d.cls==='soon';}).length;
+  $('#topMeta').innerHTML =
+    '<span class="pill gold">📡 수집 '+esc(fmtTime(DATA.collectedAt))+'</span>'+
+    (latestAsOf?'<span class="pill">대학 공개 기준 '+esc(fmtTime(latestAsOf))+'</span>':'')+
+    '<span class="pill">'+ok.length+' / '+unis.length+'개교 수집</span>'+
+    (soon?'<span class="pill red">⏰ 24시간 내 마감 '+soon+'개교</span>':'');
+  const tq=ok.reduce((s,u)=>s+(u.total&&u.total.quota||0),0);
+  const ta=ok.reduce((s,u)=>s+(u.total&&u.total.app||0),0);
+  const withFin=ok.filter(u=>u.finTotal&&u.finTotal.app);
+  const fa=withFin.reduce((s,u)=>s+u.finTotal.app,0), ca=withFin.reduce((s,u)=>s+(u.total&&u.total.app||0),0);
+  const nUnits=ok.reduce((s,u)=>s+unitsOf(u).length,0);
+  const under=ok.reduce((s,u)=>s+unitsOf(u).filter(x=>x.ratio!=null&&x.ratio<1&&x.quota).length,0);
+  $('#kpis').innerHTML=[
+    ['수집 대학', ok.length+'<small style="font-size:14px;color:#888"> / '+unis.length+'</small>', '경쟁률 페이지 미공개·미확보 '+(unis.length-ok.length)+'개교'],
+    ['총 모집인원', fmt(tq), '수집된 대학 합계(정원외 포함)'],
+    ['총 지원인원', fmt(ta), '전체 경쟁률 '+rtxt(tq?ta/tq:null)],
+    ['작년 최종 대비 진행률', fa?(ca/fa*100).toFixed(1)+'%':'-', '2026 최종 지원 '+fmt(fa)+'명 대비 ('+withFin.length+'개교)'],
+    ['모집단위', fmt(nUnits), '현재 1 : 1 미만 '+fmt(under)+'개 단위'],
+  ].map(k=>'<div class="kpi"><div class="l">'+k[0]+'</div><div class="v">'+k[1]+'</div><div class="s">'+k[2]+'</div></div>').join('');
+}
+function renderChips(){
+  const cnt=r=>DATA.universities.filter(u=>{ const g=REGION_GROUPS[r]; return !r || (g?g.includes(u.region):u.region===r); }).length;
+  $('#regionChips').innerHTML=['',...Object.keys(REGION_GROUPS)].map(r=>'<button class="chip'+(S.region===r?' on':'')+'" data-region="'+r+'">'+(r||'전국')+' <span class="mini">'+cnt(r)+'</span></button>').join('');
+  const sel=$('#regionSel');
+  sel.innerHTML='<option value="">시·도 선택</option>'+REGIONS.map(r=>'<option value="'+r+'"'+(S.region===r?' selected':'')+'>'+r+' ('+cnt(r)+')</option>').join('');
+  if(!REGIONS.includes(S.region)) sel.value='';
+  $('#founderChips').innerHTML=['','국립','사립'].map(f=>'<button class="chip'+(S.founder===f?' on':'')+'" data-founder="'+f+'">'+(f||'전체 설립')+'</button>').join('');
+}
+
+/* ---------- 탭1: 대학 카드 ---------- */
+function spark(hist){
+  const pts=(hist||[]).filter(h=>h.app!=null); if(pts.length<2) return '';
+  const W=110,H=30,max=Math.max(...pts.map(p=>p.app),1);
+  const d=pts.map((p,i)=>((i/(pts.length-1))*W).toFixed(1)+','+(H-(p.app/max)*(H-4)-2).toFixed(1)).join(' ');
+  return '<svg class="spark" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" aria-label="지원인원 추이"><polyline fill="none" stroke="#1b3a6b" stroke-width="2" points="'+d+'"/><circle cx="'+W+'" cy="'+(H-(pts[pts.length-1].app/max)*(H-4)-2).toFixed(1)+'" r="2.5" fill="#c8a232"/></svg>';
+}
+function badgeHtml(u){
+  return '<div class="badges"><span class="bd reg">'+esc(u.region)+'</span><span class="bd '+(u.founder==='사립'?'pri':'nat')+'">'+esc(u.founder)+'</span>'+(u.uniType&&u.uniType!=='일반대학'?'<span class="bd">'+esc(u.uniType)+'</span>':'')+'</div>';
+}
+function linkBtns(u){
+  const L=u.links||{};
+  return '<div class="btns">'+
+    (u.admissionUrl?'<a class="btn" href="'+esc(u.admissionUrl)+'" target="_blank" rel="noopener">입학처</a>':'')+
+    ['2027','2026','2025'].map(y=>L[y]?'<a class="btn'+(y==='2027'?' pri':'')+'" href="'+esc(L[y])+'" target="_blank" rel="noopener">'+y.slice(2)+' 경쟁률 원문</a>':'<span class="btn dis">'+y.slice(2)+' 원문 없음</span>').join('')+
+  '</div>';
+}
+function cardHtml(u){
+  const dl=deadline(u);
+  const dlHtml='<div class="dl '+dl.cls+'">'+(dl.dd?'<span class="dd">'+esc(dl.dd)+'</span><br>':'')+'<span class="when">'+esc(dl.text)+'</span></div>';
+  const head='<div class="hd"><div><div class="nm">'+(u.uniUrl?'<a href="'+esc(u.uniUrl)+'" target="_blank" rel="noopener">'+esc(u.name)+'</a>':esc(u.name))+'</div>'+badgeHtml(u)+'</div>'+dlHtml+'</div>';
+  if(!u.ok){
+    const fin=u.finTotal?'<div class="cmp"><span>2026 최종 <b>'+rtxt(u.finTotal.ratio)+'</b> (지원 '+fmt(u.finTotal.app)+' / 모집 '+fmt(u.finTotal.quota)+')</span></div>':'';
+    return '<div class="card fail" id="c-'+u.id+'">'+head+'<div class="mini">⚠ 수집 불가: '+esc(u.error||'')+'</div>'+fin+linkBtns(u)+'</div>';
+  }
+  const t=u.total||{}, p=progress(u);
+  const fin=u.finTotal;
+  const cmp='<div class="cmp"><span>2026 최종 <b>'+(fin?rtxt(fin.ratio):'-')+'</b>'+(fin?' · 지원 '+fmt(fin.app)+'명':'')+'</span>'+
+    (p!=null?'<span class="prog" title="작년 최종 지원인원 대비"><i style="width:'+Math.min(100,p*100).toFixed(1)+'%"></i></span><b>'+(p*100).toFixed(1)+'%</b>':'')+spark(u.history)+'</div>';
+  const isOpen=S.expanded.has(u.id);
+  const upd=(u.asOf?'대학 공개 '+fmtTime(u.asOf):'')+(t.derived?' · 총계는 전형 합산':'');
+  return '<div class="card'+(isOpen?' expanded':'')+'" id="c-'+u.id+'">'+head+
+    '<div class="big"><div class="r"><span class="'+rcls(t.ratio)+'" style="background:none;padding:0">'+(t.ratio!=null?t.ratio.toFixed(2):'-')+'</span><small>: 1</small></div>'+
+    '<div class="n">지원 <b>'+fmt(t.app)+'</b>명 / 모집 <b>'+fmt(t.quota)+'</b>명<br><span class="mini">'+esc(upd)+'</span></div></div>'+
+    cmp+
+    '<div class="btns"><button class="btn'+(isOpen?' pri':'')+'" data-toggle="'+u.id+'">'+(isOpen?'▲ 전형별 닫기':'▼ 전형별 보기 ('+(u.types||[]).length+'개 전형 · '+unitsOf(u).length+'개 모집단위)')+'</button></div>'+
+    (isOpen?typesTable(u):'')+
+    linkBtns(u)+
+  '</div>';
+}
+function typesTable(u){
+  const q=norm(S.q);
+  const rows=(u.types||[]).map((t,i)=>{
+    const key=u.id+'|'+t.name+'|'+t.group;
+    const open=!!S.openType[key];
+    const units=unitsOf(u).filter(x=>x.type===t.name&&(x.group===t.group||!t.group||!x.group));
+    const d=(t.prevApp!=null&&t.app!=null)?t.app-t.prevApp:null;
+    let html='<tr class="trow" data-tkey="'+esc(key)+'"><td>'+(t.group?'<span class="tag'+(t.group==='정원외'?' out':'')+'">'+esc(t.group)+'</span>':'')+esc(t.name)+' <span class="mini">'+(units.length?'▸ '+units.length+'단위':'')+'</span></td>'+
+      '<td class="num">'+fmt(t.quota)+'</td><td class="num">'+fmt(t.app)+(d!=null?' <span class="delta'+(d>0?' up':'')+'">'+(d>0?'+':'')+d+'</span>':'')+'</td><td class="num">'+rt(t.ratio)+'</td><td class="num">'+(t.fin?rt(t.fin.ratio):'<span class="mini">-</span>')+'</td>'+
+      '<td class="num">'+(t.fin&&t.fin.app&&t.app!=null?(t.app/t.fin.app*100).toFixed(0)+'%':'-')+'</td></tr>';
+    if(open&&units.length){
+      html+='<tr class="sub"><td colspan="6"><div class="tbl-wrap"><table><thead><tr><th>대학(계열)</th><th>모집단위</th><th class="num">모집</th><th class="num">지원</th><th class="num">경쟁률</th><th class="num">26 최종</th></tr></thead><tbody>'+
+        units.map(x=>{
+          const hit=q&&(norm(x.unit).includes(q)||norm(x.college).includes(q));
+          const dd=(x.prevApp!=null&&x.app!=null)?x.app-x.prevApp:null;
+          return '<tr'+(hit?' style="background:#fffbe6"':'')+'><td class="mini">'+esc(x.college)+'</td><td>'+esc(x.unit)+(x.quotaShared?' <span class="mini" title="모집인원이 전형 총원 등으로 공유 표기됨">※</span>':'')+'</td><td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+(dd?' <span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'')+'</td><td class="num">'+rt(x.ratio)+'</td><td class="num">'+(x.finRatio!=null?rt(x.finRatio):'<span class="mini">-</span>')+'</td></tr>';
+        }).join('')+'</tbody></table></div></td></tr>';
+    }
+    return html;
+  }).join('');
+  return '<div class="tbl-wrap"><table><thead><tr><th>전형 (클릭하면 모집단위)</th><th class="num">모집</th><th class="num">지원</th><th class="num">경쟁률</th><th class="num">26 최종</th><th class="num">진행률</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+    (u.prevAsOf?'<div class="mini">증감(+n)은 직전 수집('+esc(fmtTime(u.prevAsOf))+') 대비 지원인원 변화</div>':'');
+}
+function renderUniv(){
+  const list=visibleUnis();
+  if(!list.length){ $('#view').innerHTML='<div class="section empty">조건에 맞는 대학이 없습니다.</div>'; return; }
+  $('#view').innerHTML='<div class="grid">'+list.map(cardHtml).join('')+'</div>';
+}
+
+/* ---------- 탭2: 모집단위 탐색 ---------- */
+function allUnits(){
+  const out=[];
+  DATA.universities.forEach(u=>{ if(!u.ok) return; if(!regionMatch(u)) return; if(S.founder&&u.founder!==S.founder) return;
+    unitsOf(u).forEach(x=>out.push(Object.assign({uni:u.name,uid:u.id,region:u.region,dl:u.deadline},x))); });
+  return out;
+}
+function renderUnits(){
+  const f=S.u, q=norm(S.q);
+  let rows=allUnits().filter(x=>{
+    if(f.cat&&x.cat!==f.cat) return false;
+    if(f.group&&(x.group||'정원내')!==f.group) return false;
+    if(f.uni&&x.uid!==f.uni) return false;
+    if(f.maxRatio!==''&&!(x.ratio!=null&&x.ratio<=Number(f.maxRatio))) return false;
+    if(f.onlyFinal&&x.finRatio==null) return false;
+    if(q&&!(norm(x.unit).includes(q)||norm(x.college).includes(q)||norm(x.type).includes(q)||norm(x.uni).includes(q))) return false;
+    return true;
+  });
+  const k=f.sortKey, dir=f.sortDir;
+  rows.sort((a,b)=>{ let va=a[k], vb=b[k]; if(typeof va==='string'||typeof vb==='string') return String(va||'').localeCompare(String(vb||''),'ko')*dir;
+    va=(va==null)?(dir>0?1e12:-1e12):va; vb=(vb==null)?(dir>0?1e12:-1e12):vb; return (va-vb)*dir; });
+  const unis=DATA.universities.filter(u=>u.ok);
+  const th=(key,label,num)=>'<th class="sortable'+(num?' num':'')+'" data-sort="'+key+'">'+label+(k===key?(dir>0?' ▲':' ▼'):'')+'</th>';
+  const shown=rows.slice(0,f.limit);
+  $('#view').innerHTML='<div class="section"><h2>모집단위 탐색 <span class="mini">'+fmt(rows.length)+'건</span></h2>'+
+    '<div class="filters">'+
+      '<label>경쟁률 <input type="number" id="uMax" step="0.1" min="0" value="'+esc(f.maxRatio)+'" placeholder="전체"> : 1 이하</label>'+
+      '<label>전형 유형 <select id="uCat"><option value="">전체</option>'+CATS.map(c=>'<option'+(f.cat===c?' selected':'')+'>'+c+'</option>').join('')+'</select></label>'+
+      '<label>정원 <select id="uGroup"><option value="">전체</option><option'+(f.group==='정원내'?' selected':'')+'>정원내</option><option'+(f.group==='정원외'?' selected':'')+'>정원외</option></select></label>'+
+      '<label>대학 <select id="uUni"><option value="">전체</option>'+unis.map(u=>'<option value="'+u.id+'"'+(f.uni===u.id?' selected':'')+'>'+esc(u.name)+'</option>').join('')+'</select></label>'+
+      '<label><input type="checkbox" id="uFin"'+(f.onlyFinal?' checked':'')+'> 작년 최종치 있는 단위만</label>'+
+      '<button class="btn" id="uCsv">CSV 복사</button>'+
+    '</div>'+
+    '<div class="tbl-wrap"><table><thead><tr>'+th('uni','대학')+th('type','전형')+th('unit','모집단위')+th('quota','모집',1)+th('app','지원',1)+th('ratio','경쟁률',1)+th('finRatio','26 최종',1)+'<th class="num">직전 대비</th></tr></thead><tbody>'+
+    (shown.length?shown.map(x=>{ const dd=(x.prevApp!=null&&x.app!=null)?x.app-x.prevApp:null;
+      return '<tr><td><b>'+esc(x.uni)+'</b></td><td class="mini">'+(x.group?'<span class="tag'+(x.group==='정원외'?' out':'')+'">'+esc(x.group)+'</span>':'')+esc(x.type)+'</td><td>'+(x.college?'<span class="mini">'+esc(x.college)+' › </span>':'')+esc(x.unit)+(x.quotaShared?' <span class="mini">※</span>':'')+'</td>'+
+        '<td class="num">'+(x.maxSel?esc(x.maxSel):fmt(x.quota))+'</td><td class="num">'+fmt(x.app)+'</td><td class="num">'+rt(x.ratio)+'</td><td class="num">'+(x.finRatio!=null?rt(x.finRatio):'<span class="mini">-</span>')+'</td><td class="num">'+(dd!=null?'<span class="delta'+(dd>0?' up':'')+'">'+(dd>0?'+':'')+dd+'</span>':'<span class="mini">-</span>')+'</td></tr>'; }).join('')
+     :'<tr><td colspan="8" class="empty">조건에 맞는 모집단위가 없습니다.</td></tr>')+
+    '</tbody></table></div>'+
+    (rows.length>shown.length?'<button class="btn more" id="uMore">더 보기 ('+fmt(rows.length-shown.length)+'건 남음)</button>':'')+
+    '<p class="note" style="margin-top:8px">※ 표시는 모집인원이 전형 총원 등으로 여러 모집단위에 공유 표기된 경우(정원외 전형 등)로, 단위별 경쟁률은 대학 공개값을 그대로 옮긴 것입니다. 26 최종은 전형·모집단위명이 일치할 때만 연결됩니다.</p></div>';
+  S._csvRows=rows;
+}
+
+/* ---------- 탭3: 전형 유형별 비교 ---------- */
+function renderTypes(){
+  const list=visibleUnis().filter(u=>u.ok);
+  const cell=(u,c)=>{ const ts=(u.types||[]).filter(t=>t.cat===c); if(!ts.length) return '<td class="h mini">-</td>';
+    const q=ts.reduce((s,t)=>s+(t.quota||0),0), a=ts.reduce((s,t)=>s+(t.app||0),0); const r=q?a/q:null;
+    const fq=ts.reduce((s,t)=>s+(t.fin&&t.fin.quota||0),0), fa=ts.reduce((s,t)=>s+(t.fin&&t.fin.app||0),0); const fr=fq?fa/fq:null;
+    return '<td class="h">'+rt(r)+'<div class="mini">'+fmt(a)+' / '+fmt(q)+(fr!=null?' · 26 '+fr.toFixed(2):'')+'</div></td>'; };
+  $('#view').innerHTML='<div class="section"><h2>전형 유형별 경쟁률 비교</h2><p class="note" style="margin-bottom:10px">전형명을 키워드로 분류한 값입니다(교과·종합·논술·실기). 각 칸은 해당 유형 전형들의 합산 경쟁률이며 아래 작은 글씨는 지원 / 모집, 그리고 2026 최종 합산 경쟁률입니다.</p>'+
+    '<div class="tbl-wrap"><table class="heat"><thead><tr><th>대학</th><th class="num">전체</th>'+CATS.map(c=>'<th style="text-align:center">'+c+'</th>').join('')+'<th>마감</th></tr></thead><tbody>'+
+    list.map(u=>'<tr><td><b>'+esc(u.name)+'</b><div class="mini">'+esc(u.region)+' · '+esc(u.founder)+'</div></td><td class="num">'+rt(u.total&&u.total.ratio)+'</td>'+CATS.map(c=>cell(u,c)).join('')+'<td class="mini">'+esc(fmtTime(u.deadline))+'</td></tr>').join('')+
+    '</tbody></table></div></div>';
+}
+
+/* ---------- 탭4: 수집 현황 ---------- */
+function renderStatus(){
+  const rows=DATA.universities.map(u=>'<tr><td><b>'+esc(u.name)+'</b><div class="mini">'+esc(u.region)+' · '+esc(u.founder)+'</div></td><td>'+(u.ok?'<span class="rt r0">수집됨</span>':'<span class="rt rn">불가</span>')+'</td><td class="mini">'+esc(u.ok?fmtTime(u.asOf):(u.error||''))+'</td><td class="num">'+(u.ok?(u.types||[]).length:'-')+'</td><td class="num">'+(u.ok?fmt(unitsOf(u).length):'-')+'</td><td class="mini">'+esc(fmtTime(u.deadline))+'</td><td>'+(u.links&&u.links['2027']?'<a href="'+esc(u.links['2027'])+'" target="_blank" rel="noopener">'+esc(u.links['2027'].replace(/^https?:\/\//,'').split('/')[0])+'</a>':'<span class="mini">링크 없음</span>')+'</td></tr>').join('');
+  $('#view').innerHTML='<div class="section"><h2>수집 현황</h2><div class="tbl-wrap"><table><thead><tr><th>대학</th><th>상태</th><th>대학 공개 기준 / 사유</th><th class="num">전형</th><th class="num">모집단위</th><th>접수 마감</th><th>2027 경쟁률 페이지</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>'+
+  '<div class="section"><h2>이 상황판은 어떻게 만들어지나</h2><ul class="note">'+
+  '<li><b>자동 갱신</b>: GitHub Actions가 30분마다 수집 → 빌드 → 배포를 실행합니다. 상단의 "수집" 시각이 마지막 갱신 시각입니다. 대학이 경쟁률을 갱신하는 주기(보통 1시간 단위)에 따라 "대학 공개 기준" 시각은 더 이전일 수 있습니다.</li>'+
+  '<li><b>수집</b>: <code>collect.py</code> — 대학별 경쟁률 공개 페이지(진학어플라이·유웨이어플라이 게시)를 받아 전형별·모집단위별 표를 파싱하고, 대학별 총계를 누적해 추이 그래프와 직전 대비 증감을 만듭니다.</li>'+
+  '<li><b>작년 최종</b>: <code>collect.py --final 2026</code> — 2026학년도 최종 경쟁률을 1회 수집해 전형·모집단위명이 일치하는 항목에 연결합니다.</li>'+
+  '<li><b>대학 추가</b>: <code>universities.json</code>에 대학명·지역·마감·경쟁률 페이지 URL을 한 줄 추가하면 다음 수집부터 반영됩니다.</li>'+
+  '<li><b>한계</b>: 두 업체 형식이 아닌 대학 자체 페이지와 2027 경쟁률 링크가 아직 확보되지 않은 대학(위 표에서 "불가")은 수집하지 못합니다. 여러 캠퍼스를 한 페이지에 공개하는 대학은 캠퍼스를 묶어 표시합니다.</li>'+
+  '<li><b>주의</b>: 경쟁률 수치는 대학이 공개한 시점 기준이며 마감 직전 급증하는 것이 일반적입니다. 지원 결정의 근거는 반드시 입학처 공식 수치로 확인하세요.</li>'+
+  '</ul></div>';
+}
+
+/* ---------- 라우팅 ---------- */
+function render(){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===S.tab));
+  $('#sort').style.display = S.tab==='units'||S.tab==='status' ? 'none':'';
+  ({univ:renderUniv, units:renderUnits, types:renderTypes, status:renderStatus})[S.tab]();
+  syncHash();
+}
+function syncHash(){
+  const p=new URLSearchParams();
+  if(S.tab!=='univ') p.set('tab',S.tab); if(S.q) p.set('q',S.q); if(S.region) p.set('r',S.region); if(S.founder) p.set('f',S.founder); if(S.sort!=='name') p.set('s',S.sort);
+  const h=p.toString(); history.replaceState(null,'',h?'#'+h:location.pathname+location.search);
+}
+function readHash(){
+  const p=new URLSearchParams(location.hash.slice(1));
+  S.tab=p.get('tab')||'univ'; S.q=p.get('q')||''; S.region=p.get('r')||''; S.founder=p.get('f')||''; S.sort=p.get('s')||'name';
+  $('#q').value=S.q; $('#sort').value=S.sort; $('#qx').style.display=S.q?'block':'none';
+}
+function copyCsv(){
+  const rows=S._csvRows||[]; const head=['대학','지역','정원','전형','계열','모집단위','모집인원','지원인원','경쟁률','2026최종경쟁률','접수마감'];
+  const esc2=v=>{v=String(v==null?'':v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
+  const txt=[head].concat(rows.map(x=>[x.uni,x.region,x.group||'정원내',x.type,x.college,x.unit,x.maxSel||x.quota,x.app,x.ratio,x.finRatio,fmtTime(x.dl)])).map(r=>r.map(esc2).join(',')).join('\n');
+  const done=()=>{const b=$('#uCsv'); if(b){b.textContent='복사됨 ('+rows.length+'행)'; setTimeout(()=>b.textContent='CSV 복사',1500);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done,()=>fallback(txt,done)); else fallback(txt,done);
+  function fallback(t,cb){const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); cb();}
+}
+
+/* ---------- 이벤트 ---------- */
+let qTimer=null;
+$('#q').addEventListener('input',e=>{ $('#qx').style.display=e.target.value?'block':'none'; clearTimeout(qTimer); qTimer=setTimeout(()=>{S.q=e.target.value.trim(); render();},180); });
+$('#qx').addEventListener('click',()=>{ $('#q').value=''; S.q=''; $('#qx').style.display='none'; render(); $('#q').focus(); });
+$('#sort').addEventListener('change',e=>{ S.sort=e.target.value; render(); });
+$('#regionChips').addEventListener('click',e=>{ const b=e.target.closest('[data-region]'); if(!b) return; S.region=b.dataset.region; renderChips(); render(); });
+$('#regionSel').addEventListener('change',e=>{ S.region=e.target.value; renderChips(); render(); });
+$('#founderChips').addEventListener('click',e=>{ const b=e.target.closest('[data-founder]'); if(!b) return; S.founder=b.dataset.founder; renderChips(); render(); });
+$('#tabs').addEventListener('click',e=>{ const b=e.target.closest('.tab'); if(!b) return; S.tab=b.dataset.tab; render(); window.scrollTo({top:0}); });
+$('#view').addEventListener('click',e=>{
+  const tg=e.target.closest('[data-toggle]');
+  if(tg){ const id=tg.dataset.toggle; if(S.expanded.has(id)) S.expanded.delete(id); else S.expanded.add(id); render(); const c=document.getElementById('c-'+id); if(c) c.scrollIntoView({block:'nearest'}); return; }
+  const tr=e.target.closest('tr.trow');
+  if(tr){ const k=tr.dataset.tkey; S.openType[k]=!S.openType[k]; render(); return; }
+  const th=e.target.closest('th.sortable');
+  if(th){ const k=th.dataset.sort; if(S.u.sortKey===k) S.u.sortDir*=-1; else {S.u.sortKey=k; S.u.sortDir=1;} render(); return; }
+  if(e.target.id==='uMore'){ S.u.limit+=500; render(); return; }
+  if(e.target.id==='uCsv'){ copyCsv(); return; }
+});
+$('#view').addEventListener('change',e=>{
+  const id=e.target.id;
+  if(id==='uMax'){ S.u.maxRatio=e.target.value; S.u.limit=300; render(); }
+  else if(id==='uCat'){ S.u.cat=e.target.value; render(); }
+  else if(id==='uGroup'){ S.u.group=e.target.value; render(); }
+  else if(id==='uUni'){ S.u.uni=e.target.value; render(); }
+  else if(id==='uFin'){ S.u.onlyFinal=e.target.checked; render(); }
+});
+window.addEventListener('scroll',()=>{ $('#toTop').classList.toggle('show',window.scrollY>400); },{passive:true});
+$('#toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+window.addEventListener('hashchange',()=>{ readHash(); renderChips(); render(); });
+
+/* ---------- 시작 ---------- */
+function boot(){
+  REGIONS = DATA.regions || [...new Set(DATA.universities.map(u=>u.region))];
+  readHash(); renderTop(); renderChips(); render();
+  setInterval(()=>{ if(S.tab==='univ') render(); }, 60000); // D-day 갱신
+}
+(function init(){
+  if(DATA&&DATA.universities){ boot(); return; }
+  // 웹 배포본: 데이터를 별도 파일(data.json)에서 읽는다 (캐시 회피용 쿼리 포함)
+  $('#view').innerHTML='<div class="section empty">경쟁률 데이터를 불러오는 중…</div>';
+  fetch('data.json?v='+Date.now(),{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(d=>{ DATA=d; boot(); })
+    .catch(e=>{ $('#view').innerHTML='<div class="section empty">데이터를 불러오지 못했습니다 ('+esc(e.message)+'). 잠시 후 새로고침하세요.</div>'; });
+})();
+</script>
+</body>
+</html>
