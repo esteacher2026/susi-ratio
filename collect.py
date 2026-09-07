@@ -366,6 +366,9 @@ def main():
     ap.add_argument("--year", type=int, default=2027)
     ap.add_argument("--final", type=int, help="지정 학년도 최종 경쟁률을 1회 수집해 data/final{year}.json 저장")
     ap.add_argument("--only", help="쉼표로 구분한 대학 id")
+    ap.add_argument("--vendor", help="경쟁률 페이지 호스트 필터 (예: jinhakapply)")
+    ap.add_argument("--out", help="결과를 이 파일에만 저장(피드용). latest/history 는 건드리지 않음")
+    ap.add_argument("--feed", help="다른 곳(내 PC 등)에서 수집한 피드 JSON 경로 또는 URL. 더 새로운 기록으로 병합")
     ap.add_argument("--workers", type=int, default=6)
     args = ap.parse_args()
 
@@ -373,6 +376,8 @@ def main():
     if args.only:
         keep = set(args.only.split(","))
         unis = [u for u in unis if u["id"] in keep]
+    if args.vendor:
+        unis = [u for u in unis if args.vendor in ((u.get("ratio") or {}).get(str(args.final or args.year)) or "")]
 
     year = args.final or args.year
     started = dt.datetime.now()
@@ -398,6 +403,39 @@ def main():
         save_json(os.path.join(DATA, "final%d.json" % year), payload)
         print("저장: data/final%d.json" % year)
         return
+
+    if args.out:
+        # 피드 모드: 이 결과만 파일로 남긴다(다른 머신의 워크플로가 --feed 로 병합)
+        save_json(args.out, payload, compact=True)
+        print("저장: %s (피드, %d개교)" % (args.out, len(ok)))
+        return
+
+    if args.feed:
+        # 외부 피드 병합: 이번 수집이 실패했거나 피드가 더 최신이면 피드 기록을 사용
+        try:
+            if re.match(r"https?://", args.feed):
+                feed = json.loads(fetch(args.feed + ("&" if "?" in args.feed else "?") + "nocache=%d" % int(time.time())))
+            else:
+                feed = load_json(args.feed, {})
+        except Exception as e:  # noqa
+            feed = {}
+            print("피드 읽기 실패: %s" % e)
+        fu = feed.get("universities", {}) if isinstance(feed, dict) else {}
+        merged = 0
+        for i, r in enumerate(recs):
+            f = fu.get(r["id"])
+            if not (f and f.get("ok")):
+                continue
+            newer = (not r["ok"]) or ((f.get("asOf") or "") > (r.get("asOf") or "")) or (f.get("asOf") == r.get("asOf") and not r["ok"])
+            if newer:
+                f = dict(f)
+                f["source"] = "feed"
+                f["feedCollectedAt"] = feed.get("collectedAt")
+                recs[i] = f
+                merged += 1
+        ok = [r for r in recs if r["ok"]]
+        payload["universities"] = {r["id"]: r for r in recs}
+        print("피드 병합: %d개교 (피드 수집시각 %s) → 성공 %d / %d" % (merged, feed.get("collectedAt"), len(ok), len(recs)))
 
     # 직전 수집분과 비교해 모집단위별 이전 지원인원(prevApp) 기록
     prev = load_json(os.path.join(DATA, "latest.json"), {})

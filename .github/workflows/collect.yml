@@ -37,11 +37,11 @@ jobs:
           done
           ls -la data
 
-      - name: Probe jinhakapply access from runner
-        run: python probe.py || true
-
-      - name: Collect 2027 live ratios
-        run: python collect.py --workers 8
+      # 진학어플라이는 해외 IP를 차단하므로, 국내 PC가 30분마다 올리는 피드(jinhak-feed 브랜치)를 병합한다
+      - name: Collect 2027 live ratios (+ merge domestic feed)
+        env:
+          FEED: ${{ format('https://raw.githubusercontent.com/{0}/jinhak-feed/feed.json', github.repository) }}
+        run: python collect.py --workers 8 --feed "$FEED"
 
       - name: Build site
         run: python build.py
