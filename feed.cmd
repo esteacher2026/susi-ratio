@@ -26,4 +26,8 @@ git add feed.json
 git -c user.name=esteacher2026 -c user.email=cnejinhak2025@gmail.com commit -q --amend -m "jinhak feed %date% %time%" >> "%LOG%" 2>&1
 git push -q --force origin jinhak-feed >> "%LOG%" 2>&1
 echo [feed] %date% %time% push exit=%errorlevel% >> "%LOG%"
+
+rem Also trigger the GitHub workflow right away (belt and braces: GitHub's cron can be delayed)
+gh workflow run collect-and-deploy --ref main >> "%LOG%" 2>&1
+echo [feed] %date% %time% dispatch exit=%errorlevel% >> "%LOG%"
 endlocal
