@@ -291,7 +291,7 @@ function cardHtml(u){
   const cmp='<div class="cmp"><span>2026 최종 <b>'+(fin?rtxt(fin.ratio):'-')+'</b>'+(fin?' · 지원 '+fmt(fin.app)+'명':'')+'</span>'+
     (p!=null?'<span class="prog" title="작년 최종 지원인원 대비"><i style="width:'+Math.min(100,p*100).toFixed(1)+'%"></i></span><b>'+(p*100).toFixed(1)+'%</b>':'')+spark(u.history)+'</div>';
   const isOpen=S.expanded.has(u.id);
-  const upd=(u.asOf?'대학 공개 '+fmtTime(u.asOf):'')+(t.derived?' · 총계는 전형 합산':'');
+  const upd=(u.asOf?'대학 공개 '+fmtTime(u.asOf):'')+(t.derived?' · 총계는 전형 합산':'')+(u.stale?' · ⚠ 이번 수집 실패, '+(u.staleSince?fmtTime(u.staleSince)+' 이후 ':'')+'직전 자료 유지':'');
   return '<div class="card'+(isOpen?' expanded':'')+'" id="c-'+u.id+'">'+head+
     '<div class="big"><div class="r"><span class="'+rcls(t.ratio)+'" style="background:none;padding:0">'+(t.ratio!=null?t.ratio.toFixed(2):'-')+'</span><small>: 1</small></div>'+
     '<div class="n">지원 <b>'+fmt(t.app)+'</b>명 / 모집 <b>'+fmt(t.quota)+'</b>명<br><span class="mini">'+esc(upd)+'</span></div></div>'+

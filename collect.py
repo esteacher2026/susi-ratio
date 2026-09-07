@@ -32,11 +32,20 @@ SUPPORTED_HOSTS = ("jinhakapply.com", "uwayapply.com")
 
 # ---------------------------------------------------------------- 네트워크
 
+HEADERS = {
+    "User-Agent": UA,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Referer": "https://www.jinhakapply.com/",
+    "Connection": "close",
+}
+
+
 def fetch(url, retries=2, timeout=40):
     last = None
     for attempt in range(retries + 1):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            req = urllib.request.Request(url, headers=HEADERS)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 raw = resp.read()
                 ctype = resp.headers.get("Content-Type", "")
@@ -393,9 +402,20 @@ def main():
     # 직전 수집분과 비교해 모집단위별 이전 지원인원(prevApp) 기록
     prev = load_json(os.path.join(DATA, "latest.json"), {})
     prev_unis = prev.get("universities", {})
+    # 이번에 실패(차단·일시 오류)한 대학은 직전 성공분을 유지하고 stale 표시
+    for i, r in enumerate(recs):
+        p = prev_unis.get(r["id"])
+        if not r["ok"] and r.get("url") and p and p.get("ok"):
+            kept = dict(p)
+            kept["stale"] = True
+            kept["staleError"] = r.get("error")
+            kept["staleSince"] = kept.get("staleSince") or now_iso
+            recs[i] = kept
+            print("  ~~  %-16s 직전 수집분 유지 (%s)" % (r["name"], r.get("error")))
+    payload["universities"] = {r["id"]: r for r in recs}
     for r in recs:
         p = prev_unis.get(r["id"])
-        if not (r["ok"] and p and p.get("ok")):
+        if not (r["ok"] and p and p.get("ok")) or r.get("stale"):
             continue
         r["prevAsOf"] = p.get("asOf")
         pm = {(x["type"], x["group"], x["unit"]): x["app"] for x in p.get("units", [])}

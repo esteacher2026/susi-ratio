@@ -175,6 +175,7 @@ def main():
             "deadline": u.get("deadline"), "links": u.get("ratio", {}),
             "ok": bool(rec.get("ok")), "error": rec.get("error"),
             "asOf": rec.get("asOf"), "prevAsOf": rec.get("prevAsOf"),
+            "stale": bool(rec.get("stale")), "staleError": rec.get("staleError"), "staleSince": rec.get("staleSince"),
             "total": rec.get("total"), "types": rec.get("types", []), "units": rec.get("units", []),
             "history": [{"t": h["t"], "app": h["app"], "ratio": h["ratio"]} for h in hist.get(u["id"], [])],
         }

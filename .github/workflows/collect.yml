@@ -37,6 +37,9 @@ jobs:
           done
           ls -la data
 
+      - name: Probe jinhakapply access from runner
+        run: python probe.py || true
+
       - name: Collect 2027 live ratios
         run: python collect.py --workers 8
 
