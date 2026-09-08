@@ -1128,10 +1128,11 @@
   "admissionUrl": "https://admission.snu.ac.kr/index.html",
   "deadline": "2026-09-09T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://admission.snu.ac.kr/undergraduate/notice",
    "2026": "https://www.snu.ac.kr/webdata/admission/files/2026S_SNUrate.pdf",
    "2025": "https://drive.google.com/file/d/12UBu9cEb0XogCBQwIdeIF7Li205w5Iy7/view?usp=drive_link"
-  }
+  },
+  "note27": "입학본부 공지 첨부 PDF(회차별)에서 snu_collect.py 로 수집"
  },
  {
   "id": "u071",

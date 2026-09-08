@@ -15,6 +15,9 @@ if not exist "%FEED%\.git" (
   exit /b 1
 )
 
+rem Seoul National Univ. publishes PDF notices -> data\extra\snu json (merged by collect.py; failure tolerated)
+python snu_collect.py >> "%LOG%" 2>&1
+
 rem full collection (all universities) -> data\latest.json + data\snapshots\*.json (archive for later analysis)
 rem then jinhakapply subset is written to the feed file for upload
 python collect.py --workers 8 --feed-out "%FEED%\feed.json" --feed-vendor jinhakapply >> "%LOG%" 2>&1

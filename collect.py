@@ -509,9 +509,27 @@ def main():
 
     year = args.final or args.year
     started = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))   # 한국 시간(러너는 UTC)
-    print("[%s] %d개교 %d학년도 수집 시작" % (started.strftime("%H:%M:%S"), len(unis), year))
+    # 별도 수집기(예: 서울대 PDF → snu_collect.py)가 남긴 기록: data/extra/*.json (대학명으로 대응)
+    extra = {}
+    if not args.final:
+        for f in sorted(os.listdir(os.path.join(DATA, "extra"))) if os.path.isdir(os.path.join(DATA, "extra")) else []:
+            if f.endswith(".json"):
+                r = load_json(os.path.join(DATA, "extra", f), {})
+                if r.get("name"):
+                    extra[r["name"]] = r
+    print("[%s] %d개교 %d학년도 수집 시작%s" % (started.strftime("%H:%M:%S"), len(unis), year,
+                                           (" (별도 수집 %d)" % len(extra)) if extra else ""))
+
+    def collect_or_extra(u):
+        r = extra.get(u["name"])
+        if r is not None:
+            rec = dict(r)
+            rec["id"] = u["id"]
+            rec.setdefault("url", (u.get("ratio") or {}).get(str(year)))
+            return rec
+        return collect_one(u, year)
     with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        recs = list(ex.map(lambda u: collect_one(u, year), unis))
+        recs = list(ex.map(collect_or_extra, unis))
 
     ok = [r for r in recs if r["ok"]]
     for r in recs:
@@ -625,7 +643,8 @@ def main():
 
     if args.feed_out:
         # 전체 수집분 중 지정 호스트(진학어플라이 등)만 추려 피드 파일로 저장
-        sub = {k: v for k, v in payload["universities"].items() if v.get("url") and args.feed_vendor in v["url"] and not v.get("stale")}
+        sub = {k: v for k, v in payload["universities"].items()
+               if not v.get("stale") and ((v.get("url") and args.feed_vendor in v["url"]) or v.get("source") == "pdf")}
         save_json(args.feed_out, {"collectedAt": now_iso, "year": year, "uver": uver, "universities": sub}, compact=True)
         print("저장: %s (피드, %d개교)" % (args.feed_out, sum(1 for v in sub.values() if v.get("ok"))))
 
