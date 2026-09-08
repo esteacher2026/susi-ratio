@@ -2202,10 +2202,11 @@
   "admissionUrl": "https://www.dgist.ac.kr/adm/",
   "deadline": "2026-09-10T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KMCYlclZKXiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5KMCYlclZKXiUmOiZKLWZUZg==",
    "2025": "https://ratio.uwayapply.com/Sl5KMCYlODlKXiUmOiZKI2ZUZg=="
-  }
+  },
+  "note27": "유웨이 규칙 유도 링크(페이지 존재, 표는 접수 개시 후 게시 예상)"
  },
  {
   "id": "u137",
@@ -2717,10 +2718,11 @@
   "admissionUrl": "https://adm-u.unist.ac.kr/",
   "deadline": "2026-09-10T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KMCYlVzpKXiUmOiZKN2ZUZg",
    "2026": "https://ratio.uwayapply.com/Sl5KMCYlVzpKXiUmOiZKLWZUZg==",
    "2025": "https://ratio.uwayapply.com/Sl5KMCYlVzpKXiUmOiZKI2ZUZg"
-  }
+  },
+  "note27": "유웨이 규칙 유도 링크(페이지 존재, 표는 접수 개시 후 게시 예상)"
  },
  {
   "id": "u169",
