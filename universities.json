@@ -2007,10 +2007,11 @@
   "admissionUrl": "https://admission.iccu.ac.kr/default.php",
   "deadline": "2026-09-11T16:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11220011.html",
    "2026": "https://ratio.uwayapply.com/Sl5KOkxMJUpmJSY6JkotZlRm",
    "2025": "https://ratio.uwayapply.com/Sl5KOkxMJUpmJSY6JkojZlRm"
-  }
+  },
+  "note27": "입학처 홈페이지 링크 탐색(접수 개시일)"
  },
  {
   "id": "u125",
