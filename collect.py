@@ -582,6 +582,15 @@ def main():
                 f = dict(f)
                 f["source"] = "feed"
                 f["feedCollectedAt"] = feed.get("collectedAt")
+                # 피드가 오래됐으면(PC 꺼짐 등) 직전 자료 유지와 같은 표시
+                try:
+                    age_h = (dt.datetime.strptime(now_iso, "%Y-%m-%dT%H:%M") - dt.datetime.strptime(feed.get("collectedAt", now_iso), "%Y-%m-%dT%H:%M")).total_seconds() / 3600
+                except ValueError:
+                    age_h = 0
+                if age_h > 1.5:
+                    f["stale"] = True
+                    f["staleSince"] = feed.get("collectedAt")
+                    f["staleError"] = "국내 PC 피드가 %.0f시간 전 것(PC 꺼짐·절전)" % age_h
                 recs[i] = f
                 merged += 1
         ok = [r for r in recs if r["ok"]]
