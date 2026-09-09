@@ -23,6 +23,7 @@ OUT = os.path.join(ROOT, "data", "extra", "서울대학교.json")
 CACHE = os.path.join(ROOT, "data", "snu_pdf")
 NOTICE = "https://admission.snu.ac.kr/undergraduate/notice"
 NAME = "서울대학교"
+FINAL_ASOF = "2026-09-09T18:00"   # 접수 마감(최종 공지의 기준 시각)
 
 # ------------------------------------------------------------ 행 템플릿 (u=모집단위, s=소계, t=총계)
 S1 = [  # Ⅰ. 지역균형전형 | 일반전형  (1~3쪽)
@@ -83,8 +84,8 @@ SECTIONS = [
     {"pages": [3, 4], "rows": S2, "types": ("기회균형특별전형(사회통합)", "기회균형특별전형(사회통합)-농생명계열"), "group2_rows": False},
     {"pages": [5], "rows": S3, "types": ("일반전형", "기회균형특별전형(사회통합)"), "group2_rows": True, "detail": True},
 ]
-# x0 기준 열 구간
-BANDS = [("q1", 0, 370), ("a1", 370, 398), ("r1", 398, 450), ("q2", 450, 490), ("a2", 490, 515), ("r2", 515, 700)]
+# 숫자는 오른쪽 정렬이므로 x1(오른쪽 끝) 기준 열 구간 (자릿수가 늘어도 안정)
+BANDS = [("q1", 0, 365), ("a1", 365, 395), ("r1", 395, 450), ("q2", 450, 485), ("a2", 485, 515), ("r2", 515, 560)]
 NUM = re.compile(r"^[\d,]+$|^-$|^\d+\.\d+$")
 
 
@@ -122,7 +123,7 @@ def page_rows(page):
         cells = {}
         for w in rows[key]:
             for name, lo, hi in BANDS:
-                if lo <= w["x0"] < hi:
+                if lo <= w["x1"] < hi:
                     cells.setdefault(name, w["text"])
                     break
         if any(k in cells for k in ("q1", "q2", "a1", "a2")):
@@ -189,11 +190,13 @@ def find_latest_pdf():
     for href, txt in re.findall(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', doc, re.S | re.I):
         t = collect.text_of(txt)
         m = re.search(r"수시모집\s*지원서\s*접수현황\s*\((\d{1,2})/(\d{1,2})\s*(\d{1,2}):(\d{2})\s*기준\)", t)
-        if m:
-            idx = re.search(r"bbsidx=(\d+)", href)
-            if idx:
-                mo, d, h, mi = map(int, m.groups())
-                cands.append((int(idx.group(1)), "2026-%02d-%02dT%02d:%02d" % (mo, d, h, mi)))
+        mf = re.search(r"수시모집\s*지원서\s*접수현황\s*\(\s*최종\s*\)", t)
+        idx = re.search(r"bbsidx=(\d+)", href)
+        if m and idx:
+            mo, d, h, mi = map(int, m.groups())
+            cands.append((int(idx.group(1)), "2026-%02d-%02dT%02d:%02d" % (mo, d, h, mi)))
+        elif mf and idx:
+            cands.append((int(idx.group(1)), FINAL_ASOF))
     if not cands:
         raise RuntimeError("접수현황 공지를 찾지 못했습니다")
     idx, as_of = max(cands)
@@ -239,6 +242,8 @@ def main():
             m = re.search(r"_(\d{2})(\d{2})(\d{2})(\d{2})\.pdf$", os.path.basename(path))
             if m:
                 as_of = "2026-%s-%sT%s:%s" % m.groups()
+            elif re.search(r"final|최종", os.path.basename(path), re.I):
+                as_of = FINAL_ASOF
         else:
             url, fname, as_of, page_url = find_latest_pdf()
             path = download(url, fname, referer=page_url)
@@ -256,6 +261,16 @@ def main():
     except Exception as e:  # noqa
         rec["error"] = str(e)[:200]
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    if os.path.exists(OUT):
+        try:
+            old = json.load(open(OUT, encoding="utf-8"))
+            if old.get("ok") and (not rec["ok"] or (old.get("asOf") or "") > (rec.get("asOf") or "")):
+                print("서울대: 기존 기록(%s)이 더 최신·유효하므로 유지" % old.get("asOf"))
+                return
+        except Exception:
+            pass
+    if rec["ok"] and rec.get("asOf") == FINAL_ASOF:
+        rec["final"] = True
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(rec, f, ensure_ascii=False, indent=1)
     print("서울대: ok=%s asOf=%s 전형 %d 모집단위 %d 총 %s 경고 %d %s" % (

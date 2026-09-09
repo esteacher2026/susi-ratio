@@ -276,7 +276,7 @@ def main():
             "ok": bool(rec.get("ok")), "error": rec.get("error"),
             "asOf": rec.get("asOf"), "prevAsOf": rec.get("prevAsOf"),
             "stale": bool(rec.get("stale")), "staleError": rec.get("staleError"), "staleSince": rec.get("staleSince"),
-            "source": rec.get("source"),
+            "source": rec.get("source"), "final": bool(rec.get("final")),
             "total": rec.get("total"), "types": rec.get("types", []), "units": rec.get("units", []),
             "history": [{"t": h["t"], "app": h["app"], "ratio": h["ratio"]} for h in hist.get(u["id"], [])],
         }
