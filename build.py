@@ -332,6 +332,13 @@ def main():
     for name, obj in (("latest.json", latest), ("history.json", hist)):
         with open(os.path.join(DOCS, "state", name), "w", encoding="utf-8") as f:
             json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
+    # 보고서 등 정적 파일(reports/*.html)을 배포 폴더로 복사
+    rep = os.path.join(ROOT, "reports")
+    if os.path.isdir(rep):
+        import shutil
+        for fn in os.listdir(rep):
+            if fn.endswith(".html"):
+                shutil.copy(os.path.join(rep, fn), os.path.join(DOCS, fn))
     ok = sum(1 for x in out_unis if x["ok"])
     units = sum(len(x["units"]) for x in out_unis)
     print("빌드 완료: docs/index.html + docs/data.json (%.1f KB) — 대학 %d/%d 수집, 모집단위 %d건, 수집시각 %s" % (
