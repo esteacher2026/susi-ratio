@@ -966,10 +966,11 @@
   "admissionUrl": "https://ipsi.dongguk.edu/admission/html/main/main.asp",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10550541.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10550451.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10550361.html"
-  }
+  },
+  "note27": "입학처 홈페이지 링크(9.11 확인)"
  },
  {
   "id": "u061",
