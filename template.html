@@ -240,7 +240,10 @@ function tlAt(tl,key,i){ const a=tl&&tl[key]; return (a&&i!=null&&a[i]!=null)?a[
 function sameEstimate(u){ // 결합된 모집단위의 작년 같은 시점 경쟁률을 모집인원 가중 평균
   const ti=tlIndex(u).i; if(ti==null) return null; let sq=0,sw=0,n=0;
   unitsOf(u).forEach(x=>{ const v=tlAt(x.tl,'t26',ti); const q=x.quota||x.tl&&x.tl.q27; if(v!=null&&q&&!x.quotaShared){ sq+=v*q; sw+=q; n++; } });
-  return sw?{v:sq/sw,n}:null;
+  if(!sw) return null;
+  // 결합된 단위가 전체 모집의 절반 미만이면(논술 등 일부 전형만 결합) 대표성이 없어 표시하지 않음
+  const totalQ=u.total&&u.total.quota; if(totalQ&&sw/totalQ<0.5) return null;
+  return {v:sq/sw,n,cover:totalQ?sw/totalQ:null};
 }
 const DEPT_PRESETS=[
   ['의·치·한·약·수의',/의예|의학과|치의예|치의학|한의예|한의학|약학|수의예|수의학/],
@@ -326,11 +329,25 @@ function renderChips(){
 }
 
 /* ---------- 탭1: 대학 카드 ---------- */
-function spark(hist){
-  const pts=(hist||[]).filter(h=>h.app!=null); if(pts.length<2) return '';
+function spark(hist,u){
+  // 접수 기간만 그린다: 마감 후 2시간(최종 공개 반영)까지의 점만 쓰고, 가로축은 시간 비례
+  let pts=(hist||[]).filter(h=>h.app!=null&&h.t);
+  const dl=u&&u.deadline?new Date(u.deadline):null;
+  if(dl){ const cut=dl.getTime()+2*36e5; pts=pts.filter(h=>new Date(h.t).getTime()<=cut); }
+  if(pts.length<2) return '';
   const W=110,H=30,max=Math.max(...pts.map(p=>p.app),1);
-  const d=pts.map((p,i)=>((i/(pts.length-1))*W).toFixed(1)+','+(H-(p.app/max)*(H-4)-2).toFixed(1)).join(' ');
-  return '<svg class="spark" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" aria-label="지원인원 추이"><polyline fill="none" stroke="#1b3a6b" stroke-width="2" points="'+d+'"/><circle cx="'+W+'" cy="'+(H-(pts[pts.length-1].app/max)*(H-4)-2).toFixed(1)+'" r="2.5" fill="#c8a232"/></svg>';
+  const t0=new Date(pts[0].t).getTime(), tLast=new Date(pts[pts.length-1].t).getTime();
+  const closed=!!dl&&Date.now()>dl.getTime();
+  // 접수 중이면 가로축 끝 = 마감 시각(선이 마감을 향해 자라남), 마감 후면 마지막 점까지
+  const tEnd=Math.max((dl&&!closed)?dl.getTime():tLast, tLast, t0+1);
+  const xs=p=>((new Date(p.t).getTime()-t0)/(tEnd-t0)*(W-4)+2);
+  const ys=p=>(H-(p.app/max)*(H-4)-2);
+  const d=pts.map(p=>xs(p).toFixed(1)+','+ys(p).toFixed(1)).join(' ');
+  const last=pts[pts.length-1];
+  const title='지원인원 추이 '+fmtTime(pts[0].t)+' ~ '+fmtTime(last.t)+(closed?' (마감 후 최종)':'');
+  return '<svg class="spark" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" aria-label="'+esc(title)+'"><title>'+esc(title)+'</title>'+
+    (dl&&!closed?'<line x1="'+(W-2)+'" x2="'+(W-2)+'" y1="2" y2="'+(H-2)+'" stroke="#c8a232" stroke-dasharray="2 2"/>':'')+
+    '<polyline fill="none" stroke="#1b3a6b" stroke-width="2" points="'+d+'"/><circle cx="'+xs(last).toFixed(1)+'" cy="'+ys(last).toFixed(1)+'" r="2.5" fill="#c8a232"/></svg>';
 }
 function badgeHtml(u){
   return '<div class="badges"><span class="bd reg">'+esc(u.region)+'</span><span class="bd '+(u.founder==='사립'?'pri':'nat')+'">'+esc(u.founder)+'</span>'+(u.uniType&&u.uniType!=='일반대학'?'<span class="bd">'+esc(u.uniType)+'</span>':'')+'</div>';
@@ -352,9 +369,9 @@ function cardHtml(u){
   }
   const t=u.total||{}, p=progress(u);
   const fin=u.finTotal;
-  const se=sameEstimate(u), tli=tlIndex(u);
+  const tli=tlIndex(u), se=(tli.i==null||tli.i===5)?null:sameEstimate(u);   // 마감 후에는 실제 최종값이 있으므로 추정치 생략
   const cmp='<div class="cmp"><span>2026 최종 <b>'+(fin?rtxt(fin.ratio):'-')+'</b>'+(fin?' · 지원 '+fmt(fin.app)+'명':'')+(se?'<br>작년 같은 시점('+esc(tli.label)+') 약 <b class="same">'+se.v.toFixed(2)+' : 1</b> <span class="mini">('+se.n+'개 단위 가중)</span>':'')+'</span>'+
-    (p!=null?'<span class="prog" title="작년 최종 지원인원 대비"><i style="width:'+Math.min(100,p*100).toFixed(1)+'%"></i></span><b>'+(p*100).toFixed(1)+'%</b>':'')+spark(u.history)+'</div>';
+    (p!=null?'<span class="prog" title="작년 최종 지원인원 대비"><i style="width:'+Math.min(100,p*100).toFixed(1)+'%"></i></span><b>'+(p*100).toFixed(1)+'%</b>':'')+spark(u.history,u)+'</div>';
   const isOpen=S.expanded.has(u.id);
   const upd=(u.asOf?'대학 공개 '+fmtTime(u.asOf):'')+(u.final?' · 최종 확정':'')+(t.derived?' · 총계는 전형 합산':'')+(u.stale?' · ⚠ 이번 수집 실패, '+(u.staleSince?fmtTime(u.staleSince)+' 이후 ':'')+'직전 자료 유지':'');
   return '<div class="card'+(isOpen?' expanded':'')+'" id="c-'+u.id+'">'+head+
