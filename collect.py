@@ -422,6 +422,26 @@ def parse_page(doc):
                     continue
                 result["types"].append({"name": tname, "group": group, "quota": quota, "app": app, "ratio": ratio})
 
+    # 캠퍼스 합계 행(서울캠퍼스/국제캠퍼스 …)이 전형표에 섞인 경우 → 총계로 쓰고 전형 목록에서 제외
+    campus_rows = [t for t in result["types"] if re.search(r"캠퍼스$", t["name"].strip())]
+    if campus_rows and len(campus_rows) >= 2:
+        q = sum(t["quota"] or 0 for t in campus_rows)
+        a = sum(t["app"] or 0 for t in campus_rows)
+        if result["total"] is None and q:
+            result["total"] = {"quota": q, "app": a, "ratio": round(a / q, 2), "campusSum": True}
+        result["types"] = [t for t in result["types"] if t not in campus_rows]
+    # 전체 전형표 뒤에 캠퍼스별 전형표가 반복되는 경우(같은 전형명 재등장) → 첫 등장만 유지
+    seen, uniq = set(), []
+    for t in result["types"]:
+        k = (t["name"], t["group"])
+        if k in seen:
+            continue
+        seen.add(k)
+        uniq.append(t)
+    if len(uniq) < len(result["types"]):
+        result["warnings"].append("전형 %d건 중복(캠퍼스별 반복)으로 제외" % (len(result["types"]) - len(uniq)))
+        result["types"] = uniq
+
     if not result["types"] and result["units"]:
         agg = {}
         for x in result["units"]:
