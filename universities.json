@@ -123,10 +123,11 @@
   "admissionUrl": "https://ipsi.dankook.ac.kr/jukjeon/main.html",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420521.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420391.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html"
-  }
+  },
+  "note27": "사용자 제공 링크(9.11)"
  },
  {
   "id": "u009",
@@ -884,10 +885,11 @@
   "admissionUrl": "https://iphak.khu.ac.kr/mainIntro/introhtml.do",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://ratio.uwayapply.com/Sl5KOnw5SmYlJjomSjdmVGY=",
    "2026": "https://ratio.uwayapply.com/SmZKOnw5SmYlJjomSi1mVGY",
    "2025": "https://ratio.uwayapply.com/Sl5KOnw5SmYlJjomSiNmVGY="
-  }
+  },
+  "note27": "사용자 제공 링크(9.11)"
  },
  {
   "id": "u056",
@@ -1162,10 +1164,11 @@
   "admissionUrl": "https://admission.swu.ac.kr/main.php",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10860821.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10860591.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10860361.html"
-  }
+  },
+  "note27": "사용자 제공 링크(9.11)"
  },
  {
   "id": "u073",
@@ -1328,10 +1331,11 @@
   "admissionUrl": "https://admission.ewha.ac.kr/admission/html/main/intro.asp",
   "deadline": "2026-09-10T17:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11202121.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11201541.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11201011.html"
-  }
+  },
+  "note27": "사용자 제공 링크(9.11)"
  },
  {
   "id": "u083",
