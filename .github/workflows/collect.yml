@@ -1,8 +1,9 @@
 name: collect-and-deploy
 
 on:
-  schedule:
-    - cron: "5,35 22-23,0-15 * * *"   # KST 07:05~00:35 매시 5분·35분 (새벽 01~06시는 접수 변동이 거의 없어 제외; UTC 표기)
+  # 2027 수시 접수 종료(2026-09-11)로 예약 실행 중지. 정시 등 재사용 시 아래 schedule 을 되살릴 것.
+  # schedule:
+  #   - cron: "5,35 22-23,0-15 * * *"   # KST 07:05~00:35 매시 5분·35분
   workflow_dispatch:            # 수동 실행
 
 permissions:

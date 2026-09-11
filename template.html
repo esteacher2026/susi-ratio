@@ -300,8 +300,11 @@ function renderTop(){
   const asOfs=ok.map(u=>u.asOf).filter(Boolean).sort();
   const latestAsOf=asOfs[asOfs.length-1];
   const soon=unis.filter(u=>{const d=deadline(u); return d.cls==='soon';}).length;
+  const withDl=unis.filter(u=>u.deadline), allClosed=withDl.length>0&&withDl.every(u=>new Date(u.deadline).getTime()<Date.now());
+  if(allClosed){ const sub=$('#subTitle'); if(sub) sub.textContent='전국 대학 · 2027학년도 수시모집 접수 종료 — 각 대학이 마감 후 공개한 최종 경쟁률'; }
   $('#topMeta').innerHTML =
-    '<span class="pill gold">📡 수집 '+esc(fmtTime(DATA.collectedAt))+'</span>'+
+    (allClosed?'<span class="pill gold">✔ 접수 종료 · 최종 경쟁률</span>':'')+
+    '<span class="pill'+(allClosed?'':' gold')+'">📡 수집 '+esc(fmtTime(DATA.collectedAt))+'</span>'+
     (latestAsOf?'<span class="pill">대학 공개 기준 '+esc(fmtTime(latestAsOf))+'</span>':'')+
     '<span class="pill">'+ok.length+' / '+unis.length+'개교 수집</span>'+
     (soon?'<span class="pill red">⏰ 24시간 내 마감 '+soon+'개교</span>':'');
