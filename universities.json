@@ -1230,11 +1230,12 @@
   "admissionUrl": "https://ipsi.sungshin.ac.kr/main.htm",
   "deadline": "2026-09-11T18:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10930201.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10930101.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10930021.html"
   },
-  "note": "원자료의 2027 경쟁률 링크가 세명대학교 페이지였음 → 링크 미확보로 처리"
+  "note": "원자료의 2027 경쟁률 링크가 세명대학교 페이지였음 → 링크 미확보로 처리",
+  "note27": "사용자 제공 링크(9.11)"
  },
  {
   "id": "u077",
