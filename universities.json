@@ -1475,10 +1475,11 @@
   "admissionUrl": "https://ipsi.knsu.ac.kr/ipsi/index.do",
   "deadline": "2026-09-10T16:00",
   "ratio": {
-   "2027": null,
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11530431.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11530371.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11530301.html"
-  }
+  },
+  "note27": "입학처 링크(같은 주소를 2027용으로 갱신, 9.11 확인)"
  },
  {
   "id": "u092",
