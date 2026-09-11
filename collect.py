@@ -673,7 +673,7 @@ def main():
     if args.feed_out:
         # 전체 수집분 중 지정 호스트(진학어플라이 등)만 추려 피드 파일로 저장
         sub = {k: v for k, v in payload["universities"].items()
-               if not v.get("stale") and ((v.get("url") and args.feed_vendor in v["url"]) or v.get("source") == "pdf")}
+               if not v.get("stale") and ((v.get("url") and args.feed_vendor in v["url"]) or v.get("source") == "pdf" or v.get("vendor") == "own")}
         save_json(args.feed_out, {"collectedAt": now_iso, "year": year, "uver": uver, "universities": sub}, compact=True)
         print("저장: %s (피드, %d개교)" % (args.feed_out, sum(1 for v in sub.values() if v.get("ok"))))
 
