@@ -430,17 +430,40 @@ def parse_page(doc):
         if result["total"] is None and q:
             result["total"] = {"quota": q, "app": a, "ratio": round(a / q, 2), "campusSum": True}
         result["types"] = [t for t in result["types"] if t not in campus_rows]
-    # 전체 전형표 뒤에 캠퍼스별 전형표가 반복되는 경우(같은 전형명 재등장) → 첫 등장만 유지
-    seen, uniq = set(), []
-    for t in result["types"]:
-        k = (t["name"], t["group"])
-        if k in seen:
+    # 같은 전형명이 여러 번 나오는 경우:
+    #  (a) 전체 전형표 뒤에 캠퍼스별 표가 반복(첫 값 = 뒤 값들의 합) → 첫 등장만 유지
+    #  (b) 캠퍼스별 표만 있는 페이지(합이 아님) → 모두 유지하되 캠퍼스 순번을 붙여 구분
+    groups = {}
+    for i, t in enumerate(result["types"]):
+        groups.setdefault((t["name"], t["group"]), []).append(i)
+    drop, rename = set(), {}
+    for k, idxs in groups.items():
+        if len(idxs) < 2:
             continue
-        seen.add(k)
-        uniq.append(t)
-    if len(uniq) < len(result["types"]):
-        result["warnings"].append("전형 %d건 중복(캠퍼스별 반복)으로 제외" % (len(result["types"]) - len(uniq)))
-        result["types"] = uniq
+        first = result["types"][idxs[0]]
+        rest = [result["types"][i] for i in idxs[1:]]
+        same_sum = first["quota"] is not None and first["quota"] == sum(t["quota"] or 0 for t in rest)
+        same_one = len(rest) == 1 and same_sum and first["app"] == rest[0]["app"]   # 전체 표 + 한 캠퍼스에만 있는 전형
+        if same_sum and (len(rest) >= 2 or same_one):
+            drop.update(idxs[1:])
+        else:
+            for n, i in enumerate(idxs, 1):
+                rename[i] = n
+    if drop or rename:
+        new = []
+        for i, t in enumerate(result["types"]):
+            if i in drop:
+                continue
+            if i in rename:
+                t = dict(t)
+                t["campusNo"] = rename[i]
+                t["name"] = "%s [캠퍼스%d]" % (t["name"], rename[i])
+            new.append(t)
+        if drop:
+            result["warnings"].append("전형 %d건 중복(전체+캠퍼스별 반복)으로 제외" % len(drop))
+        if rename:
+            result["warnings"].append("캠퍼스별 동명 전형 %d건에 캠퍼스 순번 표기" % len(rename))
+        result["types"] = new
 
     if not result["types"] and result["units"]:
         agg = {}
