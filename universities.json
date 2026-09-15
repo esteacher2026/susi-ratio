@@ -1265,11 +1265,11 @@
   "admissionUrl": "https://admission.sookmyung.ac.kr/admission/html/main/main.asp",
   "deadline": "2026-09-11T17:00",
   "ratio": {
-   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10981491.html",
+   "2027": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10981501.html",
    "2026": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10981151.html",
    "2025": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10980861.html"
   },
-  "note27": "2026 진학어플라이 코드 이후 번호 순차 탐색으로 발견·2027 수시 페이지 확인됨"
+  "note27": "본 수시 페이지(1491은 특별전형 페이지였음, 9.15 교정)"
  },
  {
   "id": "u079",
